@@ -41,56 +41,6 @@ export default {
     };
   },
   methods: {
-    createVideoElement(id) {
-      const video = document.createElement('video');
-
-      video.autoplay = true;
-      video.preload = true;
-      video.loop = true;
-      video.muted = true;
-      video.controls = false;
-
-      const sourceMP4 = document.createElement('source');
-      sourceMP4.type = 'video/mp4';
-      sourceMP4.src = `/files/mp4_360p/${id}.mp4`;
-
-      const sourceWEBM = document.createElement('source');
-      sourceWEBM.type = 'video/webm';
-      sourceWEBM.src = `/files/webm_360p/${id}.webm`;
-
-      video.appendChild(sourceMP4);
-      video.appendChild(sourceWEBM);
-
-      return video;
-    },
-    hideVideo(event) {
-      const ele = document.querySelectorAll('.loop-card');
-      console.log(this.$el);
-      // const id = ele.getAttribute('loop-id');
-      // const videoCover = $('img', this);
-      // const videoContainer = $('.video-container', this);
-      // const video = $('video', videoContainer);
-      //
-      // videoCover.css('display', 'inherit');
-      // videoContainer.css('display', 'none');
-      // videoContainer.empty();
-    },
-    // hoverVideo(e) {
-    //   const id = $(this).attr('loop-id');
-    //   const videoContainer = $('.video-container', this);
-    //   const videoCover = $('.video-cover', this);
-    //
-    //   videoContainer.append(this.createVideoElement(id));
-    //
-    //   const video = $('video', videoContainer);
-    //   video.attr('webkit-playsinline', '');
-    //   video.attr('playsinline', '');
-    //
-    //   video.bind('canplaythrough', () => {
-    //     videoCover.css('display', 'none');
-    //     videoContainer.css('display', 'inherit');
-    //   });
-    // },
   },
   mounted() {
     console.log('mounted');
