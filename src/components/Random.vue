@@ -1,11 +1,14 @@
 <template>
-  <div class="grid-container">
-    <div class="loading" v-if="loading">
+  <div>
+  <section class="before-loading">
+  <div v-if="loading"class="loading" >
       Loading...
     </div>
     <div v-if="error" class="error">
       Error: {{ error }}
     </div>
+  </section>
+  <div v-if="loaded" class="grid-container">
     <LoopCard class="loop-card" :imgUri="imgUris" :videoUri="videoUris" />
     <div class="tags">
       <span class="tag">{{ titles['japanese'] }}</span>
@@ -20,6 +23,7 @@
       </div>
     </article>
   </div>
+</div>
 </template>
 
 <script>
@@ -123,11 +127,4 @@ export default {
   grid-gap: 1em 1em;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .1s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 </style>

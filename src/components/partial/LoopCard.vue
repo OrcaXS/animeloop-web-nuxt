@@ -1,12 +1,10 @@
 <template>
   <section @mouseover="onHovered()" @mouseout="onUnhovered()">
     <a class="">
-      <!-- <div class="video-cover" :style="{ backgroundImage: `url(${imageUri})`}"> -->
       <img v-if="!hovered || !showVid" class="video-cover" width="100%" :class="{ blur: !canplaythrough && hovered }" :src="imgUri['360p']" :srcset="imgSrcSet">
         <div v-cloak class="video-container" v-if="hovered">
-          <video loop muted autoplay width="100%" v-if="hovered" v-show="showVid" :src="videoUri['360p']" @loadstart.once="loadStart()" @canplaythrough.once="canplay()"></video>
+          <video loop muted autoplay width="100%" v-if="hovered" v-show="showVid" :src="videoUri['360p']" @canplaythrough.once="canplay()"></video>
         </div>
-      <!-- </div> -->
     </a>
   </section>
 </template>
@@ -34,9 +32,6 @@ export default {
       console.log('unhovered');
       this.hovered = false;
       this.showVid = false;
-    },
-    loadStart() {
-      // console.log('loadingStarted');
     },
     canplay() {
       // console.log('canplaythrough');
@@ -167,11 +162,6 @@ export default {
   display: none;
 }
 
-.v-i {
-  /*width: 100%;
-  height: 100%;*/
-}
-
 .video-container {
   /*width: 50vw;*/
   object-fit: cover;
@@ -187,19 +177,5 @@ export default {
 
 .blur {
   filter: blur(10px);
-}
-
-.fade-enter-active {
-  transition: opacity .2s;
-  /*transition-delay: .5s;*/
-}
-
-.fade-leave-active {
-  /*transition: 0s;*/
-  /*transition-delay: .5s;*/
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
 }
 </style>
