@@ -14,6 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/random',
       name: 'Home',
       component: Home,
     },
