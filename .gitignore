@@ -1,4 +1,6 @@
 .DS_Store
+.tags
+.tags_swap
 node_modules/
 dist/
 npm-debug.log*
