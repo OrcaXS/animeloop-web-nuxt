@@ -1,39 +1,46 @@
 <template>
   <div>
-  <section class="before-loading">
-  <div v-if="loading"class="loading" >
-      Loading...
-    </div>
-    <div v-if="error" class="error">
-      Error: {{ error }}
-    </div>
-  </section>
-  <div v-if="loaded" class="grid-container">
-    <LoopCard class="loop-card" :imgUri="imgUris" :videoUri="videoUris" />
-    <div class="tags">
-      <span class="tag">{{ titles['japanese'] }}</span>
-      <span class="tag">{{ titles['romaji'] }}</span>
-    </div>
-    <article class="message">
-      <div class="message-header">
-        <p>Random API Info</p>
+    <section v-if="!loaded" class="before-loading">
+      <div v-if="loading" class="loading" >
+        <icon name="circle-o-notch" spin></icon>
+        Fetching from API
       </div>
-      <div class="message-body">
-        {{ this.$store.state.fetchRandom.randState }}
+      <div v-if="error" class="error">
+        Error: {{ error }}
       </div>
-    </article>
+    </section>
+    <div v-if="loaded" class="grid-container">
+      <!-- <LoopCard class="loop-card" :imgUri="imgUris" :videoUri="videoUris" /> -->
+      <LoopCardP class="loop-card" :imgUri="imgUris" :videoUri="videoUris" />
+      <div class="tags">
+        <span class="tag">{{ titles['japanese'] }}</span>
+        <span class="tag">{{ titles['romaji'] }}</span>
+        <span class="tag">{{ period['begin'] }} - {{ period['end'] }}</span>
+        <span class="tag">{{ _id }}</span>
+      </div>
+      <article class="message">
+        <div class="message-header">
+          <p>{{ titles['japanese'] }} {{ episode['no'] }}</p>
+        </div>
+        <div class="message-body">
+          {{ series.description }}
+        </div>
+      </article>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import LoopCard from './partial/LoopCard';
+// import Pressure from 'pressure';
+import LoopCard from '../partial/LoopCard';
+import LoopCardP from '../partial/LoopCardP';
 
 export default {
   name: 'random',
   components: {
     LoopCard,
+    LoopCardP,
   },
   data() {
     return {
@@ -69,6 +76,9 @@ export default {
       loading: state => state.fetchRandom.loading,
       loaded: state => state.fetchRandom.loaded,
       _id: state => state.fetchRandom.randState._id,
+      series: state => state.fetchRandom.randState.series,
+      episode: state => state.fetchRandom.randState.episode,
+      period: state => state.fetchRandom.randState.period,
       imgUris(state) {
         return {
           '360p': state.fetchRandom.randState.files.jpg_360p,
@@ -95,6 +105,15 @@ export default {
     this.$store.dispatch('fetchRandom');
   },
 };
+
+// Pressure.set('#polyfill-example', {
+//   change(force, event) {
+//     this.innerHTML = force;
+//   },
+//   unsupported() {
+//     alert('Oh no, this device does not support pressure.');
+//   },
+// }, { polyfill: false });
 
 </script>
 
@@ -125,6 +144,12 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em 1em;
+}
+
+@media (width <= 800px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>

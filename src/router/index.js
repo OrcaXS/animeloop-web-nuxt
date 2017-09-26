@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 // import Hello from '@/components/Hello';
-import Home from '@/components/Home';
-import AnimeList from '@/components/AnimeList';
-import Search from '@/components/Search';
-import AnimeLoopAPI from '@/components/AnimeLoopAPI';
-import About from '@/components/About';
-import Random from '@/components/Random';
+import Home from '@/components/pages/Home';
+import AnimeList from '@/components/pages/AnimeList';
+import Search from '@/components/pages/Search';
+import AnimeLoopAPI from '@/components/pages/AnimeLoopAPI';
+import About from '@/components/pages/About';
+import Random from '@/components/pages/Random';
 
 Vue.use(Router);
 
@@ -14,7 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/random',
+      // redirect: '/',
       name: 'Home',
       component: Home,
     },

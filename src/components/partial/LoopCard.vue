@@ -1,11 +1,13 @@
 <template>
   <section @mouseover="onHovered()" @mouseout="onUnhovered()">
-    <a class="">
-      <img v-if="!hovered || !showVid" class="video-cover" width="100%" :class="{ blur: !canplaythrough && hovered }" :src="imgUri['360p']" :srcset="imgSrcSet">
-        <div v-cloak class="video-container" v-if="hovered">
-          <video loop muted autoplay width="100%" v-if="hovered" v-show="showVid" :src="videoUri['360p']" @canplaythrough.once="canplay()"></video>
-        </div>
-    </a>
+      <section v-if="!isImgLoaded">
+        <icon name="circle-o-notch" spin></icon>
+        <span>Loading cover...</span>
+      </section>
+      <img v-if="!hovered || !showVid" class="video-cover" width="100%" :class="{ blur: !canplaythrough && hovered }" :src="imgUri['360p']" :srcset="imgSrcSet" @load="imgLoaded()">
+      <div v-cloak class="video-container" v-if="hovered">
+        <video loop muted autoplay width="100%" v-if="hovered" v-show="showVid" :src="videoUri['360p']" @canplaythrough.once="canplay()"></video>
+      </div>
   </section>
 </template>
 
@@ -18,9 +20,14 @@ export default {
       hovered: false,
       canplaythrough: false,
       showVid: false,
+      isImgLoaded: false,
     };
   },
   methods: {
+    imgLoaded() {
+      console.log('imgLoaded');
+      this.isImgLoaded = true;
+    },
     onHovered() {
       console.log('hovered');
       if (!this.hovered) {

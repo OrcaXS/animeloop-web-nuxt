@@ -1,20 +1,10 @@
 <template>
   <div class="grid-container">
-    <template v-for="(item, index) in loops">
-      <loop-card>
-        <a class="grid-item loop-card" :key="item.key" @mouseover="item.hovered = true" @mouseout="item.hovered = false" :loop-id="item.key">
-          <img class="inline-img" v-if="!item.hovered" :src="item.img" key="img">
-          <div v-if="item.hovered" key="vid">
-            <video loop muted autoplay width="100%" :src="item.video"></video>
-          </div>
-        </a>
-      </loop-card>
-    </template>
   </div>
 </template>
 
 <script>
-import LoopCard from './partial/LoopCard';
+import LoopCard from '../partial/LoopCard';
 
 export default {
   name: 'home',

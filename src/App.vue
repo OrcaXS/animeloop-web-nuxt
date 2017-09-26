@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper" id="app">
     <div id="nav">
-      <navbar></navbar>
+      <al-navbar></al-navbar>
     </div>
-    <div id="side-menu">
+    <!-- <div id="side-menu">
       <side-menu id="side-menu"></side-menu>
-    </div>
+    </div> -->
     <div id="main">
       <router-view id="main"></router-view>
     </div>
@@ -13,14 +13,19 @@
 </template>
 
 <script>
-import SideMenu from './components/SideMenu';
-import Navbar from './components/Navbar';
+// import SideMenu from './components/partial/SideMenu';
+import Navbar from './components/partial/Navbar';
+import AlNavbar from './components/partial/AlNavbar';
+// import NavbarTest from './components/NavbarTest';
+
 
 export default {
   name: 'app',
   components: {
-    SideMenu,
+    // SideMenu,
     Navbar,
+    AlNavbar,
+    // NavbarTest,
   },
   data() {
     return {
@@ -29,8 +34,8 @@ export default {
 };
 </script>
 
-<style src="./assets/bulma.css"></style>
-<style>
+
+<style scoped>
 body {
   margin: 0;
 }
@@ -38,8 +43,11 @@ body {
 .wrapper {
   display: grid;
   grid-column-gap: 1em;
-  grid-template-rows: 3.25em 1fr;
+  grid-template-rows: 6em 1fr;
   grid-template-columns: 10em 1fr;
+  grid-template-areas:
+    "nav nav"
+    "sidebar main";
   padding-left: 2em;
   padding-right: 2em;
   /*justify-content: center;*/
@@ -48,6 +56,17 @@ body {
 @media (width <= 1000px) {
   .wrapper {
     padding: 0em;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "nav"
+    "main";
+  }
+  #side-menu {
+    display: none;
+  }
+  #main {
+    padding-left: .5em;
+    padding-right: .5em;
   }
 }
 
@@ -60,13 +79,13 @@ body {
 }
 
 #side-menu {
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
+  grid-area: sidebar;
 }
 
 #main {
   margin-top: 10px;
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
+  grid-area: main;
 }
+
 </style>
+<style src="./assets/bulma.css"></style>
