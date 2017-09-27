@@ -1,48 +1,51 @@
 <template>
   <nav class="al-navbar">
-    <div class="al-burger-icon">
-      <a><icon name="navicon"></icon></a>
-    </div>
+    <li class="al-burger-icon" @click="burgerActive = !burgerActive">
+      <a v-if="!burgerActive"><icon name="navicon"></icon></a>
+      <a v-if="burgerActive"><icon name="close"></icon></a>
+    </li>
     <li class="al-title">
       <a class="al-navbar-item" href="/">
-        AnimeLoop
+        <!-- <icon name="navicon"></icon> -->
+        <span>AnimeLoop</span>
       </a>
     </li>
-    <ul class="al-menu">
+    <ul class="al-menu" :class="{ 'is-active': burgerActive }">
       <li>
         <a class="al-navbar-link">
-          <icon name="list-ul"></icon> List
+          <icon name="list-ul"></icon>
+          <span>List</span>
         </a>
       </li>
       <li>
         <router-link active-class="is-active" :to="{ name: 'Random', params: {} }" class="al-navbar-item" href="#">
-          <icon name="question-circle"></icon> Random
+          <icon name="question-circle"></icon>
+          <span>Random</span>
         </router-link>
       </li>
       <li>
         <a class="al-navbar-item " href="#">
-          <icon name="magic"></icon> API
+          <icon name="bar-chart"></icon>
+          <span>API & Status</span>
         </a>
       </li>
       <li>
         <a class="al-navbar-item " href="#">
-          <icon name="bar-chart"></icon> Status
+          <icon name="info"></icon>
+          <span>About</span>
         </a>
       </li>
       <li>
         <a class="al-navbar-item " href="#">
-          <icon name="info"></icon> About
-        </a>
-      </li>
-      <li>
-        <a class="al-navbar-item " href="#">
-          <icon name="search"></icon> Search
+          <icon name="search"></icon>
+          <span>Search</span>
         </a>
       </li>
     </ul>
     <li class="al-end">
       <a class="al-navbar-item " href="#">
-        <icon name="language"></icon> Language
+        <icon name="language"></icon>
+        <span>EN</span>
       </a>
     </li>
     <!-- <div class="navbar-menu navbar-end">
@@ -73,6 +76,7 @@ export default {
   name: 'al-navbar',
   data() {
     return {
+      burgerActive: false,
     };
   },
 };
@@ -94,44 +98,58 @@ export default {
 
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
 
+  @supports (backdrop-filter: blur()) {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  @supports not (backdrop-filter: blur()) {
+    background-color: rgba(255, 255, 255, 1.0);
+  }
+
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   align-content: space-around;
 
   @media (width <= 1008px) {
-    padding: .5em;
+    padding: .75em 0em;
   }
 
   @media (width > 640px) and (width <= 800px)  {
     height: 6em;
+    /*hack*/
+    align-items: stretch;
     justify-content: space-around;
   }
 
   @media (width <= 640px) {
-
+    /*hack*/
+    align-items: stretch;
+    /*justify-content: center;*/
   }
 
   & li {
     list-style-type: none;
-    order: 2;
+    /*padding-top: .5em;
+    padding-bottom: .5em;*/
   }
 
   & a {
     padding: .5em 1em;
     color: #000000;
+    vertical-align: middle;
+    /*background: #EEEEEE;*/
+
+    & span {
+      vertical-align: middle;
+    }
 
     &:hover {
-      background: #EEEEEE;
+      @media (hover:hover) {
+        background: #EEEEEE;
+      }
     }
-  }
-}
-
-.al-burger-icon {
-  order: -1;
-
-  @media (width > 800px) {
-    display: none;
   }
 }
 
@@ -146,15 +164,39 @@ export default {
   }
 
   @media (width > 640px) and (width <= 800px) {
+    margin-top: 1em;
     flex: 0 1 100%;
+    justify-content: space-between;
   }
 
   @media (width <= 640px) {
     display: none;
   }
 
-  & .active {
+  &.is-active {
+    display: block;
+    margin-top: 1em;
+    flex: 0 1 100%;
 
+    & li {
+      padding: .5em 0em;
+
+      &> a {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.al-burger-icon {
+  height: 100%;
+  order: -1;
+  /*flex: 0 1 auto;*/
+  /*align-self: center;*/
+  /*margin-right: auto;*/
+
+  @media (width > 640px) {
+    display: none;
   }
 }
 
@@ -162,37 +204,53 @@ li.al-title {
   /*color: #000000;*/
   order: -1;
   text-align: center;
+  /*vertical-align: center;*/
 
   @media (width <= 800px) {
-    flex: 0 1 50%;
+    /*flex: 0 1 auto;*/
+    /*margin: auto;*/
+
+    /*absolute position hack*/
+    vertical-align: center;
+    position: absolute;
+    left: 50%;
+    top: .75em;
+    transform: translate(-50%, 0);
   }
 }
 
 li.al-end {
   order: 2;
   margin-left: auto;
+  /*align-self: center;*/
 
   @media (width <= 800px) {
     order: 0;
-    flex: 0 1 25%;
+    /*flex: 0 1 auto;*/
   }
 }
 
 a.navbar-item, .navbar-link {
   &.is-active {
-    box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, .8);
+    /*box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, .8);*/
   }
-
-  .fa-icon {
-    width: auto;
-    height: 1em; /* or any other relative font sizes */
-
-    /* You would have to include the following two lines to make this work in Safari */
-    max-width: 100%;
-    max-height: 100%;
-  }
-
 
 }
+
+.fa-icon {
+  /*max-width: 1em;*/
+  min-width: 1.5em;
+  width: auto;
+  /*height: 1em;*/
+  vertical-align: middle;
+  /*text-align: center;*/
+
+  padding-right: 0.5rem;
+
+  /* You would have to include the following two lines to make this work in Safari */
+  /*max-width: 100%;
+  max-height: 100%;*/
+}
+
 
 </style>
