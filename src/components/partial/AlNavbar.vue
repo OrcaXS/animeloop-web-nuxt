@@ -10,13 +10,36 @@
         <span>AnimeLoop</span>
       </a>
     </li>
-    <ul class="al-menu" :class="{ 'is-active': burgerActive }">
-      <li>
-        <a class="al-navbar-link">
+    <ul class="al-burger-menu" :class="{ 'is-active': burgerActive }">
+      <section class="al-navbar-has-dropdown" @click="dropdownActive = !dropdownActive">
+        <a class="al-navbar-list">
           <icon name="list-ul"></icon>
           <span>List</span>
+          <icon class="al-list-arrow" name="angle-down"></icon>
+          <span>&nbsp;</span>
+          <!-- alignment hack -->
         </a>
-      </li>
+        <section class="al-navbar-dropdown" :class="{ 'is-active': dropdownActive}">
+          <li>
+            <a class="al-navbar-item" href="#">
+              <icon name="table"></icon>
+              <span>Episode</span>
+            </a>
+          </li>
+          <li>
+            <a class="al-navbar-item" href="#">
+              <icon name="th-large"></icon>
+              <span>Series</span>
+            </a>
+          </li>
+          <li>
+            <a class="al-navbar-item" href="#">
+              <icon name="tags"></icon>
+              Tags
+            </a>
+          </li>
+        </section>
+      </section>
       <li>
         <router-link active-class="is-active" :to="{ name: 'Random', params: {} }" class="al-navbar-item" href="#">
           <icon name="question-circle"></icon>
@@ -26,7 +49,7 @@
       <li>
         <a class="al-navbar-item " href="#">
           <icon name="bar-chart"></icon>
-          <span>API & Status</span>
+          <span>API &amp; Status</span>
         </a>
       </li>
       <li>
@@ -42,33 +65,30 @@
         </a>
       </li>
     </ul>
-    <li class="al-end">
+    <li class="al-end al-navbar-has-dropdown" @click="langActive = !langActive">
       <a class="al-navbar-item " href="#">
         <icon name="language"></icon>
         <span>EN</span>
       </a>
+      <section class="al-navbar-dropdown al-lang-menu" :class="{ 'is-active': langActive }">
+        <li>
+          <a class="al-navbar-item" href="#">
+            <span>CN</span>
+          </a>
+        </li>
+        <li>
+          <a class="al-navbar-item" href="#">
+            <span>JP</span>
+          </a>
+        </li>
+        <li>
+          <a class="al-navbar-item" href="#">
+            <span>Others</span>
+          </a>
+        </li>
+      </section>
     </li>
-    <!-- <div class="navbar-menu navbar-end">
-    <div class="navbar-item">
-    <div class="field">
-    <div class="control">
-    <input class="input" type="text" placeholder="Search">
-  </div>
-</div>
-</div>
-<div class="navbar-item has-dropdown is-hoverable">
-<a class="navbar-link">
-Language
-</a>
-<div class="navbar-dropdown">
-<a class="navbar-item" href="#">English</a>
-<a class="navbar-item" href="#">Français</a>
-<a class="navbar-item" href="#">日本語</a>
-<a class="navbar-item" href="#">中文</a>
-</div>
-</div>
-</div> -->
-</nav>
+  </nav>
 </template>
 
 <script>
@@ -77,6 +97,8 @@ export default {
   data() {
     return {
       burgerActive: false,
+      dropdownActive: false,
+      langActive: false,
     };
   },
 };
@@ -87,6 +109,7 @@ export default {
 .al-navbar {
   z-index: 15; /*hack for bulma*/
 
+  /*fixed navbar*/
   padding: .5em 2em;
   position: fixed;
   top: 0;
@@ -98,6 +121,7 @@ export default {
 
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
 
+  /*background blur*/
   @supports (backdrop-filter: blur()) {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
@@ -110,7 +134,8 @@ export default {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  align-content: space-around;
+  align-content: flex-start;
+  justify-content: space-around;
 
   @media (width <= 1008px) {
     padding: .75em 0em;
@@ -153,17 +178,88 @@ export default {
   }
 }
 
-.al-menu {
+.al-navbar-dropdown {
+  display: none;
+  flex-direction: column;
+
+  position: absolute;
+  z-index: 20;
+  transform: translateY(.5em);
+
+  /*min-width: 8em;*/
+  padding: .25em 0em;
+
+  border: none;
+  box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
+
+  background-color: rgba(255, 255, 255, 1);
+
+  &.is-active {
+    display: inline-flex;
+
+    & a {
+      width: 100%;
+    }
+  }
+
+  & a {
+    display: inline-block;
+    padding: .25em .5em;
+    /*margin: 0em;*/
+  }
+
+  & li {
+    padding: .5em 0em;
+    flex: 0 0 auto;
+  }
+
+  &.al-lang-menu li {
+    margin: 0em;
+    text-align: center;
+    min-width: 5em;
+  }
+
+  @media (width <= 640px) {
+    display: inline;
+    position: inherit;
+
+     & li {
+       margin-left: 2em;
+     }
+
+     &.is-active {
+       display: inline;
+     }
+
+     &.al-lang-menu {
+       display: none;
+
+       &.is-active {
+        display: flex;
+        position: absolute;
+       }
+     }
+  }
+
+}
+
+.al-burger-menu {
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
+  /*align-items: flex-end;*/
 
   order: 1;
 
   & li {
 
+    & > a {
+      /*width: 100%;*/
+    }
+
   }
 
   @media (width > 640px) and (width <= 800px) {
+    /*flex-direction: column;*/
     margin-top: 1em;
     flex: 0 1 100%;
     justify-content: space-between;
@@ -174,7 +270,8 @@ export default {
   }
 
   &.is-active {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-top: 1em;
     flex: 0 1 100%;
 
@@ -182,7 +279,7 @@ export default {
       padding: .5em 0em;
 
       &> a {
-        width: 100%;
+        /*width: 100%;*/
       }
     }
   }
@@ -230,27 +327,25 @@ li.al-end {
   }
 }
 
-a.navbar-item, .navbar-link {
-  &.is-active {
-    /*box-shadow: inset 0 -2px 0 0 rgba(0, 0, 0, .8);*/
-  }
-
-}
 
 .fa-icon {
-  /*max-width: 1em;*/
+
   min-width: 1.5em;
   width: auto;
-  /*height: 1em;*/
-  vertical-align: middle;
-  /*text-align: center;*/
 
-  padding-right: 0.5rem;
+  vertical-align: middle;
+
 
   /* You would have to include the following two lines to make this work in Safari */
-  /*max-width: 100%;
-  max-height: 100%;*/
+  max-width: 100%;
+  max-height: 100%;
 }
 
+.al-list-arrow {
+  display: inline;
+  color: rgba(160, 160, 160, 1);
+  padding: 0;
+  /*margin-left: .5em;*/
+}
 
 </style>
