@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 // import Hello from '@/components/Hello';
 import Home from '@/components/pages/Home';
-import AnimeList from '@/components/pages/AnimeList';
+import APIStatus from '@/components/pages/APIStatus';
 import Search from '@/components/pages/Search';
-import AnimeLoopAPI from '@/components/pages/AnimeLoopAPI';
+// import AnimeLoopAPI from '@/components/pages/AnimeLoopAPI';
 import About from '@/components/pages/About';
 import Random from '@/components/pages/Random';
 
@@ -19,19 +19,14 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/list',
-      name: 'List',
-      component: AnimeList,
+      path: '/api_status',
+      name: 'API_Status',
+      component: APIStatus,
     },
     {
       path: '/search',
       name: 'Search',
       component: Search,
-    },
-    {
-      path: '/API',
-      name: 'AnimeLoopAPI',
-      component: AnimeLoopAPI,
     },
     {
       path: '/about',
@@ -44,4 +39,5 @@ export default new Router({
       component: Random,
     },
   ],
+  linkActiveClass: 'is-active',
 });

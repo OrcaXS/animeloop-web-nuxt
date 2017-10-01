@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Episodes</h1>
+    <h1>API</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'episodes',
+  name: 'api_status',
   data() {
     return {
     };

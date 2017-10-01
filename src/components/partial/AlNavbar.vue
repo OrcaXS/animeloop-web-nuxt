@@ -11,7 +11,7 @@
       </a>
     </li>
     <ul class="al-burger-menu" :class="{ 'is-active': burgerActive }">
-      <section class="al-navbar-has-dropdown" @click="dropdownActive = !dropdownActive">
+      <section class="al-navbar-has-dropdown" @click="dropdownActive = !dropdownActive" v-click-outside="onClickOutsideDropdown">
         <a class="al-navbar-list">
           <icon name="list-ul"></icon>
           <span>List</span>
@@ -41,32 +41,32 @@
         </section>
       </section>
       <li>
-        <router-link active-class="is-active" :to="{ name: 'Random', params: {} }" class="al-navbar-item" href="#">
+        <router-link :to="{ name: 'Random', params: {} }" class="al-navbar-item" href="#">
           <icon name="question-circle"></icon>
           <span>Random</span>
         </router-link>
       </li>
       <li>
-        <a class="al-navbar-item " href="#">
+        <router-link class="al-navbar-item " :to="{ name: 'API_Status', params: {} }">
           <icon name="bar-chart"></icon>
           <span>API &amp; Status</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a class="al-navbar-item " href="#">
+        <router-link class="al-navbar-item " :to="{ name: 'About', params: {} }">
           <icon name="info"></icon>
           <span>About</span>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a class="al-navbar-item " href="#">
+        <router-link class="al-navbar-item " :to="{ name: 'Search', params: {} }">
           <icon name="search"></icon>
           <span>Search</span>
-        </a>
+        </router-link>
       </li>
     </ul>
-    <li class="al-end al-navbar-has-dropdown" @click="langActive = !langActive">
-      <a class="al-navbar-item " href="#">
+    <li class="al-end al-navbar-has-dropdown" @click="langActive = !langActive" v-click-outside="onClickOutsideLang">
+      <a class="al-navbar-item">
         <icon name="language"></icon>
         <span>EN</span>
       </a>
@@ -92,14 +92,29 @@
 </template>
 
 <script>
+import vClickOutside from 'v-click-outside';
+
 export default {
   name: 'al-navbar',
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   data() {
     return {
       burgerActive: false,
       dropdownActive: false,
       langActive: false,
     };
+  },
+  methods: {
+    onClickOutsideDropdown(event) {
+      this.dropdownActive = false;
+      // console.log(event);
+    },
+    onClickOutsideLang(event) {
+      this.langActive = false;
+      // console.log(event);
+    },
   },
 };
 </script>
@@ -161,7 +176,7 @@ export default {
   }
 
   & a {
-    padding: .5em 1em;
+    padding: .5em .9em;
     color: #000000;
     vertical-align: middle;
     /*background: #EEEEEE;*/
@@ -190,7 +205,7 @@ export default {
   padding: .25em 0em;
 
   border: none;
-  box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
+  box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.1);
 
   background-color: rgba(255, 255, 255, 1);
 
