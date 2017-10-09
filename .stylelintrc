@@ -1,0 +1,4 @@
+{
+  "processors": ["stylelint-processor-html", "postcss-html"],
+  "extends": "stylelint-config-standard"
+}
