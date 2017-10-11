@@ -95,9 +95,9 @@
 import vClickOutside from 'v-click-outside';
 
 export default {
-  name: 'al-navbar',
+  name: 'TheNavbar',
   directives: {
-    clickOutside: vClickOutside.directive
+    clickOutside: vClickOutside.directive,
   },
   data() {
     return {
@@ -292,10 +292,6 @@ export default {
 
     & li {
       padding: .5em 0em;
-
-      &> a {
-        /*width: 100%;*/
-      }
     }
   }
 }

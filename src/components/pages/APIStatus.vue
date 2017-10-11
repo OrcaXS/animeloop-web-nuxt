@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'api_status',
+  name: 'APIStatus',
   data() {
     return {
     };

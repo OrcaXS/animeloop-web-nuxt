@@ -4,9 +4,17 @@
       <icon name="circle-o-notch" spin></icon>
       <span>Loading cover...</span>
     </section>
-    <span v-if="!canPressure">Pressure.js unsupported. Using Polyfill instead.</span>
+    <span v-if="!canPressure">
+      Pressure.js unsupported. Using Polyfill instead.
+    </span>
     <span>Pressure level: {{ pressureLevel }}</span>
-    <img class="video-cover" width="100%" :src="imgUri['360p']" :srcset="imgSrcSet" @load="imgLoaded()">
+    <img
+      class="video-cover"
+      width="100%"
+      :src="imgUri['360p']"
+      :srcset="imgSrcSet"
+      @load="imgLoaded()"
+    >
     <section class="pressure-modal" id="pressure-modal" v-if="showModal">
       <div class="pressure-modal-overlay"></div>
       <div class="pressure-modal-content">
@@ -14,8 +22,15 @@
           <icon name="circle-o-notch" spin></icon>
           <span>Loading video...</span>
         </section>
-        <section v-cloak class="video-container">
-          <video loop muted autoplay playsinline width="100%" :src="videoUri['360p']" @canplaythrough.once="canplay()"></video>
+        <section
+          v-cloak
+          class="video-container"
+        >
+          <video loop muted autoplay playsinline
+            width="100%"
+            :src="videoUri['360p']"
+            @canplaythrough.once="canplay()"
+          ></video>
         </section>
       </div>
     </section>
@@ -25,8 +40,17 @@
 import Pressure from 'pressure';
 
 export default {
-  name: 'loop-cardp',
-  props: ['imgUri', 'videoUri'],
+  name: 'LoopCardP',
+  props: {
+    imgUri: {
+      type: String,
+      required: true,
+    },
+    videoUri: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       hovered: false,
@@ -37,6 +61,12 @@ export default {
       canPressure: true,
       pressureLevel: 0,
     };
+  },
+  computed: {
+    imgSrcSet() {
+      return `"${this.imgUri['360p']},
+      ${this.imgUri['720p']} 2x, ${this.imgUri['1080p']} 3x`;
+    },
   },
   methods: {
     imgLoaded() {
@@ -75,16 +105,10 @@ export default {
           comp.canPressure = false;
         },
       }, { polyfill: true });
-    }
+    },
     // test() {
     //   console.log(this.$el);
     // },
-  },
-  computed: {
-    imgSrcSet() {
-      return `"${this.imgUri['360p']},
-      ${this.imgUri['720p']} 2x, ${this.imgUri['1080p']} 3x`;
-    },
   },
   mounted() {
     this.setPressure();

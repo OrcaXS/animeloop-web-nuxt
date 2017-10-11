@@ -7,7 +7,7 @@
 import LoopCard from '../partial/LoopCard';
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     LoopCard,
   },

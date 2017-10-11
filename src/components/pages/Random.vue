@@ -11,7 +11,11 @@
     </section>
     <div v-if="loaded" class="grid-container">
       <!-- <LoopCard class="loop-card" :imgUri="imgUris" :videoUri="videoUris" /> -->
-      <LoopCardP class="loop-card" :imgUri="imgUris" :videoUri="videoUris" />
+      <LoopCard
+        class="loop-card"
+        :img-uri="imgUris"
+        :video-uri="videoUris"
+      />
       <div class="tags">
         <span class="tag">{{ titles['japanese'] }}</span>
         <span class="tag">{{ titles['romaji'] }}</span>
@@ -37,7 +41,7 @@ import LoopCard from '../partial/LoopCard';
 import LoopCardP from '../partial/LoopCardP';
 
 export default {
-  name: 'random',
+  name: 'Random',
   components: {
     LoopCard,
     LoopCardP,

@@ -65,7 +65,7 @@
 
 <script>
 export default {
-  name: 'navbar',
+  name: 'OldNavbar',
   data() {
     return {
     };

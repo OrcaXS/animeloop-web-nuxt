@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'side-menu',
+  name: 'SideMenu',
   data() {
     return {
     };

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'episodes',
+  name: 'Episodes',
   data() {
     return {
     };

@@ -1,31 +1,21 @@
 <template>
   <div class="wrapper" id="app">
-    <div id="nav">
-      <al-navbar></al-navbar>
-    </div>
-    <!-- <div id="side-menu">
-      <side-menu id="side-menu"></side-menu>
-    </div> -->
+    <nav id="nav">
+      <TheNavbar/>
+    </nav>
     <div id="main">
-      <router-view id="main"></router-view>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-// import SideMenu from './components/partial/SideMenu';
-import Navbar from './components/partial/Navbar';
-import AlNavbar from './components/partial/AlNavbar';
-// import NavbarTest from './components/NavbarTest';
-
+import TheNavbar from './components/partial/TheNavbar';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    // SideMenu,
-    Navbar,
-    AlNavbar,
-    // NavbarTest,
+    TheNavbar,
   },
   data() {
     return {
@@ -33,7 +23,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 body {
@@ -46,8 +35,8 @@ body {
   grid-template-rows: 6em 1fr;
   grid-template-columns: 10em 1fr;
   grid-template-areas:
-    "nav nav"
-    "sidebar main";
+  "nav nav"
+  "sidebar main";
   padding-left: 2em;
   padding-right: 2em;
   /*justify-content: center;*/
@@ -61,9 +50,11 @@ body {
     "nav"
     "main";
   }
+
   #side-menu {
     display: none;
   }
+
   #main {
     padding-left: .5em;
     padding-right: .5em;
@@ -100,16 +91,16 @@ $twitter-invert: findColorInvert($twitter);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
-    "white": ($white, $black),
-    "black": ($black, $white),
-    "light": ($light, $light-invert),
-    "dark": ($dark, $dark-invert),
-    "primary": ($primary, $primary-invert),
-    "info": ($info, $info-invert),
-    "success": ($success, $success-invert),
-    "warning": ($warning, $warning-invert),
-    "danger": ($danger, $danger-invert),
-    "twitter": ($twitter, $twitter-invert)
+"white": ($white, $black),
+"black": ($black, $white),
+"light": ($light, $light-invert),
+"dark": ($dark, $dark-invert),
+"primary": ($primary, $primary-invert),
+"info": ($info, $info-invert),
+"success": ($success, $success-invert),
+"warning": ($warning, $warning-invert),
+"danger": ($danger, $danger-invert),
+"twitter": ($twitter, $twitter-invert)
 );
 
 // Links
@@ -117,7 +108,11 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
-// Import Bulma and Buefy styles
-@import "~bulma";
+// Import Bulma styles
+@import "~bulma/sass/base/generic";
+@import "~bulma/sass/base/minireset";
+@import "~bulma/sass/components/breadcrumb";
+@import "~bulma/sass/components/message";
+@import "~bulma/sass/elements/_all";
 </style>
 <!-- <style src="./assets/bulma.css"></style> -->
