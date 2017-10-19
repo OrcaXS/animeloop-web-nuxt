@@ -5,25 +5,29 @@ const fetchOptions = {
   method: 'get',
 };
 
-const fetchUri = 'https://animeloop.org/api/rand';
+const fetchUri = 'http://localhost:7777/api/v1/loops?limit=12&populate=["episode", "series"]';
 
 const state = {
+  status: {
+    loading: false,
+    loaded: false,
+    error: null,
+  },
   vidLoading: false,
   vidLoaded: false,
   hovered: false,
-  loading: false,
-  loaded: false,
-  error: null,
-  randState: {},
+  rawState: {},
 };
 
 const getters = {
-  // randId: state => {
-  //   return state.randState._id
-  // }
-  // randVideo: state => {
-  //   return state.randState.
-  // }
+  // getImgUris: (state) => {
+  //   Object.values(state.rawState).forEach((ele) => {
+  //     const { jpg_360p, jpg_720p, jpg_1080p } = ele.files;
+  //     // console.log(ele.files);
+  //     console.log({ jpg_360p, jpg_720p, jpg_1080p });
+  //     return { jpg_360p, jpg_720p, jpg_1080p };
+  //   });
+  // },
 };
 
 const mutations = {
@@ -31,13 +35,13 @@ const mutations = {
     state.hovered = isHovered;
   },
   SET_STATE: (state, result) => {
-    Object.assign(state.randState, result);
+    state.rawState = result;
   },
   SET_LOADING: (state, isLoading) => {
-    state.loading = isLoading;
+    state.status.loading = isLoading;
   },
   SET_LOADED: (state, isLoaded) => {
-    state.loaded = isLoaded;
+    state.status.loaded = isLoaded;
   },
   SET_VIDLOADED: (state, isLoaded) => {
     state.vidLoaded = isLoaded;
@@ -46,7 +50,7 @@ const mutations = {
     state.vidLoading = isLoading;
   },
   SET_ERROR: (state, err) => {
-    state.error = err.toString();
+    state.status.error = err.toString();
   },
 };
 
@@ -61,7 +65,7 @@ const actions = {
     commit('SET_VIDLOADED', isVidLoaded);
   },
 
-  async fetchRandom({ commit }) {
+  async fetchHome({ commit }) {
     try {
       commit('SET_LOADING', true);
       const response = await fetchGen(fetchUri, fetchOptions);
