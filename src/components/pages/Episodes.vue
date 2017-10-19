@@ -7,6 +7,9 @@
 <script>
 export default {
   name: 'Episodes',
+  metaInfo: {
+    title: 'Episodes',
+  },
   data() {
     return {
     };

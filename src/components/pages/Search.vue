@@ -7,6 +7,9 @@
 <script>
 export default {
   name: 'Search',
+  metaInfo: {
+    title: 'Search',
+  },
   data() {
     return {
     };

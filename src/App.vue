@@ -14,6 +14,9 @@ import TheNavbar from './components/partial/TheNavbar';
 
 export default {
   name: 'App',
+  metaInfo: {
+    titleTemplate: '%s | Animeloop',
+  },
   components: {
     TheNavbar,
   },
@@ -24,7 +27,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 body {
   margin: 0;
 }
@@ -32,11 +35,12 @@ body {
 .wrapper {
   display: grid;
   grid-column-gap: 1em;
-  grid-template-rows: 6em 1fr;
-  grid-template-columns: 10em 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-  "nav nav"
-  "sidebar main";
+  "nav"
+  "main";
+
   padding-left: 2em;
   padding-right: 2em;
   /*justify-content: center;*/
@@ -51,31 +55,19 @@ body {
     "main";
   }
 
-  #side-menu {
-    display: none;
-  }
-
   #main {
     padding-left: .5em;
     padding-right: .5em;
   }
 }
 
-#nav {
-  /*grid-column: 1 / 3;*/
-}
-
-#app {
-  /*display: grid;*/
-}
-
-#side-menu {
-  grid-area: sidebar;
-}
-
 #main {
-  margin-top: 10px;
+  margin-top: 4em;
   grid-area: main;
+
+  @media (width > 640px) and (width <= 800px) {
+    margin-top: 8em;
+  }
 }
 
 </style>
@@ -88,6 +80,8 @@ $primary: #8c67ef;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
+
+$text: $grey-dark;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (

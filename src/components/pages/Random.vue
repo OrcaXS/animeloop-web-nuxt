@@ -30,6 +30,16 @@
           {{ series.description }}
         </div>
       </article>
+      <article class="message is-info">
+        <div class="message-header">
+          <p>API Info</p>
+        </div>
+        <div class="message-body">
+          <code>
+          {{ this.$store.state.fetchRandom.randState }}
+          </code>
+        </div>
+      </article>
     </div>
   </div>
 </template>
@@ -42,6 +52,9 @@ import LoopCardP from '../partial/LoopCardP';
 
 export default {
   name: 'Random',
+  metaInfo: {
+    title: 'Random',
+  },
   components: {
     LoopCard,
     LoopCardP,
@@ -85,16 +98,16 @@ export default {
       period: state => state.fetchRandom.randState.period,
       imgUris(state) {
         return {
-          '360p': state.fetchRandom.randState.files.jpg_360p,
-          '720p': state.fetchRandom.randState.files.jpg_720p,
-          '1080p': state.fetchRandom.randState.files.jpg_1080p,
+          jpg_360p: state.fetchRandom.randState.files.jpg_360p,
+          jpg_720p: state.fetchRandom.randState.files.jpg_720p,
+          jpg_1080p: state.fetchRandom.randState.files.jpg_1080p,
         };
       },
       videoUris(state) {
         return {
-          '360p': state.fetchRandom.randState.files.mp4_360p,
-          '720p': state.fetchRandom.randState.files.mp4_720p,
-          '1080p': state.fetchRandom.randState.files.mp4_1080p,
+          mp4_360p: state.fetchRandom.randState.files.mp4_360p,
+          mp4_720p: state.fetchRandom.randState.files.mp4_720p,
+          mp4_1080p: state.fetchRandom.randState.files.mp4_1080p,
         };
       },
       titles(state) {
@@ -106,7 +119,7 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch('fetchRandom');
+    this.$store.dispatch('fetchRandom/fetchRandom');
   },
 };
 
@@ -122,6 +135,11 @@ export default {
 </script>
 
 <style scoped>
+code {
+  background-color: unset;
+  color: unset;
+}
+
 .loop-card {
   display: block;
   /*width: 100%;*/

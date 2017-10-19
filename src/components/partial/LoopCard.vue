@@ -12,7 +12,7 @@
         class="video-cover"
         width="100%"
         :class="{ blur: !canplaythrough && hovered }"
-        :src="imgUri['360p']"
+        :src="imgUri['jpg_360p']"
         :srcset="imgSrcSet"
         @load="imgLoaded()"
       >
@@ -25,7 +25,7 @@
           width="100%"
           v-if="hovered"
           v-show="showVid"
-          :src="videoUri['360p']"
+          :src="videoUri['mp4_360p']"
           @canplaythrough.once="canplay()"
         ></video>
       </div>
@@ -37,11 +37,11 @@ export default {
   name: 'LoopCard',
   props: {
     imgUri: {
-      type: String,
+      type: Object,
       required: true,
     },
     videoUri: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
@@ -55,8 +55,8 @@ export default {
   },
   computed: {
     imgSrcSet() {
-      return `"${this.imgUri['360p']},
-      ${this.imgUri['720p']} 2x, ${this.imgUri['1080p']} 3x`;
+      return `"${this.imgUri.jpg_360p},
+      ${this.imgUri.jpg_720p} 2x, ${this.imgUri.jpg_1080p} 3x`;
     },
   },
   methods: {
@@ -95,6 +95,10 @@ export default {
 </script>
 
 <style scoped>
+section {
+  line-height: 0;
+}
+
 [v-cloak] {
   display: none;
 }

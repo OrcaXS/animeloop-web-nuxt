@@ -1,41 +1,64 @@
 <template>
-  <div class="grid-container">
+  <div>
+    <section v-if="!status.loaded" class="before-loading">
+      <div v-if="status.loading" class="loading" >
+        <icon name="circle-o-notch" spin></icon>
+        Fetching from API
+      </div>
+      <div v-if="status.error" class="error">
+        Error: {{ status.error }}
+      </div>
+    </section>
+    <div class="grid-container">
+      <div class="grid-item flex-container" v-for="item in rawState" :key="item._id">
+        <LoopCard
+        class="loop-card"
+        :img-uri="item.files"
+        :video-uri="item.files"
+        />
+        <CardDetails
+        :title="item.series.title"
+        :period="item.period"
+        :episode_no="item.episode.no"
+        :anime_type="item.series.type"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import LoopCard from '../partial/LoopCard';
+import CardDetails from '../partial/CardDetails';
+
 
 export default {
   name: 'Home',
+  metaInfo: {
+    title: 'Home',
+  },
   components: {
     LoopCard,
+    CardDetails,
   },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js PWA',
-      loops: [
-        { key: '1', img: '../static/jpg_360p/1.jpg', video: '../static/mp4_360p/1.mp4', hovered: false },
-        { key: '2', img: '../static/jpg_360p/2.jpg', video: '../static/mp4_360p/2.mp4', hovered: false },
-        { key: '3', img: '../static/jpg_360p/3.jpg', video: '../static/mp4_360p/3.mp4', hovered: false },
-        { key: '4', img: '../static/jpg_360p/4.jpg', video: '../static/mp4_360p/4.mp4', hovered: false },
-        { key: '5', img: '../static/jpg_360p/5.jpg', video: '../static/mp4_360p/5.mp4', hovered: false },
-        { key: '6', img: '../static/jpg_360p/6.jpg', video: '../static/mp4_360p/6.mp4', hovered: false },
-        { key: '7', img: '../static/jpg_360p/7.jpg', video: '../static/mp4_360p/7.mp4', hovered: false },
-        { key: '8', img: '../static/jpg_360p/8.jpg', video: '../static/mp4_360p/8.mp4', hovered: false },
-        { key: '9', img: '../static/jpg_360p/9.jpg', video: '../static/mp4_360p/9.mp4', hovered: false },
-        { key: '10', img: '../static/jpg_360p/10.jpg', video: '../static/mp4_360p/10.mp4', hovered: false },
-        { key: '11', img: '../static/jpg_360p/11.jpg', video: '../static/mp4_360p/11.mp4', hovered: false },
-        { key: '12', img: '../static/jpg_360p/12.jpg', video: '../static/mp4_360p/12.mp4', hovered: false },
-      ],
     };
+  },
+  computed: {
+    ...mapState({
+      status: state => state.fetchHome.status,
+      rawState: state => state.fetchHome.rawState,
+    }),
   },
   methods: {
   },
+  created() {
+    this.$store.dispatch('fetchHome/fetchHome');
+  },
   mounted() {
     console.log('mounted');
-    const el = document.querySelectorAll('.loop-card');
-    el.forEach(e => e.addEventListener('click', this.hideVideo, false));
   },
 };
 
@@ -53,8 +76,9 @@ export default {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 360px));
   grid-gap: 1em;
+  justify-content: center;
 }
 
 .box {
@@ -63,6 +87,7 @@ export default {
 
 .grid-item {
   background-size: cover;
+  position: relative;
   /*max-height: 203px;*/
   height: auto;
 }
@@ -70,6 +95,15 @@ export default {
 .inline-img {
   display: inherit;
 }
+
+.flex-container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/*.loop-card {
+  position: relative;
+}*/
 /*.flex-item {
 margin: 2px;
 height: 203px;

@@ -43,11 +43,11 @@ export default {
   name: 'LoopCardP',
   props: {
     imgUri: {
-      type: String,
+      type: Object,
       required: true,
     },
     videoUri: {
-      type: String,
+      type: Object,
       required: true,
     },
   },

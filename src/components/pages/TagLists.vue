@@ -7,6 +7,9 @@
 <script>
 export default {
   name: 'TagLists',
+  metaInfo: {
+    title: 'Tags',
+  },
   data() {
     return {
     };
