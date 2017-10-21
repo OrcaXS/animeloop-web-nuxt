@@ -8,6 +8,7 @@ import Search from '@/components/pages/Search';
 // import AnimeLoopAPI from '@/components/pages/AnimeLoopAPI';
 import About from '@/components/pages/About';
 import Random from '@/components/pages/Random';
+import LoopPage from '@/components/pages/LoopPage';
 
 Vue.use(Router);
 Vue.use(Meta);
@@ -39,6 +40,12 @@ export default new Router({
       path: '/random',
       name: 'Random',
       component: Random,
+    },
+    {
+      path: '/loop/:id',
+      name: 'LoopPage',
+      component: LoopPage,
+      props: true,
     },
   ],
   linkActiveClass: 'is-active',

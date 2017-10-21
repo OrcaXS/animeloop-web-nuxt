@@ -11,17 +11,19 @@
     </section>
     <div class="grid-container">
       <div class="grid-item flex-container" v-for="item in rawState" :key="item._id">
-        <LoopCard
-        class="loop-card"
-        :img-uri="item.files"
-        :video-uri="item.files"
-        />
-        <CardDetails
-        :title="item.series.title"
-        :period="item.period"
-        :episode_no="item.episode.no"
-        :anime_type="item.series.type"
-        />
+        <router-link :to="{ name: 'LoopPage', params: { id: item._id }}">
+          <LoopCard
+          class="loop-card"
+          :img-uri="item.files"
+          :video-uri="item.files"
+          />
+          <CardDetails
+          :title="item.series.title"
+          :period="item.period"
+          :episode_no="item.episode.no"
+          :anime_type="item.series.type"
+          />
+        </router-link>
       </div>
     </div>
   </div>
@@ -31,7 +33,6 @@
 import { mapState, mapGetters } from 'vuex';
 import LoopCard from '../partial/LoopCard';
 import CardDetails from '../partial/CardDetails';
-
 
 export default {
   name: 'Home',
@@ -66,12 +67,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+a {
+  color: unset;
+}
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .1s
+  transition: opacity .1s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .grid-container {
@@ -102,7 +106,7 @@ export default {
 }
 
 /*.loop-card {
-  position: relative;
+position: relative;
 }*/
 /*.flex-item {
 margin: 2px;

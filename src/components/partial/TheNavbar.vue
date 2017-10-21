@@ -5,13 +5,15 @@
       <a v-if="burgerActive"><icon name="close"></icon></a>
     </li>
     <li class="al-title">
-      <a class="al-navbar-item" href="/">
+      <router-link class="al-navbar-item" :to="{ name: 'Home', params: {} }">
         <!-- <icon name="navicon"></icon> -->
         <span>AnimeLoop</span>
-      </a>
+      </router-link>
     </li>
     <ul class="al-burger-menu" :class="{ 'is-active': burgerActive }">
-      <section class="al-navbar-has-dropdown" @click="dropdownActive = !dropdownActive" v-click-outside="onClickOutsideDropdown">
+      <section
+      class="al-navbar-has-dropdown"
+      @click="dropdownActive = !dropdownActive" v-click-outside="onClickOutsideDropdown">
         <a class="al-navbar-list">
           <icon name="list-ul"></icon>
           <span>List</span>
@@ -19,7 +21,9 @@
           <span>&nbsp;</span>
           <!-- alignment hack -->
         </a>
-        <section class="al-navbar-dropdown" :class="{ 'is-active': dropdownActive}">
+        <section
+        class="al-navbar-dropdown"
+        :class="{ 'is-active': dropdownActive}">
           <li>
             <a class="al-navbar-item" href="#">
               <icon name="table"></icon>
@@ -41,25 +45,33 @@
         </section>
       </section>
       <li>
-        <router-link :to="{ name: 'Random', params: {} }" class="al-navbar-item" href="#">
+        <router-link
+        :to="{ name: 'Random', params: {} }"
+        class="al-navbar-item">
           <icon name="question-circle"></icon>
           <span>Random</span>
         </router-link>
       </li>
       <li>
-        <router-link class="al-navbar-item " :to="{ name: 'API_Status', params: {} }">
+        <router-link
+        class="al-navbar-item"
+        :to="{ name: 'API_Status', params: {} }">
           <icon name="bar-chart"></icon>
           <span>API &amp; Status</span>
         </router-link>
       </li>
       <li>
-        <router-link class="al-navbar-item " :to="{ name: 'About', params: {} }">
+        <router-link
+        class="al-navbar-item"
+        :to="{ name: 'About', params: {} }">
           <icon name="info"></icon>
           <span>About</span>
         </router-link>
       </li>
       <li>
-        <router-link class="al-navbar-item " :to="{ name: 'Search', params: {} }">
+        <router-link
+        class="al-navbar-item"
+        :to="{ name: 'Search', params: {} }">
           <icon name="search"></icon>
           <span>Search</span>
         </router-link>
