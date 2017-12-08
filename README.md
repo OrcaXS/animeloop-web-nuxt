@@ -1,31 +1,22 @@
-# animeloop-server-vue
+# animeloop-web-nuxt
 
-> An animeloop server front-end project, based on vue.js
+> Nuxt.js project
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-yarn install
+$ npm install # Or yarn install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload at localhost:3000
+$ npm run dev
 
-# or
-yarn start
+# build for production and launch server
+$ npm run build
+$ npm start
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# generate static project
+$ npm run generate
 ```
+
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).

@@ -15,18 +15,23 @@ module.exports = {
     'html'
   ],
   // check if imports actually resolve
-  'settings': {
+  settings: {
     'import/resolver': {
-      'webpack': {
-        'config': 'build/webpack.base.conf.js'
-      }
-    }
+      webpack: 'webpack.config.js',
+    },
   },
   // add your custom rules here
   'rules': {
     'no-unused-vars': 'warn',
     'no-trailing-spaces': 'warn',
-    'no-underscore-dangle': 'off',
+    'no-param-reassign': ['error', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'acc', // for reduce accumulators
+        'e', // for e.returnvalue
+        'state' // for vuex
+      ]
+    }],
     'comma-dangle': ['warn', 'always-multiline'],
     'import/prefer-default-export': 'warn',
     'semi': ['error', 'always', { 'omitLastInOneLineBlock': true }],
@@ -36,9 +41,7 @@ module.exports = {
       'vue': 'never'
     }],
     // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
-    }],
+    'import/no-extraneous-dependencies': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
