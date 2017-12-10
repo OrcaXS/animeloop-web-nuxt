@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import qs from 'qs';
 
-import { apiPrefix } from '../config';
+import apiPrefix from '../config';
 
 function encodeFormData(data) {
   return Object.entries(data).map(item => (
