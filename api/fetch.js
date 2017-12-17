@@ -47,7 +47,7 @@ const remote = {
   getOneRandomLoop: callApi({ url: 'rand/loop/full' }),
   getRandomLoopList: count => callApi({ url: `rand/loop/${count}/full` }),
   getLoopByID: id => callApi({ url: `loop/${id}/full` }),
-  getLoopsByEpisode: id => callApi({ url: 'loop', data: { episode: id } }),
+  getLoopsByEpisodeID: id => callApi({ url: 'loop', data: { episode: id } }),
   getEpisodeByID: id => callApi({ url: `episode/${id}/full` }),
   getEpisodesBySeriesID: id => callApi({ url: 'episode', data: { series: id } }),
   getTagsByID: id => callApi({ url: 'tag', data: { loop: id } }),
