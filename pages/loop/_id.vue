@@ -5,10 +5,10 @@
       <a type="no" slot="no" href="#">{{loop.episode.no}}</a>
     </BreadCrumb>
     <div class="loop-card">
-      <LoopCard :id="loop.id" />
+      <LoopCard :loopid="loop.id" />
     </div>
     <div class="loop-info">
-      <LoopInfo :id="loop.id" />
+      <LoopInfo :loopid="loop.id" />
     </div>
     <div class="vertical-title"></div>
   </section>
@@ -28,12 +28,12 @@ export default {
   },
 
   asyncData({ store, route: { params: { id } } }) {
-    return store.dispatch('fetchLoop', { loopid: [id] });
+    return store.dispatch('fetchLoopByID', { loopid: id });
   },
 
   computed: {
     loop() {
-      return this.$store.state.loops[this.$route.params.id];
+      return this.$store.state.loop.loops[this.$route.params.id];
     },
   },
 };
