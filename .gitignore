@@ -16,6 +16,7 @@ yarn-error.log*
 
 # Nuxt build
 .nuxt
+.monitor
 
 # Nuxt generate
 dist
