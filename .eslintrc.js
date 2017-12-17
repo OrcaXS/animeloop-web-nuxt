@@ -29,7 +29,8 @@ module.exports = {
       ignorePropertyModificationsFor: [
         'acc', // for reduce accumulators
         'e', // for e.returnvalue
-        'state' // for vuex
+        'state',
+        'rootState' // for vuex
       ]
     }],
     'comma-dangle': ['warn', 'always-multiline'],
