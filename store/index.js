@@ -6,6 +6,7 @@ import Vuex from 'vuex';
 import loop from './loop';
 import series from './series';
 import episode from './episode';
+import search from './search';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ const createStore = () => new Vuex.Store({
     loop,
     series,
     episode,
+    search,
   },
   // actions,
   // mutations,
