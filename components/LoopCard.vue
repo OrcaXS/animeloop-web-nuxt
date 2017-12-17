@@ -3,23 +3,23 @@
     @mouseover="onHovered()"
     @mouseout="onUnhovered()"
   >
-      <section v-if="!this.canplaythrough">
-        <!-- <icon name="circle-o-notch" spin></icon> -->
-        <span>Loading video...</span>
-      </section>
-      <div class="video-container">
-        <video
-          ref="video"
-          loop
-          muted
-          playsInline
-          width="100%"
-          :src="files.mp4_360p"
-          @canplaythrough.once="canplay()"
-        >
+    <div v-if="!this.canplaythrough">
+      <!-- <icon name="circle-o-notch" spin></icon> -->
+      <span>Loading video...</span>
+    </div>
+    <div class="video-container">
+      <video
+      ref="video"
+      loop
+      muted
+      playsInline
+      width="100%"
+      :src="files.mp4_360p"
+      @canplaythrough.once="canplay"
+      >
         <track label="English" kind="captions" srcLang="en" />
       </video>
-      </div>
+    </div>
   </section>
 </template>
 
@@ -45,14 +45,14 @@ export default {
     //   this.isVideoLoaded = true;
     // },
     onHovered() {
-      console.log('hovered');
+      // console.log('hovered');
       if (!this.hovered) {
         this.hovered = true;
         this.$refs.video.play();
       }
     },
     onUnhovered() {
-      console.log('unhovered');
+      // console.log('unhovered');
       this.hovered = false;
       this.$refs.video.pause();
     },
