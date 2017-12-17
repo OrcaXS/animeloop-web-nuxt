@@ -1,12 +1,12 @@
 <template>
   <div class="loop-info-grid-container">
     <div class="info-type">TimeStamps</div>
-    <div class="info-detail">{{ tidyTimestamps }}</div>
+    <div class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
     <div class="info-type">Length</div>
-    <div class="info-detail">{{ tidyDuration }}s</div>
+    <div class="info-detail">{{ formattedTimeStamps.duration }}s</div>
     <div class="info-type">Downloads</div>
     <div class="info-detail">
-      <Downloads :id="this.id" />
+      <Downloads :loopid="this.loopid" />
     </div>
   </div>
 </template>
@@ -16,30 +16,34 @@ import Downloads from './Downloads';
 
 export default {
   name: 'LoopInfo',
-  props: ['id'],
+  props: ['loopid'],
   components: {
     Downloads,
   },
 
   computed: {
     loop() {
-      return this.$store.state.loops[this.id];
+      return this.$store.state.loop.loops[this.loopid];
     },
-    tidyDuration() {
-      return this.loop.duration.toFixed(3);
+
+    formattedTimeStamps() {
+      return this.$store.getters.formatTimeStamps(this.loopid);
     },
-    tidyTimestamps() {
-      function tidyTimestamp(time) {
-        const arr = time.split(':');
-        if (arr[0] !== '00') {
-          arr[1] = (parseInt(arr[0], 10) * 60) + parseInt(arr[1], 10);
-          arr[1] = arr[1].toString();
-        }
-        arr[2] = arr[2].includes('.') ? arr[2].slice(0, -3) : `${arr[2]}.000`;
-        return `${arr[1]}:${arr[2]}`;
-      }
-      return `${tidyTimestamp(this.loop.period.begin)} - ${tidyTimestamp(this.loop.period.end)}`;
-    },
+    // tidyDuration() {
+    //   return this.loop.duration.toFixed(3);
+    // },
+    // tidyTimestamps() {
+    //   function tidyTimestamp(time) {
+    //     const arr = time.split(':');
+    //     if (arr[0] !== '00') {
+    //       arr[1] = (parseInt(arr[0], 10) * 60) + parseInt(arr[1], 10);
+    //       arr[1] = arr[1].toString();
+    //     }
+    //     arr[2] = arr[2].includes('.') ? arr[2].slice(0, -3) : `${arr[2]}.000`;
+    //     return `${arr[1]}:${arr[2]}`;
+    //   }
+    //   return `${tidyTimestamp(this.loop.period.begin)} - ${tidyTimestamp(this.loop.period.end)}`;
+    // },
   },
 
 };

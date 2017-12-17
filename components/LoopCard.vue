@@ -26,7 +26,7 @@
 <script>
 export default {
   name: 'LoopCard',
-  props: ['id'],
+  props: ['loopid'],
   data() {
     return {
       hovered: false,
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     files() {
-      return this.$store.state.loops[this.id].files;
+      return this.$store.state.loop.loops[this.loopid].files;
     },
   },
   methods: {

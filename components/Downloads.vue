@@ -13,11 +13,11 @@
 <script>
 export default {
   name: 'downloads',
-  props: ['id'],
+  props: ['loopid'],
 
   computed: {
     files() {
-      return this.$store.state.loops[this.id].files;
+      return this.$store.state.loop.loops[this.loopid].files;
     },
   },
 };
