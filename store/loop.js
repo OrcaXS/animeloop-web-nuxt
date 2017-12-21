@@ -23,16 +23,21 @@ const loop = {
       state.loops[loopid] = data;
     },
 
-    // SET_LOOPS: (state, { loopid, data }) => {
-    //   state.loops[];
-    // }
+    SET_LOOPS: (state, { data }) => {
+      data.forEach((val) => {
+        Vue.set(state.loops, val.id, val);
+      });
+    },
 
     SET_LOOPLIST: (state, { episodeid, data }) => {
       Vue.set(state.loopList, episodeid, data);
     },
 
     SET_RANDOM_LOOPLIST: (state, { data }) => {
-      state.randomLoopList = data;
+      state.randomLoopList = [];
+      data.forEach((val) => {
+        state.randomLoopList.push(val.id);
+      });
     },
 
   },
@@ -46,24 +51,25 @@ const loop = {
   },
 
   actions: {
-    async fetchLoopByID({ commit, state }, { loopid }) {
+    async fetchLoopByID({ commit }, { loopid }) {
       const { data } = await remote.getLoopByID(loopid);
-      console.log(data);
       commit('SET_LOOP', { loopid, data });
     },
 
-    async fetchRandomLoopList({ commit, state }, { count }) {
+    async fetchRandomLoopList({ dispatch, commit }, { count }) {
       const { data } = await remote.getRandomLoopList(count);
-      console.log(data);
       commit('SET_RANDOM_LOOPLIST', { data });
+      await dispatch('setLoops', { data });
     },
 
-    async fetchLoopsByEpisodeID({ commit, state }, { episodeid }) {
+    async fetchLoopsByEpisodeID({ dispatch, commit }, { episodeid }) {
       const { data } = await remote.getLoopsByEpisodeID(episodeid);
       commit('SET_LOOPLIST', { episodeid, data });
-      data.forEach((val) => {
-        commit('SET_LOOP', { loopid: val.id, data: val });
-      });
+      await dispatch('setLoops', { data });
+    },
+
+    async setLoops({ commit }, { data }) {
+      commit('SET_LOOPS', { data });
     },
   },
 };

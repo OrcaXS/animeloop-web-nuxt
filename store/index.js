@@ -19,9 +19,6 @@ const createStore = () => new Vuex.Store({
     episode,
     search,
   },
-  // actions,
-  // mutations,
-  // getters,
 });
 
 export default createStore;

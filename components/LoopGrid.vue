@@ -1,5 +1,18 @@
 <template>
-  <div class="loop-grid-container">
+  <div v-if="type==='random'" class="loop-grid-container">
+    <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop">
+      <LoopCard
+      class="loop-card"
+      :loopid="loop"
+      />
+      <CardDetails
+      class="card-detail"
+      :loopid="loop"
+      type="loop"
+      />
+    </div>
+  </div>
+  <div v-else class="loop-grid-container">
     <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop.id">
       <LoopCard
       class="loop-card"
@@ -32,6 +45,7 @@ export default {
     episodeid: {
       type: String,
       required: false,
+      default: '',
     },
   },
   computed: {
@@ -49,7 +63,6 @@ export default {
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
   color: unset;

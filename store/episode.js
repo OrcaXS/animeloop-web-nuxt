@@ -22,17 +22,17 @@ const episode = {
   },
 
   actions: {
-    async fetchEpisodeByID({ dispatch, commit, state }, { episodeid }) {
+    async fetchEpisodeByID({ dispatch, commit }, { episodeid }) {
       const { data } = await remote.getEpisodeByID(episodeid);
       await dispatch('setSeriesByID', { seriesid: data.series.id, data: data.series });
       commit('SET_EPISODE', { episodeid, data });
     },
 
-    async setSeriesByID({ commit, state }, { seriesid, data }) {
+    async setSeriesByID({ commit }, { seriesid, data }) {
       commit('SET_SERIES', { seriesid, data });
     },
 
-    async fetchEpisodesBySeriesID({ commit, state }, { seriesid }) {
+    async fetchEpisodesBySeriesID({ commit }, { seriesid }) {
       const { data } = await remote.getEpisodesBySeriesID(seriesid);
       commit('SET_EPISODES_BY_SERIES', { seriesid, data });
     },
