@@ -27,6 +27,12 @@ export default {
     LoopCard,
   },
 
+  head() {
+    return {
+      title: `${this.loop.episode.no} | ${this.loop.series.title_japanese} | Animeloop`,
+    };
+  },
+
   asyncData({ store, route: { params: { id } } }) {
     return store.dispatch('fetchLoopByID', { loopid: id });
   },

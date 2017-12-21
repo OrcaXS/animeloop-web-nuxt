@@ -10,6 +10,12 @@ export default {
   components: {
     SeriesPage,
   },
+  head() {
+    return {
+      title: 'Home | Animeloop',
+    };
+  },
+
   data() {
     return {
       selectedEpisodeID: '',
