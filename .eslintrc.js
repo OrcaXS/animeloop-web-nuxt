@@ -30,7 +30,8 @@ module.exports = {
         'acc', // for reduce accumulators
         'e', // for e.returnvalue
         'state',
-        'rootState' // for vuex
+        'rootState', // for vuex
+        'app', // for plugin
       ]
     }],
     'comma-dangle': ['warn', 'always-multiline'],
