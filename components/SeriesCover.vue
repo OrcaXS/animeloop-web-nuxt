@@ -1,6 +1,6 @@
 <template>
   <section class="cover-wrapper">
-    <a :href="`/series/${series.id}`" class="cover" :style="coverBackgroundImageStyle">
+    <nuxt-link :to="{ name: 'series-id', params: { id: seriesid }}" class="cover" :style="coverBackgroundImageStyle">
       <div class="cover-text">
         <div class="cover-title">{{series.title_japanese}}</div>
         <div class="cover-detail">
@@ -8,7 +8,7 @@
           <span class="cover-type">{{series.season}}</span>
         </div>
       </div>
-    </a>
+    </nuxt-link>
   </section>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 
 .cover-text {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0));
-  z-index: 10;
+  z-index: 2;
   height: auto;
   width: 100%;
   padding: 4em 1em 1em;
