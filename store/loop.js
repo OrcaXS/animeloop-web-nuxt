@@ -14,6 +14,7 @@ function tidyTimestamp(time) {
 const loop = {
   state: {
     randomLoopList: [/* Loopid */],
+    randomPageLoopID: '',
     loopList: {/* [id: episodeid]: Loopid */},
     loops: {/* [id: loopid]: Loop */},
   },
@@ -31,6 +32,10 @@ const loop = {
 
     SET_LOOPLIST: (state, { episodeid, data }) => {
       Vue.set(state.loopList, episodeid, data);
+    },
+
+    SET_RANDOM_PAGE_LOOP_ID: (state, { data }) => {
+      state.randomPageLoopID = data[0].id;
     },
 
     SET_RANDOM_LOOPLIST: (state, { data }) => {
@@ -54,6 +59,13 @@ const loop = {
     async fetchLoopByID({ commit }, { loopid }) {
       const { data } = await remote.getLoopByID(loopid);
       commit('SET_LOOP', { loopid, data });
+    },
+
+    async fetchRandomLoop({ dispatch, commit }) {
+      const { data } = await remote.getRandomLoopList(1);
+      commit('SET_RANDOM_PAGE_LOOP_ID', { data });
+      console.log(data);
+      await dispatch('setLoops', { data });
     },
 
     async fetchRandomLoopList({ dispatch, commit }, { count }) {
