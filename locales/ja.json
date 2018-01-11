@@ -1,0 +1,34 @@
+{
+  "loop": {
+    "downloads": "ダウンロード",
+    "timestamps": "時間帯",
+    "length": "時長"
+  },
+  "navbar": {
+    "list": "分類",
+    "series": "シリーズ",
+    "episode": "話数",
+    "search": "Animeloop で検索",
+    "about": "サイトについて",
+    "tags": "タグ",
+    "random": "ランダム"
+  },
+  "home": "ホーム",
+  "list": "分類",
+  "series": "シリーズ",
+  "episode": "話数",
+  "episodes": "話数",
+  "tags": "タグ",
+  "search":"検索",
+  "api": "API",
+  "about": "サイトについて",
+  "period": "時間帯",
+  "duration": "時長",
+  "files": "ファイル",
+  "title-key-1": "title_japanese",
+  "title-key-2": "title_romaji",
+  "title-key-3": "title_english",
+  "about-md-file": "about_jp.md",
+  "api-md-file": "api_jp.md",
+  "language": "日本語"
+}
