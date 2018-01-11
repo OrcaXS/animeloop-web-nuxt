@@ -78,7 +78,12 @@ section {
   /*width: 50vw;*/
   /*display: flex;*/
   object-fit: cover;
-  width: 100%;
+  /* width: 100%; */
+
+  /* proportional hack */
+  height: 0;
+  padding-bottom: 56.25%;
+
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 }
 

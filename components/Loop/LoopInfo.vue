@@ -1,10 +1,10 @@
 <template>
   <div class="loop-info-grid-container">
-    <div class="info-type">TimeStamps</div>
-    <div class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
-    <div class="info-type">Length</div>
-    <div class="info-detail">{{ formattedTimeStamps.duration }}s</div>
-    <div class="info-type">Downloads</div>
+    <p class="info-type" v-t="'loop.timestamps'"></p>
+    <p class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</p>
+    <p class="info-type" v-t="'loop.length'"></p>
+    <p class="info-detail">{{ formattedTimeStamps.duration }}s</p>
+    <p class="info-type" v-t="'loop.downloads'"></p>
     <div class="info-detail">
       <Downloads :loopid="this.loopid" />
     </div>
@@ -29,21 +29,6 @@ export default {
     formattedTimeStamps() {
       return this.$store.getters.formatTimeStamps(this.loopid);
     },
-    // tidyDuration() {
-    //   return this.loop.duration.toFixed(3);
-    // },
-    // tidyTimestamps() {
-    //   function tidyTimestamp(time) {
-    //     const arr = time.split(':');
-    //     if (arr[0] !== '00') {
-    //       arr[1] = (parseInt(arr[0], 10) * 60) + parseInt(arr[1], 10);
-    //       arr[1] = arr[1].toString();
-    //     }
-    //     arr[2] = arr[2].includes('.') ? arr[2].slice(0, -3) : `${arr[2]}.000`;
-    //     return `${arr[1]}:${arr[2]}`;
-    //   }
-    //   return `${tidyTimestamp(this.loop.period.begin)} - ${tidyTimestamp(this.loop.period.end)}`;
-    // },
   },
 
 };

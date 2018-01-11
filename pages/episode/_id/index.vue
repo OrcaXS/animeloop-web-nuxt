@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SeriesPage from '~/components/SeriesPage';
+import SeriesPage from '~/components/Series/';
 
 export default {
   name: 'EpisodeIDRoute',

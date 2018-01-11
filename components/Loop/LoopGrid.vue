@@ -1,28 +1,32 @@
 <template>
   <div v-if="type==='random'" class="loop-grid-container">
     <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop">
-      <LoopCard
-      class="loop-card"
-      :loopid="loop"
-      />
-      <CardDetails
-      class="card-detail"
-      :loopid="loop"
-      type="loop"
-      />
+      <nuxt-link :to="{ name: 'loop-id', params: { id: loop }}">
+        <LoopCard
+        class="loop-card"
+        :loopid="loop"
+        />
+        <CardDetails
+        class="card-detail"
+        :loopid="loop"
+        type="loop"
+        />
+      </nuxt-link>
     </div>
   </div>
   <div v-else class="loop-grid-container">
     <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop.id">
-      <LoopCard
-      class="loop-card"
-      :loopid="loop.id"
-      />
-      <CardDetails
-      class="card-detail"
-      :loopid="loop.id"
-      :type="type"
-      />
+      <nuxt-link :to="{ name: 'loop-id', params: { id: loop.id }}">
+        <LoopCard
+        class="loop-card"
+        :loopid="loop.id"
+        />
+        <CardDetails
+        class="card-detail"
+        :loopid="loop.id"
+        :type="type"
+        />
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -74,7 +78,8 @@ a {
   grid-gap: 1em;
   justify-content: center;
 
-  margin-top: 1em;
+
+  /* margin-top: 1em; */
 }
 
 .loop-card-flex-container {
