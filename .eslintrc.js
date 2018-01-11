@@ -30,6 +30,7 @@ module.exports = {
         'acc', // for reduce accumulators
         'e', // for e.returnvalue
         'state',
+        'el',
         'rootState', // for vuex
         'app', // for plugin
       ]
