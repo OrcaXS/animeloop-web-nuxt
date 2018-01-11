@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>About</h1>
+    <h1>Animeloop-web-nuxt</h1>
+    <p>Yet another...</p>
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 export default {
   name: 'About',
   metaInfo: {
-    title: 'About',
+    title: 'About | Animeloop',
   },
   data() {
     return {

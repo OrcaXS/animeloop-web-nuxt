@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import LoopGrid from '~/components/LoopGrid';
+import LoopGrid from '~/components/Loop/LoopGrid';
 
 export default {
   name: 'Home',

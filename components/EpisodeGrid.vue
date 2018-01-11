@@ -6,7 +6,7 @@
 
 <script>
 import SeriesCover from './SeriesCover';
-import LoopGrid from './LoopGrid';
+import LoopGrid from './Loop/LoopGrid';
 
 export default {
   name: 'EpisodeGrid',
