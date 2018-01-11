@@ -1,12 +1,36 @@
 <template>
-  <div>
-    <nuxt/>
+  <div class="layout-container" :lang="langAttr">
+    <header>
+      <NavbarContainer />
+    </header>
+    <main>
+      <nuxt class="main"/>
+    </main>
   </div>
 </template>
 
-<style>
+<script>
+import NavbarContainer from '~/components/Navbar';
+
+export default {
+  name: 'Layout',
+  components: {
+    NavbarContainer,
+  },
+  computed: {
+    langAttr() {
+      return this.$store.state.i18n.locale || '';
+    },
+  },
+};
+</script>
+
+<style lang="postcss">
+@import "../assets/css/mediaquery.css";
+
 html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
+  font-family: "Helvetica Neue", system-ui;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -16,9 +40,35 @@ html {
   box-sizing: border-box;
 }
 
+.layout-container {
+  width: 100%;
+
+  display: grid;
+  grid-column-gap: 1em;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "nav"
+  "main";
+
+  & a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+main {
+  margin-top: 4em;
+
+  @media (--tablet-screen) {
+    margin-top: 7em;
+  }
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+  line-height: 1.2;
 }
 
 .button--green {
