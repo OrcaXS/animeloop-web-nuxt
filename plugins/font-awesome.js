@@ -10,6 +10,8 @@ import {
   faTimes,
   faSearch,
   faAngleDown,
+  faPlay,
+  faPause,
 } from '@fortawesome/fontawesome-free-solid';
 
 fontawesome.config = {
@@ -17,4 +19,4 @@ fontawesome.config = {
 };
 
 // eslint-disable-next-line max-len
-fontawesome.library.add(faThList, faTags, faQuestionCircle, faInfo, faArrowRight, faLanguage, faBars, faTimes, faSearch, faAngleDown);
+fontawesome.library.add(faThList, faTags, faQuestionCircle, faInfo, faArrowRight, faLanguage, faBars, faTimes, faSearch, faAngleDown, faPlay, faPause);
