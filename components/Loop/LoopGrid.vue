@@ -5,6 +5,7 @@
         <LoopCard
         class="loop-card"
         :loopid="loop"
+        loopType="gif"
         />
         <CardDetails
         class="card-detail"

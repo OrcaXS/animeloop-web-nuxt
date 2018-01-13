@@ -5,7 +5,7 @@
       <nuxt-link type="no" slot="no" :to="{ name: 'episode-id', params: { id: loop.episode.id }}">{{loop.episode.no}}</nuxt-link>
     </BreadCrumb>
     <div class="loop-card">
-      <LoopCard :loopid="loop.id" />
+      <LoopCard :loopid="loop.id" loopType="mp4" />
     </div>
     <div class="loop-info">
       <LoopInfo :loopid="loop.id" />
@@ -114,7 +114,7 @@ export default {
   writing-mode: vertical-rl;
   color: #BBBBBB;
   font-size: 3em;
-  max-height: calc(100vw);
+  max-height: calc(100vw - 8em);
 
   white-space: normal;
   word-break: normal;

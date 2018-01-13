@@ -1,32 +1,56 @@
 <template>
-  <section
-    @mouseover="onHovered()"
-    @mouseout="onUnhovered()"
-  >
-    <div v-if="!this.canplaythrough">
-      <!-- <icon name="circle-o-notch" spin></icon> -->
+  <section>
+    <!-- <div v-if="!this.canplaythrough">
       <span>Loading video...</span>
-    </div>
-    <div class="video-container">
+    </div> -->
+    <div
+      v-if="loopType === 'mp4'"
+      class="video-container"
+      @mouseover="onHovered()"
+      @mouseout="onUnhovered()"
+    >
       <video
       ref="video"
       loop
       muted
       playsInline
       width="100%"
-      :src="files.mp4_360p"
       @canplaythrough.once="canplay"
       >
+        <source :src="files.mp4_720p" type="video/mp4" media="screen">
+        <!-- <source :src="files.mp4_720p" type="video/mp4" media="(screen and (min-device-width: 801px))"> -->
+        <source :src="files.mp4_1080p" type="video/mp4" media="(screen and (min-device-width: 1000px))">
         <track label="English" kind="captions" srcLang="en" />
       </video>
+    </div>
+    <div v-else class="video-container">
+      <gif-player :gifsrc="files.gif_360p" :jpgsrc="files.jpg_360p"></gif-player>
     </div>
   </section>
 </template>
 
 <script>
+import GifPlayer from './GifPlayer';
+
 export default {
   name: 'LoopCard',
-  props: ['loopid'],
+  props: {
+    loopid: {
+      type: String,
+      required: true,
+    },
+    loopType: {
+      type: String,
+      required: true,
+      default: 'mp4',
+      validator(val) {
+        return val === 'mp4' || val === 'gif';
+      },
+    },
+  },
+  components: {
+    GifPlayer,
+  },
   data() {
     return {
       hovered: false,
