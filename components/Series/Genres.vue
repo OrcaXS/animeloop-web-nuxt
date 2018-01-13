@@ -1,11 +1,13 @@
 <template>
   <div class="genres">
-    <span v-for="(genre, index) in genres" v-if="index === 0">
-      {{ genre }}
-    </span>
-    <span v-else>
-      / {{ genre }}
-    </span>
+    <template v-for="(genre, index) in genres" v-if="!!genre">
+      <span v-if="index === 0">
+        {{ genre }}
+      </span>
+      <span v-else>
+        / {{ genre }}
+      </span>
+    </template>
   </div>
 </template>
 
