@@ -5,7 +5,7 @@ export default function ({
   if (isHMR) return;
   if (store.state.i18n.locale) {
     // app.i18n.locale = store.state.i18n.locale;
-    return;
+    // return;
   }
   const { locale } = app.$cookies.cookies;
   // console.log(app.$cookies.cookies.locale);
