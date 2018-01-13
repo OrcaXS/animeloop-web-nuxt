@@ -1,17 +1,11 @@
 <template>
-  <section>
+  <section class="series-page-combined-grid">
     <div class="upper-half-cover" :style="upperHalfBackgroundImage"></div>
-    <div class="series-page-grid-container">
+    <div class="series-page-upper-grid-container">
       <div class="series-page-cover">
         <img :src="series.image_url_large" alt="Cover Art"/>
       </div>
-      <div class="series-page-title">
-        <span class="series-page-main-title">{{ i18nTitle }}</span>
-        <span class="series-page-alt-title">{{ series.title_japanese }}</span>
-      </div>
-      <Genres class="series-page-genres" :genres="series.genres"/>
-      <TypeTag class="series-page-type-season" :type="series.type" :season="series.season" />
-      <p class="series-page-description">{{ series.description }}</p>
+      <Info :seriesID="currentSeriesID" class="series-page-info"/>
       <div v-if="!episodes">
         <p>Loading Episodes...</p>
       </div>
@@ -23,13 +17,13 @@
           </option>
         </select>
       </div>
-      <div v-if="$route.name === 'episode-id'" class="series-page-episode-grid">
-        <div v-if="!loops">
-          <p>Loading Loops...</p>
-        </div>
-        <div v-else>
-          <LoopGrid type="episode" :episodeid="selectedEpisodeID" />
-        </div>
+    </div>
+    <div v-if="$route.name === 'episode-id'" class="series-page-lower-grid-container">
+      <div v-if="!loops">
+        <p>Loading Loops...</p>
+      </div>
+      <div v-else>
+        <LoopGrid type="episode" :episodeid="selectedEpisodeID" />
       </div>
     </div>
   </section>
@@ -39,8 +33,8 @@
 // import BreadCrumb from '../BreadCrumb';
 import EpisodeGrid from '../EpisodeGrid';
 import LoopGrid from '../Loop/LoopGrid';
-import TypeTag from '../Common/TypeTag';
 import Genres from './Genres';
+import Info from './Info';
 
 export default {
   name: 'SeriesPage',
@@ -57,8 +51,8 @@ export default {
   components: {
     EpisodeGrid,
     LoopGrid,
-    TypeTag,
     Genres,
+    Info,
   },
 
   data() {
@@ -129,65 +123,62 @@ export default {
     },
   },
 
-  // watch: {
-  //   $route(to, from) {
-  //     this.fetchLoops();
-  //   },
-  // },
 
   created() {
     if (!this.episodeSelectorLoaded) this.fetchEpisodes();
     if (!this.loopGridLoaded && this.$route.name === 'episode-id') this.fetchLoops();
   },
 
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log('beforeRouteUpdate');
-  //   this.loopgridLoaded = true;
-  //   next();
-  //   // react to route changes...
-  //   // don't forget to call next()
-  // },
-
 };
 </script>
 
 <style scoped>
+@import "../../assets/css/mediaquery.css";
+
 .series-wrapper {
   min-height: 100vh;
 }
 
-.series-page-grid-container {
+.series-page-upper-grid-container {
   z-index: 1;
   margin-top: -1em;
   position: relative;
 
   display: grid;
   grid-template-columns: 230px auto;
-  grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1.5em auto auto auto;
+  /* grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1.5em auto auto auto; */
   /* grid-template-rows: repeat(auto-fill, minmax(1em, auto)); */
+  grid-template-rows: auto;
   grid-gap: .5em 2em;
   grid-template-areas:
-  "series-cover series-title"
-  "series-cover series-genres"
-  "series-cover series-type-season"
-  "series-cover series-description"
-  "series-cover episode-selector"
-  "series-episode-grid series-episode-grid";
+  "series-cover series-page-info"
+  "series-cover episode-selector";
 
   padding: 1em 1em 0em;
 
   background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8));
+
+  @media (--phone-screen) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "series-cover"
+    "series-page-info"
+    "episode-selector";
+  }
+
 }
 
 .upper-half-cover {
   position: absolute;
-  top: 3em;
-  z-index: 0;
+  top: 4em;
+  z-index: -1;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: top;
   filter: blur(60px);
   width: 100%;
-  height: 500px;
+  height: 30vh;
 }
 
 .series-page-cover {
@@ -195,41 +186,8 @@ export default {
   justify-self: center;
 }
 
-.series-page-genres {
-  grid-area: series-genres;
-}
-
-.series-page-type-season {
-  grid-area: series-type-season;
-}
-
-.series-page-title {
-  grid-area: series-title;
-
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-}
-
-.series-page-main-title {
-  font-size: 2em;
-  font-weight: 600;
-  margin-right: .5em;
-}
-
-.series-page-alt-title {
-  font-size: 1em;
-  font-weight: normal;
-  color: #666666;
-  /* margin-left: .5em; */
-}
-
-.series-page-description {
-  grid-area: series-description;
-  align-self: center;
-  font-size: .9em;
-  /* line-height: normal; */
-  align-self: start;
+.series-page-info {
+  grid-area: series-page-info;
 }
 
 .series-page-episode-selector {
@@ -238,7 +196,7 @@ export default {
   & select {
     appearance: none;
     background: transparent;
-    border: none;
+    border: 1px solid rgba(128, 128, 128, 0.5);
     padding: .8em .5em;
     width: 10em;
     background-color: rgba(255, 255, 255, 0.6);
@@ -261,8 +219,10 @@ export default {
   }
 }
 
-.series-page-episode-grid {
-  grid-area: series-episode-grid;
+.series-page-lower-grid-container {
+  /* grid-area: series-episode-grid; */
+  z-index: 2;
+  margin-top: 1em;
 }
 
 .series-page-category-divider {
