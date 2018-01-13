@@ -17,6 +17,7 @@ const loop = {
     randomPageLoopID: '',
     loopList: {/* [id: episodeid]: Loopid */},
     loops: {/* [id: loopid]: Loop */},
+    play: false,
   },
 
   mutations: {
@@ -43,6 +44,10 @@ const loop = {
       data.forEach((val) => {
         state.randomLoopList.push(val.id);
       });
+    },
+
+    SET_PLAY: (state, { play }) => {
+      state.play = play;
     },
 
   },
@@ -80,8 +85,12 @@ const loop = {
       await dispatch('setLoops', { data });
     },
 
-    async setLoops({ commit }, { data }) {
+    setLoops({ commit }, { data }) {
       commit('SET_LOOPS', { data });
+    },
+
+    setPlay({ commit }, { play }) {
+      commit('SET_PLAY', { play });
     },
   },
 };
