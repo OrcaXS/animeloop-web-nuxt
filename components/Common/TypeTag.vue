@@ -28,7 +28,7 @@ export default {
       colors: {
         'TV Short': '#2a83a2',
         OVA: '#745399',
-        ONA: '#c3d825',
+        ONA: '#47885e',
         Movie: '#ee7800',
         Special: '#b7282e',
         TV: '#1E50A2',
