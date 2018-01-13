@@ -1,12 +1,34 @@
 <template>
-  <nuxt-link class="logo-link" :to="'/'">
-    <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
-  </nuxt-link>
+  <div class="logo-link">
+    <nuxt-link :to="'/'">
+      <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
+    </nuxt-link>
+    <span><font-awesome-icon class="fa-icon" :icon="playIcon" @click="togglePlay"></font-awesome-icon></span>
+  </div>
 </template>
 
 <script>
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+
 export default {
   name: 'NavbarTitle',
+  components: {
+    FontAwesomeIcon,
+  },
+  methods: {
+    togglePlay() {
+      const isPlaying = this.playState;
+      this.$store.dispatch('setPlay', { play: !isPlaying });
+    },
+  },
+  computed: {
+    playState() {
+      return this.$store.state.loop.play;
+    },
+    playIcon() {
+      return (this.playState) ? 'pause' : 'play';
+    },
+  },
 };
 </script>
 
@@ -31,9 +53,13 @@ export default {
     /* transform: translate(-50%, -50%); */
     /* top: 50%; */
     /* left: 50%; */
-    /* flex: 0 1 33%; */
-    margin: auto;
+    flex: 0 1 calc(100% / 3);
+    /* margin: auto; */
     justify-content: center;
   }
+}
+
+.fa-icon {
+  margin-left: .2em;
 }
 </style>
