@@ -21,6 +21,7 @@
         <LoopCard
         class="loop-card"
         :loopid="loop.id"
+        loopType="gif"
         />
         <CardDetails
         class="card-detail"
