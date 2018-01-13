@@ -3,7 +3,12 @@
     <nuxt-link :to="'/'">
       <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
     </nuxt-link>
-    <span><font-awesome-icon class="fa-icon" :icon="playIcon" @click="togglePlay"></font-awesome-icon></span>
+    <font-awesome-icon
+      class="fa-icon"
+      v-show="showPlayIcon"
+      :icon="playIcon"
+      @click="togglePlay"
+    />
   </div>
 </template>
 
@@ -27,6 +32,9 @@ export default {
     },
     playIcon() {
       return (this.playState) ? 'pause' : 'play';
+    },
+    showPlayIcon() {
+      return (this.$route.name === 'episode-id' || this.$route.name === 'index');
     },
   },
 };
