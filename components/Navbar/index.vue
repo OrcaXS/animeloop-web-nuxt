@@ -58,7 +58,7 @@ nav {
   background-color: rgba(255, 255, 255, 1.0);
 
   @supports (backdrop-filter: none) {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
   }
 
