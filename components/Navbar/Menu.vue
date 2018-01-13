@@ -1,5 +1,5 @@
 <template>
-  <div class="burger-menu-container">
+  <div class="burger-menu-container" :style="toggleSearchStyle">
     <button
     class="menu-button"
     @click="toggleBurger"
@@ -26,6 +26,12 @@ export default {
     },
     burgerIcon() {
       return (this.navStates.burgerOpen || this.navStates.searchOpen) ? 'times' : 'bars';
+    },
+    toggleSearchStyle() {
+      if (this.navStates.searchOpen) {
+        return { flex: '0 1 1em' };
+      }
+      return {};
     },
 
   },
@@ -66,7 +72,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     margin-right: auto;
-    /* flex: 0 1 33%; */
+    flex: 0 1 calc(100% / 3);
   }
 
 }

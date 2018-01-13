@@ -40,7 +40,7 @@ export default {
       return this.$store.state.navbar;
     },
     toggleContainerStyle() {
-      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.1em)' };
+      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.2em)' };
       return {};
     },
     toggleArrowButtonStyle() {
@@ -65,7 +65,7 @@ export default {
   @media (--phone-screen) {
     display: none;
     margin: 0 0 0 .5rem;
-    flex: 0 1 100%;
+    flex: 0 1 95%;
   }
 }
 

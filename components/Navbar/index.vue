@@ -5,7 +5,7 @@
     <NavbarEntry />
     <NavbarSearch />
     <NavbarLangMenu v-if="!navStates.searchOpen"/>
-    <div v-show="navStates.burgerOpen" class="line-break" />
+    <!-- <div v-show="navStates.burgerOpen" class="line-break" /> -->
   </nav>
 </template>
 
