@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       entries: [
-        { name: 'navbar.list', icon: 'th-list' },
+        { name: 'navbar.list', icon: 'th-list', route: 'list' },
         // { name: 'navbar.tags', icon: 'tags' },
         { name: 'navbar.random', icon: 'question-circle', route: 'random' },
         { name: 'navbar.about', icon: 'info', route: 'about' },

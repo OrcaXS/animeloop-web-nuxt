@@ -5,10 +5,13 @@
         <button class="lang-icon"><font-awesome-icon icon="language"></font-awesome-icon></button>
         <button class="lang-icon down"><font-awesome-icon icon="angle-down"></font-awesome-icon></button>
       </div>
-      <div class="lang-menu-dropdown" :style="toggleLangStyle">
-        <p @click="setLanguage('zh')">中文</p>
-        <p @click="setLanguage('ja')">日本語</p>
-        <p @click="setLanguage('en')">English</p>
+      <div
+        class="lang-menu-dropdown"
+        :style="toggleLangStyle"
+      >
+        <template v-for="locale in localeList">
+          <p class="lang-item" :class="{ 'lang-selected': currentLocale === locale.id }" @click="setLanguage(locale.id)">{{ locale.text }}</p>
+        </template>
       </div>
     </div>
   </div>
@@ -22,16 +25,26 @@ export default {
   components: {
     FontAwesomeIcon,
   },
+  data() {
+    return {
+      localeList: [
+        { id: 'zh', text: '中文' },
+        { id: 'en', text: 'English' },
+        { id: 'ja', text: '日本語' },
+      ],
+    };
+  },
   methods: {
     toggleLang() {
       this.$store.dispatch('toggleNavbarState', { type: 'lang' });
     },
+
     onClickOutside() {
       if (this.navStates.langOpen) {
         this.toggleLang();
       }
-      // console.log('Clicked outside. Event: ', event);
     },
+
     setLanguage(lang) {
       this.$store.dispatch('setLang', { lang });
     },
@@ -40,9 +53,14 @@ export default {
     navStates() {
       return this.$store.state.navbar;
     },
+
     toggleLangStyle() {
       if (this.navStates.langOpen) return { display: 'block' };
       return {};
+    },
+
+    currentLocale() {
+      return this.$store.state.i18n.locale;
     },
   },
 
@@ -100,10 +118,16 @@ export default {
   position: absolute;
   background: white;
   box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.1);
-  & > p {
-    margin: .5em;
-  }
+}
 
+.lang-item {
+  padding: .6em;
+}
+
+.lang-selected {
+  /* margin: 0; */
+  padding: .6em .6em .6em .3em;
+  border-left: .3em solid #1E50A2;
 }
 
 

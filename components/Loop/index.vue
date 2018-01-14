@@ -77,7 +77,7 @@ export default {
 
 .loop-page-grid-container {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: auto;
   grid-template-rows: auto;
   grid-gap: 1em 2em;
   grid-template-areas:

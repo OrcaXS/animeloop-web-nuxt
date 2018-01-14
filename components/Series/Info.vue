@@ -2,7 +2,7 @@
   <div class="series-page-info-container">
     <div class="series-page-title-flex">
       <span class="series-page-main-title">{{ i18nTitle }}&nbsp;</span>
-      <span class="series-page-alt-title">{{ series.title_japanese }}</span>
+      <span v-if="currentLocale !== 'ja'" class="series-page-alt-title">{{ series.title_japanese }}</span>
     </div>
     <div class="series-page-genres-season-flex">
       <Genres class="series-page-genres" :genres="series.genres"/>

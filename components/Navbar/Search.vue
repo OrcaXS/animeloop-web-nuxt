@@ -40,7 +40,7 @@ export default {
       return this.$store.state.navbar;
     },
     toggleContainerStyle() {
-      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.2em)' };
+      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.4rem)' };
       return {};
     },
     toggleArrowButtonStyle() {
@@ -80,6 +80,10 @@ export default {
   padding: 0 .5em;
 
   appearance: none;
+
+  &::placeholder::before {
+    content: "test";
+  }
 }
 
 .search-button {
