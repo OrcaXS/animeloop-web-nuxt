@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="season">
+    <div v-if="season" class="large">
       <span class="anime-series-tag left-half" :style="typeStyleObj(type)">{{ type }}</span>
       <span class="anime-series-tag right-half" :style="typeStyleObj(type, 'season')">{{ season }}</span>
     </div>
@@ -82,7 +82,7 @@ export default {
 }
 
 .large {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 
