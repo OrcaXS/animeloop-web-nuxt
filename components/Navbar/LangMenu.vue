@@ -55,7 +55,7 @@ export default {
 .lang-menu-container {
   @media (--phone-screen) {
     margin-left: auto;
-    flex: 0 1 calc(100% / 3);
+    flex: 0 1 30%;
     justify-content: flex-end;
   }
 

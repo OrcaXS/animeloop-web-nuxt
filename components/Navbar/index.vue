@@ -5,7 +5,7 @@
     <NavbarEntry />
     <NavbarSearch />
     <NavbarLangMenu v-if="!navStates.searchOpen"/>
-    <!-- <div v-show="navStates.burgerOpen" class="line-break" /> -->
+    <div class="line-break" />
   </nav>
 </template>
 
@@ -58,8 +58,8 @@ nav {
   background-color: rgba(255, 255, 255, 1.0);
 
   @supports (backdrop-filter: none) {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
   }
 
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
@@ -87,7 +87,14 @@ nav {
 
 }
 
+/* Tablet Hack */
+/* Cause amoutn of Entries currently less than 4 */
+
 .line-break {
+  display: none;
+  @media (--tablet-screen) {
+    display: block;
+  }
   content: "";
   order: 3;
   width: 100%;

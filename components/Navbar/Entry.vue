@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       entries: [
-        // { name: 'navbar.episode', icon: 'th-list' },
-        { name: 'navbar.tags', icon: 'tags' },
+        { name: 'navbar.list', icon: 'th-list' },
+        // { name: 'navbar.tags', icon: 'tags' },
         { name: 'navbar.random', icon: 'question-circle', route: 'random' },
         { name: 'navbar.about', icon: 'info', route: 'about' },
       ],
@@ -111,6 +111,11 @@ export default {
 
 .fa-icon {
   margin-right: .5em;
+  @media (--phone-screen) {
+    /* Vertical alignment */
+    width: 1em;
+  }
+
   /* display: block; */
 
 }

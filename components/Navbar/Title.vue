@@ -3,12 +3,11 @@
     <nuxt-link :to="'/'">
       <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
     </nuxt-link>
-    <font-awesome-icon
+    <button class="play-button" @click="togglePlay"><font-awesome-icon
       class="fa-icon"
       v-show="showPlayIcon"
       :icon="playIcon"
-      @click="togglePlay"
-    />
+    /></button>
   </div>
 </template>
 
@@ -51,7 +50,7 @@ export default {
 
 .logo-link {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   cursor: pointer;
 
 
@@ -61,13 +60,24 @@ export default {
     /* transform: translate(-50%, -50%); */
     /* top: 50%; */
     /* left: 50%; */
-    flex: 0 1 calc(100% / 3);
+    flex: 0 1 40%;
     /* margin: auto; */
     justify-content: center;
   }
 }
 
+.play-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin: -.5em -.5em -.5em -0.3em;
+  padding: .5em;
+  cursor: pointer;
+
+  font-size: 1.2em;
+}
+
 .fa-icon {
-  margin-left: .2em;
+  /* margin-left: .2em; */
 }
 </style>

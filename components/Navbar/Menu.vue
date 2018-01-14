@@ -72,7 +72,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     margin-right: auto;
-    flex: 0 1 calc(100% / 3);
+    flex: 0 1 30%;
   }
 
 }
@@ -85,6 +85,6 @@ export default {
   padding: 0;
   background: transparent;
   font-size: 1.4em;
-  width: 1.2rem;
+  /* width: 1.4rem; */
 }
 </style>
