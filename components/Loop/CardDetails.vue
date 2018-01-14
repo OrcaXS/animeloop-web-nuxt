@@ -103,10 +103,11 @@ export default {
 .episode-detail {
   grid-area: card-episode-detail;
   justify-self: end;
+  align-self: stretch;
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .episode-no {
@@ -128,7 +129,7 @@ export default {
 
 .time-stamp {
   grid-area: card-timestamps;
-  align-self: start;
+  /* align-self: start; */
   font-size: .75em;
   font-style: italic;
   color: #95989A;
