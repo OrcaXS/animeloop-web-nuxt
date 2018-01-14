@@ -3,8 +3,8 @@
     <header>
       <NavbarContainer />
     </header>
-    <main>
-      <nuxt class="main"/>
+    <main class="layout-main">
+      <nuxt/>
     </main>
   </div>
 </template>
@@ -57,12 +57,25 @@ html {
   }
 }
 
-main {
-  margin-top: 4em;
+.layout-main {
+  margin: 4em 1em;
 
   @media (--tablet-screen) {
-    margin-top: 7em;
+    margin: 7em 0em 4em 0em;
+    padding: 0 .5em;
+    /* hack for iPhoneX, with iOS 11.1 fallback     */
+    @supports(padding: min(0px)) {
+      padding-left: max(1em, constant(safe-area-inset-left));
+      padding-left: max(1em, env(safe-area-inset-left));
+      padding-right: max(1em, constant(safe-area-inset-right));
+      padding-right: max(1em, env(safe-area-inset-right));
+    }
   }
+
+  @media (--phone-screen) {
+    margin: 4em 0em;
+  }
+
 }
 
 *, *:before, *:after {
