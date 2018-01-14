@@ -55,6 +55,17 @@ export default {
     Info,
   },
 
+  head() {
+    if (this.episode) {
+      return {
+        title: `${this.episodes.no} | ${this.i18nTitle} | Animeloop`,
+      };
+    }
+    return {
+      title: `${this.i18nTitle} | Animeloop`,
+    };
+  },
+
   data() {
     return {
       currentSeriesID: '' || this.seriesid,
@@ -134,6 +145,15 @@ export default {
 
 <style scoped>
 @import "../../assets/css/mediaquery.css";
+
+.series-page-combined-grid {
+  /* layout hack specifically for seriespage */
+  margin: 0 -1em;
+
+  @media (--phone-screen) {
+    margin: 0;
+  }
+}
 
 .series-page-upper-grid-container {
   z-index: 1;

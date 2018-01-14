@@ -11,12 +11,6 @@ export default {
     SeriesPage,
   },
 
-  head() {
-    return {
-      title: `${this.episodes.no} | ${this.episodes.series.title_japanese} | Animeloop`,
-    };
-  },
-
   data() {
     return {
       // seriesID: this.episode.series.id,

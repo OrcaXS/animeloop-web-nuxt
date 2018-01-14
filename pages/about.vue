@@ -9,9 +9,13 @@ Animeloop belongs to MOEOVERFLOW organization, the main goal is to collect some 
 <script>
 export default {
   name: 'About',
-  metaInfo: {
-    title: 'About | Animeloop',
+
+  head() {
+    return {
+      title: `${this.$t('about')} | Animeloop`,
+    };
   },
+
   data() {
     return {
     };
