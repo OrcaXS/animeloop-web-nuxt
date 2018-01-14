@@ -137,7 +137,7 @@ export default {
 
 .episode-time-stamp {
   font-size: 1.5em;
-  font-style: italic;
+  /* font-style: italic; */
   text-align: center;
   color: #95989A;
 }
