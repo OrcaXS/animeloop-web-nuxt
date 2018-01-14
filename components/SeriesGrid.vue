@@ -1,7 +1,15 @@
 <template>
-  <section class="series-grid-container">
-    <SeriesCover v-for="id in series" :seriesid="id" :key="id"/>
-  </section>
+  <div>
+    <div v-if="isSearching">
+      <p>Searching for {{ this.$route.query.keyword }}</p>
+    </div>
+    <div v-else-if="isEmptyResult">
+      <p>No Results for {{ this.$route.query.keyword }}</p>
+    </div>
+    <div v-else class="series-grid-container">
+      <SeriesCover v-for="id in series" :seriesid="id" :key="id"/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -13,10 +21,20 @@ export default {
   components: {
     SeriesCover,
   },
+  data() {
+    return {
+    };
+  },
   computed: {
     series() {
       if (this.type === 'search') return this.$store.state.search.searchResult;
       return this.$store.state.series.seriesList;
+    },
+    isSearching() {
+      return this.$store.state.search.isSearching;
+    },
+    isEmptyResult() {
+      return !(Array.isArray(this.series) && this.series.length);
     },
   },
 };
