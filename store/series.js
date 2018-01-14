@@ -1,4 +1,4 @@
-import remote from '~/api/fetch';
+import remote from '~/assets/js/api/fetch';
 
 const series = {
   state: {

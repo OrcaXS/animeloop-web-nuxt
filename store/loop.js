@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import remote from '~/api/fetch';
+import remote from '~/assets/js/api/fetch';
 
 function tidyTimestamp(time) {
   const arr = time.split(':');
