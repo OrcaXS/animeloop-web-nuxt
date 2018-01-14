@@ -30,7 +30,7 @@ export default {
       return this.$store.state.loop.play;
     },
     playIcon() {
-      return (this.playState) ? 'pause' : 'play';
+      return (this.playState) ? 'pause-circle' : 'play-circle';
     },
     showPlayIcon() {
       return (this.$route.name === 'episode-id' || this.$route.name === 'index');
@@ -70,7 +70,7 @@ export default {
   border: none;
   outline: none;
   background: transparent;
-  margin: -.5em -.5em -.5em -0.3em;
+  margin: -.5em -.5em -.5em -.2em;
   padding: .5em;
   cursor: pointer;
 
