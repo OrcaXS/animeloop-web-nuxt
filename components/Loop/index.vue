@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import LoopInfo from '~/components/Loop/LoopInfo';
-import LoopCard from '~/components/Loop/LoopCard';
-import BreadCrumb from '~/components/BreadCrumb';
+import LoopInfo from './LoopInfo';
+import LoopCard from './LoopCard';
+import BreadCrumb from './BreadCrumb';
 
 export default {
   name: 'loop-page-view',
@@ -86,7 +86,7 @@ export default {
   "loop-info vertical-title"
   "loop-info vertical-title";
 
-  margin: 0 1em;
+  /* margin: 0 1em; */
 
   @media (--tablet-screen) {
     grid-template-columns: auto;
@@ -134,11 +134,16 @@ export default {
 }
 
 .loop-info {
-
-};
+  @media (--phone-screen) {
+    margin: 0 .5em;
+  }
+}
 
 .breadcrumb {
   grid-area: breadcrumb;
+  @media (--phone-screen) {
+    margin: 0 .5em;
+  }
 }
 
 </style>
