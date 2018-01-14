@@ -90,11 +90,11 @@ a {
 }
 
 .loop-card {
-  z-index: 15;
+  z-index: 2;
 }
 
 .card-detail {
-  z-index: 10;
+  z-index: 3;
 }
 
 
