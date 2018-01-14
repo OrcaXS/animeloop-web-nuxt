@@ -1,7 +1,7 @@
 <template>
   <div class="gif-player-container">
-    <img v-if="playState" class="gif" :src="gifsrc">
-    <img v-else :src="jpgsrc">
+    <img v-cloak v-if="playState" v-show="gifLoaded" class="gif" :src="gifsrc" @load="imageOnload">
+    <img v-if="!gifLoaded || !playState" :src="jpgsrc" :class="{ blur: playState }">
   </div>
 </template>
 
@@ -23,27 +23,19 @@ export default {
 
   data() {
     return {
-
+      gifLoaded: false,
     };
   },
 
   methods: {
-    // toggleVisibility() {
-    //
-    // },
+    imageOnload() {
+      this.gifLoaded = true;
+    },
   },
 
   computed: {
     playState() {
       return this.$store.state.loop.play;
-    },
-    toggleGIFStyle() {
-      if (!this.playState) {
-        return {
-          visibility: 'hidden',
-        };
-      }
-      return {};
     },
   },
 
@@ -56,9 +48,20 @@ export default {
   position: relative;
   overflow: hidden;
 
+
   & img {
     width: 100%;
     height: 100%;
+    transition: all 0.5s;
   }
 }
+
+.blur {
+  filter: blur(20px);
+}
+
+[v-cloak] {
+  display: none;
+}
+
 </style>
