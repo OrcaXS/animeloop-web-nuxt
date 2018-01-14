@@ -135,10 +135,6 @@ export default {
 <style scoped>
 @import "../../assets/css/mediaquery.css";
 
-.series-wrapper {
-  min-height: 100vh;
-}
-
 .series-page-upper-grid-container {
   z-index: 1;
   margin-top: -1em;
@@ -178,7 +174,7 @@ export default {
   background-position: top;
   filter: blur(60px);
   width: 100%;
-  height: 30vh;
+  height: 40vh;
 }
 
 .series-page-cover {
@@ -197,8 +193,9 @@ export default {
     appearance: none;
     background: transparent;
     border: 1px solid rgba(128, 128, 128, 0.5);
-    padding: .8em .5em;
+    padding: .2em .5em;
     width: 10em;
+    font-size: 1em;
     background-color: rgba(255, 255, 255, 0.6);
     color: black;
   }

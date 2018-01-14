@@ -1,11 +1,13 @@
 <template>
   <div class="series-page-info-container">
-    <div class="series-page-title">
-      <span class="series-page-main-title">{{ i18nTitle }}</span>
+    <div class="series-page-title-flex">
+      <span class="series-page-main-title">{{ i18nTitle }}&nbsp;</span>
       <span class="series-page-alt-title">{{ series.title_japanese }}</span>
     </div>
-    <Genres class="series-page-genres" :genres="series.genres"/>
-    <TypeTag class="series-page-type-season" :type="series.type" :season="series.season" />
+    <div class="series-page-genres-season-flex">
+      <Genres class="series-page-genres" :genres="series.genres"/>
+      <TypeTag class="series-page-season" :type="series.type" :season="series.season" />
+    </div>
     <p class="series-page-description">{{ series.description }}</p>
   </div>
 </template>
@@ -61,28 +63,51 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+@import "../../assets/css/mediaquery.css";
+
 .series-page-info-container {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: minmax(2em, auto) 1em 1.5em auto;
-  grid-gap: .5em;
+  grid-template-rows: minmax(2em, auto) minmax(1em, auto) auto;
+  grid-gap: 0em;
   grid-template-areas:
   "series-title"
-  "series-genres"
-  "series-type-season"
+  "series-genres-season"
   "series-description";
   align-content: start;
 }
 
+.series-page-genres-season-flex {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  @media (--phone-screen) {
+    margin: .25em 0;
+  }
+}
+
 .series-page-genres {
-  grid-area: series-genres;
+  flex: 0 1 100%;
+  margin: .25em 0 0;
+
+  @media (--phone-screen) {
+    flex: 0 1 auto;
+    margin: 0;
+    order: 1;
+  }
 }
 
-.series-page-type-season {
-  grid-area: series-type-season;
+.series-page-season {
+  margin: .25em 0 .25em;
+
+  @media (--phone-screen) {
+    flex: 0 1 auto;
+    margin: 0 .25em 0 0;
+  }
 }
 
-.series-page-title {
+.series-page-title-flex {
   grid-area: series-title;
 
   display: flex;
@@ -93,10 +118,10 @@ export default {
 .series-page-main-title {
   font-size: 2em;
   font-weight: 600;
-  margin-right: .5em;
 }
 
 .series-page-alt-title {
+  /* width: 100%; */
   font-size: 1em;
   font-weight: normal;
   color: #666666;
