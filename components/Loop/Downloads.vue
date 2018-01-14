@@ -1,6 +1,6 @@
 <template>
   <section class="downloads-wrapper">
-    <a class="download-tag gif-tag" :href="files.gif_360p" download="">gif_360p</a>
+    <a class="download-tag gif-tag" :href="files.gif_360p" download="">gif_180p</a>
     <a class="download-tag" :href="files.jpg_360p" download="">jpg_360p</a>
     <a class="download-tag" :href="files.jpg_720p" download="">jpg_720p</a>
     <a class="download-tag" :href="files.jpg_1080p" download="">jpg_1080p</a>
@@ -54,7 +54,7 @@ export default {
   background-color: #1E50A2;
 }
 
-.git-tag {
+.gif-tag {
   background-color: #6096EC;
 }
 
