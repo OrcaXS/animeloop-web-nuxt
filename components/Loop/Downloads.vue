@@ -40,13 +40,13 @@ export default {
   height: 1.5em;
   margin: .25em;
   padding: .25em .75em;
+  font-size: .9em;
 
   background-color: #3B71C7;
   /* !important hack */
   color: white !important;
-  border-radius: 1px;
+  border-radius: 2px;
 
-  font-size: 0.75rem;
   white-space: nowrap;
 }
 
