@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-container" :lang="langAttr">
+  <div class="layout-container">
     <header>
       <NavbarContainer />
     </header>
@@ -17,9 +17,16 @@ export default {
   components: {
     NavbarContainer,
   },
+  head() {
+    return {
+      htmlAttrs: {
+        lang: this.langAttr,
+      },
+    };
+  },
   computed: {
     langAttr() {
-      return this.$store.state.i18n.locale || '';
+      return this.$store.state.i18n.locale || 'en';
     },
   },
 };
@@ -58,7 +65,7 @@ html {
 }
 
 .layout-main {
-  margin: 4em 1em;
+  margin: 4em 1em 1em 1em;
 
   @media (--tablet-screen) {
     margin: 7em 0em 4em 0em;
