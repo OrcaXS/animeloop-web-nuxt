@@ -21,6 +21,9 @@ yarn-error.log*
 # Nuxt generate
 dist
 
+# Service Worker
+sw.*
+
 # config
 
 # Heroku
