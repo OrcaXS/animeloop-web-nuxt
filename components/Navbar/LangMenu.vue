@@ -2,19 +2,21 @@
   <div class="lang-menu-container" v-click-outside="onClickOutside">
     <div>
       <div class="lang-icon-container" @click="toggleLang">
-        <button class="lang-icon"><font-awesome-icon icon="language"></font-awesome-icon></button>
-        <button class="lang-icon down"><font-awesome-icon icon="angle-down"></font-awesome-icon></button>
+        <button class="lang-icon" aria-label="Select Language Button">
+          <font-awesome-icon icon="language" />
+          <font-awesome-icon class="down" icon="angle-down" />
+        </button>
       </div>
       <div
-        class="lang-menu-dropdown"
-        :style="toggleLangStyle"
+      class="lang-menu-dropdown"
+      :style="toggleLangStyle"
       >
-        <template v-for="locale in localeList">
-          <p class="lang-item" :class="{ 'lang-selected': currentLocale === locale.id }" @click="setLanguage(locale.id)">{{ locale.text }}</p>
-        </template>
-      </div>
+      <template v-for="locale in localeList">
+        <button class="lang-item" :class="{ 'lang-selected': currentLocale === locale.id }" @click="setLanguage(locale.id)">{{ locale.text }}</button>
+      </template>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -71,9 +73,10 @@ export default {
 @import "../../assets/css/mediaquery.css";
 
 .lang-menu-container {
+
   @media (--phone-screen) {
     margin-left: auto;
-    flex: 0 1 30%;
+    flex: 0 1 25%;
     justify-content: flex-end;
   }
 
@@ -98,7 +101,10 @@ export default {
 }
 
 .lang-icon {
+  color: #333333;
+
   display: block;
+
   font-size: 1.2em;
   margin-left: 1rem;
   border: none;
@@ -107,11 +113,13 @@ export default {
   background: transparent;
   font-size: 1.4em;
 
-  &.down {
+  & .down {
     font-size: 1em;
     margin-left: .5rem;
   }
 }
+
+
 
 .lang-menu-dropdown {
   display: none;
@@ -121,7 +129,16 @@ export default {
 }
 
 .lang-item {
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+
+  font-size: 1em;
   padding: .6em;
+  cursor: pointer;
+
+  color: #333333;
 }
 
 .lang-selected {

@@ -43,7 +43,8 @@ export default {
   align-items: start;
 
   /*alignment hack*/
-  grid-template-columns: minmax(1fr, max-content) auto auto;
+  /* grid-template-columns: minmax(1fr, max-content) auto auto; */
+  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
   grid-auto-flow: column;
   grid-gap: 1em;

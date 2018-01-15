@@ -1,13 +1,19 @@
 <template>
   <div class="burger-menu-container" :style="toggleSearchStyle">
     <button
-    class="menu-button"
+    class="menu-button menu-icon"
     @click="toggleBurger"
+    aria-label="Menu Icon"
     >
-    <font-awesome-icon class="fa-icon menu-icon" :icon="burgerIcon"></font-awesome-icon>
+    <font-awesome-icon :icon="burgerIcon"></font-awesome-icon>
   </button>
-  <button class="menu-button" v-if="!navStates.searchOpen" @click="toggleSearch">
-    <font-awesome-icon class="fa-icon" icon="search"></font-awesome-icon>
+  <button
+    class="menu-button"
+    v-if="!navStates.searchOpen"
+    @click="toggleSearch"
+    aria-label="Search Icon"
+  >
+    <font-awesome-icon icon="search"></font-awesome-icon>
   </button>
 </div>
 </template>
@@ -72,12 +78,14 @@ export default {
     align-items: center;
     justify-content: flex-start;
     margin-right: auto;
-    flex: 0 1 30%;
+    flex: 0 1 25%;
   }
 
 }
 
 .menu-button {
+  color: #333333;
+
   display: block;
   margin-right: .5rem;
   border: none;
@@ -85,11 +93,15 @@ export default {
   padding: 0;
   background: transparent;
   font-size: 1.4em;
-  width: 1.4rem;
+  /* width: 1.4rem; */
 }
 
 /* fixed menu-icon width */
 .menu-icon {
-  max-width: 1em;
+  width: 1.2rem;
 }
+
+/* .search-icon {
+  max-width: 1.2em;
+} */
 </style>

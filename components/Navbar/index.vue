@@ -42,10 +42,14 @@ export default {
     // },
 
   },
+  // beforeRouteUpdate(to, from, next) {
+  //   if (this.navStates.burgerOpen) this.$store.dispatch('toggleNavbarState', { type: 'burger' });
+  //   next();
+  // },
 };
 </script>
 
-<style scoped lang="postcss">
+  <style scoped lang="postcss">
 @import "../../assets/css/mediaquery.css";
 
 nav {

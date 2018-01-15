@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="season" class="large">
-      <span class="anime-series-tag left-half" :style="typeStyleObj(type)">{{ type }}</span>
-      <span class="anime-series-tag right-half" :style="typeStyleObj(type, 'season')">{{ season }}</span>
+    <div v-if="season">
+      <span class="anime-series-tag large left-half" :style="typeStyleObj(type)">{{ type }}</span>
+      <span class="anime-series-tag large right-half" :style="typeStyleObj(type, 'season')">{{ season }}</span>
     </div>
     <template v-else>
       <span class="anime-series-tag" :style="typeStyleObj(type)">{{ type }}</span>
@@ -83,6 +83,7 @@ export default {
 
 .large {
   font-size: 1.1em;
+  padding: .1em .5em;
 }
 
 

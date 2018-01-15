@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isSearching">
-      <p>Searching for {{ this.$route.query.keyword }}</p>
+      <p>Loading search result for {{ this.$route.query.keyword }}</p>
     </div>
     <div v-else-if="isEmptyResult">
       <p>No Results for {{ this.$route.query.keyword }}</p>

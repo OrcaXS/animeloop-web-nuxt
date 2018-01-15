@@ -1,7 +1,7 @@
 <template>
   <div class="gif-player-container">
-    <img v-cloak v-if="playState" v-show="gifLoaded" class="gif" :src="gifsrc" @load="imageOnload">
-    <img v-if="!gifLoaded || !playState" :src="jpgsrc" :class="{ blur: playState }">
+    <img alt="Static Loop Image" v-cloak v-if="playState" v-show="gifLoaded" class="gif" :src="gifsrc" @load="imageOnload">
+    <img alt="Animated Loop Image" v-if="!gifLoaded || !playState" :src="jpgsrc" :class="{ blur: playState }">
   </div>
 </template>
 

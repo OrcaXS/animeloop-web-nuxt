@@ -8,7 +8,7 @@
       <Genres class="series-page-genres" :genres="series.genres"/>
       <TypeTag class="series-page-season" :type="series.type" :season="series.season" />
     </div>
-    <p class="series-page-description">{{ series.description }}</p>
+    <p class="series-page-description" v-html="series.description" />
   </div>
 </template>
 
@@ -83,7 +83,7 @@ export default {
   align-items: center;
 
   @media (--phone-screen) {
-    margin: .25em 0;
+    margin: .4em 0;
   }
 }
 
@@ -99,7 +99,7 @@ export default {
 }
 
 .series-page-season {
-  margin: .25em 0 .25em;
+  margin: .4em 0 .4em;
 
   @media (--phone-screen) {
     flex: 0 1 auto;
@@ -134,6 +134,7 @@ export default {
   font-size: .9em;
   /* line-height: normal; */
   align-self: start;
+  hyphens: auto;
 }
 
 </style>

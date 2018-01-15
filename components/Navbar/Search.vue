@@ -4,12 +4,14 @@
       class="search-input"
       ref="search"
       @keyup.enter="dispatchSearch"
-      :placeholder="$t('navbar.search')"
+      :placeholder="searchbarPlaceholder"
       v-model="keyword"
       value=""
-      type="text"
+      type="search"
     />
-    <button class="search-button" :style="toggleArrowButtonStyle"><font-awesome-icon class="fa-icon" icon="arrow-right"></font-awesome-icon></button>
+    <button class="search-button" :style="toggleArrowButtonStyle">
+      <font-awesome-icon class="fa-icon" icon="arrow-right" @click="dispatchSearch" />
+    </button>
   </div>
 </template>
 
@@ -31,7 +33,7 @@ export default {
       console.log(this.keyword);
       this.$store.dispatch('fetchSeriesByString', { searchString: this.keyword });
       this.$router.push({ path: '/search', query: { keyword: this.keyword } });
-      this.keyword = '';
+      // this.keyword = '';
       this.$refs.search.blur();
     },
   },
@@ -46,6 +48,10 @@ export default {
     toggleArrowButtonStyle() {
       if (this.navStates.searchOpen) return { display: 'flex' };
       return {};
+    },
+    searchbarPlaceholder() {
+      if (!this.keyword) return this.$t('navbar.search');
+      return (this.keyword);
     },
   },
 };
@@ -72,8 +78,12 @@ export default {
 .search-input {
   width: 100%;
   display: block;
+
   font-size: 1em;
+  text-align: center;
+
   border-radius: 2px;
+  color: #999999;
   border: 1px solid #999999;
   background-color: #F2F2F2;
   height: 2em;
@@ -81,8 +91,9 @@ export default {
 
   appearance: none;
 
-  &::placeholder::before {
-    content: "test";
+  &:focus {
+    text-align: start;
+    color: black;
   }
 }
 

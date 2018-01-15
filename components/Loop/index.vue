@@ -10,7 +10,7 @@
     <div class="loop-info">
       <LoopInfo :loopid="loop.id" />
     </div>
-    <div class="vertical-title">
+    <div class="vertical-title" lang="ja">
       <p>{{ loop.series.title_japanese }}</p>
     </div>
   </section>
@@ -86,6 +86,7 @@ export default {
   "loop-info vertical-title"
   "loop-info vertical-title";
 
+  max-height: calc(100vh - 3rem);
   /* margin: 0 1em; */
 
   @media (--tablet-screen) {
@@ -114,7 +115,7 @@ export default {
   writing-mode: vertical-rl;
   color: #BBBBBB;
   font-size: 3em;
-  max-height: calc(100vw - 8em);
+  max-height: calc(100vh - 3em);
 
   white-space: normal;
   word-break: normal;
@@ -130,7 +131,8 @@ export default {
 
 .loop-card {
   grid-area: loop-card;
-  width: 100%;
+  /* max-height: 75vh; */
+  /* width: 100%; */
 }
 
 .loop-info {

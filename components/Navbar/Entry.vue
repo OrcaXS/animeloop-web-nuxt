@@ -1,7 +1,7 @@
 <template>
   <div class="entry-container" :style="toggledStyle">
     <template v-for="entry in entries">
-      <nuxt-link :to="{ name: entry.route }" class="entry">
+      <nuxt-link @click.native="toggleBurger" :to="{ name: entry.route }" class="entry">
         <font-awesome-icon class="fa-icon" :icon="entry.icon"></font-awesome-icon>
         <span v-t="entry.name"></span>
       </nuxt-link>
@@ -45,6 +45,12 @@ export default {
     //   ];
     // },
   },
+  methods: {
+    // toggle burger menu after navigation
+    toggleBurger() {
+      if (this.navStates.burgerOpen) this.$store.dispatch('toggleNavbarState', { type: 'burger' });
+    },
+  },
 
 };
 </script>
@@ -72,10 +78,9 @@ export default {
     flex-grow: 1;
     justify-content: space-between;
     padding: 0;
-    margin: 0 -0.5em;
+    margin: 0 -.5em .5em -.5em;
 
     display: none;
-    background: white;
     height: auto;
     flex-wrap: wrap;
 
@@ -86,6 +91,8 @@ export default {
 .entry {
   margin: 0 .5em;
   padding: .4em 0;
+
+  color: #333333;
 
   &:hover {
     border-bottom: .2rem solid #1e50a2;

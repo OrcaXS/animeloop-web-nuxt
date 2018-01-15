@@ -7,6 +7,7 @@
       class="fa-icon"
       v-show="showPlayIcon"
       :icon="playIcon"
+      aria-label="Play or Pause button"
     /></button>
   </div>
 </template>
@@ -60,7 +61,7 @@ export default {
     /* transform: translate(-50%, -50%); */
     /* top: 50%; */
     /* left: 50%; */
-    flex: 0 1 40%;
+    flex: 0 1 50%;
     /* margin: auto; */
     justify-content: center;
   }
