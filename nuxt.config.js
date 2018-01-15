@@ -74,6 +74,10 @@ module.exports = {
     '@nuxtjs/pwa',
   ],
 
+  manifest: {
+    theme_color: '#FFFFFF',
+  },
+
   workbox: {
     runtimeCaching: [
       {
