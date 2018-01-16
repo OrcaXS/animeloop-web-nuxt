@@ -3,12 +3,17 @@
     <nuxt-link :to="'/'">
       <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
     </nuxt-link>
-    <button class="play-button" @click="togglePlay"><font-awesome-icon
-      class="fa-icon"
-      v-show="showPlayIcon"
-      :icon="playIcon"
+    <button
+      class="play-button"
+      @click="togglePlay"
       aria-label="Play or Pause button"
-    /></button>
+    >
+      <font-awesome-icon
+        class="fa-icon"
+        v-show="showPlayIcon"
+        :icon="playIcon"
+      />
+    </button>
   </div>
 </template>
 
