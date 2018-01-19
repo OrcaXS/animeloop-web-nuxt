@@ -2,7 +2,7 @@
   "presets": [
     ["env", {
       "targets": {
-        "browsers": [ "> 5%"]
+        "browsers": [ "> 1%"]
       },
       "exclude": ["transform-es2015-arrow-functions"]
       }]
