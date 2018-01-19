@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="season">
+    <div v-if="season" class="tag-container">
       <span class="anime-series-tag large left-half" :style="typeStyleObj(type)">{{ type }}</span>
       <span class="anime-series-tag large right-half" :style="typeStyleObj(type, 'season')">{{ season }}</span>
     </div>
@@ -62,6 +62,11 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.tag-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .anime-series-tag {
   max-width: 8em;
   max-height: 1.5em;
