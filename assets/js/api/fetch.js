@@ -53,6 +53,8 @@ const remote = {
   getTagsByID: id => callApi({ url: 'tag', data: { loop: id } }),
   getSeriesByID: id => callApi({ url: `series/${id}` }),
   getSeriesByString: string => callApi({ url: 'search/series', data: { value: string } }),
+  getSeriesPageCount: callApi({ url: 'series/page/count' }),
+  getSeriesByPageNum: num => callApi({ url: 'series', data: { page: num } }),
 };
 
 export default remote;
