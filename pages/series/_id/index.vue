@@ -17,8 +17,8 @@ export default {
     };
   },
 
-  asyncData({ store, route: { params: { id } } }) {
-    return store.dispatch('fetchSeriesByID', { seriesid: id });
+  async fetch({ store, route: { params: { id } } }) {
+    await store.dispatch('fetchSeriesByID', { seriesid: id });
   },
 
   // fetch({ store, route: { params: { id } } }) {

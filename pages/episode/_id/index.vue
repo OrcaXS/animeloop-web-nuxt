@@ -18,8 +18,8 @@ export default {
     };
   },
 
-  asyncData({ store, route: { params: { id } } }) {
-    return store.dispatch('fetchEpisodeByID', { episodeid: id });
+  async fetch({ store, route: { params: { id } } }) {
+    await store.dispatch('fetchEpisodeByID', { episodeid: id });
   },
 
   computed: {

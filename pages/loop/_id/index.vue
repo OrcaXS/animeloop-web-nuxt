@@ -17,8 +17,8 @@ export default {
     };
   },
 
-  asyncData({ store, route: { params: { id } } }) {
-    return store.dispatch('fetchLoopByID', { loopid: id });
+  async fetch({ store, route: { params: { id } } }) {
+    await store.dispatch('fetchLoopByID', { loopid: id });
   },
 
   computed: {

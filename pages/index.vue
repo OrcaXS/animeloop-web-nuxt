@@ -1,5 +1,5 @@
 <template>
-  <LoopGrid type="random" />
+  <LoopGrid pageType="random" />
 </template>
 
 <script>
@@ -17,8 +17,8 @@ export default {
     };
   },
 
-  asyncData({ store }) {
-    return store.dispatch('fetchRandomLoopList', { count: 12 });
+  async fetch({ store }) {
+    await store.dispatch('fetchRandomLoopList', { count: 12 });
   },
 
 };

@@ -17,8 +17,8 @@ export default {
     };
   },
 
-  asyncData({ store }) {
-    return store.dispatch('fetchRandomLoop');
+  async fetch({ store }) {
+    await store.dispatch('fetchRandomLoop');
   },
 
   computed: {
