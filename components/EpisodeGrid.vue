@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SeriesCover from './SeriesCover';
+import SeriesCover from '~/components/Series/Cover';
 import LoopGrid from './Loop/LoopGrid';
 
 export default {
@@ -13,6 +13,7 @@ export default {
   props: ['episodeid'],
   components: {
     LoopGrid,
+    SeriesCover,
   },
   computed: {
     series() {

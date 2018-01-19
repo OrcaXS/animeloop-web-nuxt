@@ -1,14 +1,20 @@
 <template>
   <div>
-    <!-- <p>SearchPage</p>
-    <input v-model="keyword" type="text" value="keyword" placeholder="Search...">
-    <button @click="dispatchSearch">Go</button> -->
-    <SeriesGrid type="search" />
+    <div v-if="isSearching">
+      <p>Loading search result for {{ this.$route.query.keyword }}</p>
+    </div>
+    <div v-else-if="isEmptyResult">
+      <p>No Results for {{ this.$route.query.keyword }}</p>
+    </div>
+    <div v-else>
+      <h2>Displaying search result for "{{ this.$route.query.keyword }}"</h2>
+      <SeriesGrid type="search" />
+    </div>
   </div>
 </template>
 
 <script>
-import SeriesGrid from '~/components/SeriesGrid';
+import SeriesGrid from '~/components/Series/Grid';
 
 export default {
   name: 'SearchPage',
@@ -22,13 +28,9 @@ export default {
     };
   },
 
-  // asyncData({ params }) {
-  //   console.log(params);
-  // },
-
-  data() {
+  asyncData({ query }) {
     return {
-      hasKeyword: !!this.$route.query.keyword,
+      hasKeyword: !!query.keyword,
       // keyword: this.$route.query.keyword,
     };
   },
@@ -36,6 +38,15 @@ export default {
   computed: {
     keyword() {
       return this.$route.query.keyword || '';
+    },
+    isSearching() {
+      return this.$store.state.search.isSearching;
+    },
+    isEmptyResult() {
+      return !(Array.isArray(this.searchResult) && this.searchResult.length !== 0);
+    },
+    searchResult() {
+      return this.$store.state.search.searchResult;
     },
   },
 
