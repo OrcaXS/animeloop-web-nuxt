@@ -7,34 +7,36 @@
       </div>
       <Info :seriesID="currentSeriesID" class="series-page-info"/>
       <div v-if="!episodes">
-        <p>Loading Episodes...</p>
+        <p><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
       </div>
       <div v-else class="series-page-episode-selector">
-        <select v-model="selectedEpisodeID" @change="selectChanged">
-          <option disabled value="">Select Episode...</option>
-          <option v-for="episode in episodes" v-bind:value="episode.id">
-            {{ episode.no }}
-          </option>
-        </select>
+        <div class="episode-select">
+          <select required v-model="selectedEpisodeID" @change="selectChanged">
+            <option disabled selected value="">Select Episode...</option>
+            <option v-for="episode in episodes" :value="episode.id">
+              {{ episode.no }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
     <div v-if="$route.name === 'episode-id'" class="series-page-lower-grid-container">
-      <div v-if="!loops">
-        <p>Loading Loops...</p>
-      </div>
+      <p v-if="!loops"><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
       <div v-else>
-        <LoopGrid type="episode" :episodeid="selectedEpisodeID" />
+        <LoopGrid pageType="episode" :episodeid="selectedEpisodeID" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-// import BreadCrumb from '../BreadCrumb';
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+
 import EpisodeGrid from '../EpisodeGrid';
 import LoopGrid from '../Loop/LoopGrid';
 import Genres from './Genres';
 import Info from './Info';
+
 
 export default {
   name: 'SeriesPage',
@@ -49,6 +51,7 @@ export default {
     },
   },
   components: {
+    FontAwesomeIcon,
     EpisodeGrid,
     LoopGrid,
     Genres,
@@ -172,7 +175,7 @@ export default {
 
   padding: 1em 1em 0em;
 
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8));
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(224, 224, 224, 0.8));
 
   @media (--phone-screen) {
     grid-template-columns: auto;
@@ -183,6 +186,10 @@ export default {
     "episode-selector";
   }
 
+}
+
+.series-page-lower-grid-container {
+  /* background-color: rgba(224, 224, 224, 0.8); */
 }
 
 .upper-half-cover {
@@ -208,43 +215,83 @@ export default {
 
 .series-page-episode-selector {
   grid-area: episode-selector;
+}
 
-  & select {
+.episode-select {
+  display: inline-block;
+  position: relative;
+
+  & > select {
+    display: block;
+    position: relative;
     appearance: none;
-    background: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.5);
+
+    /* border: 1px solid rgba(128, 128, 128, 0.5); */
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+
     padding: .2em .5em;
     width: 10em;
-    font-size: 1em;
+    max-width: 100%;
+    height: 2.25em;
+
     background-color: rgba(255, 255, 255, 0.6);
     color: black;
+
+    font-size: 1em;
+
+    cursor: pointer;
+
+    &:invalid {
+      color: #8E8E8E;
+    }
   }
 
+  /* the angle-down arrow */
   &:after {
+    z-index: 1;
+    display: block;
+    content: " ";
+    position: absolute;
+
+    width: .5em;
+    height: .5em;
+
+    margin-top: -.375em;
+    right: .625em;
+    top: 50%;
+
     border: 1px solid #444444;
     border-right: 0;
     border-top: 0;
-    content: " ";
-    display: inline-block;
-    height: 0.5em;
-    position: relative;
+
+    pointer-events: none;
+
     transform: rotate(-45deg);
     transform-origin: center;
-    width: 0.5em;
-    right: 1.125em;
-    bottom: .2em;
+
   }
 }
 
 .series-page-lower-grid-container {
-  /* grid-area: series-episode-grid; */
   z-index: 2;
   margin-top: 1em;
+
+  & > p {
+    text-align: center;
+    font-size: 2em;
+  }
 }
 
 .series-page-category-divider {
   display: inline-block;
   padding: 0em .5rem;
+}
+
+.fa-icon {
+  color: #333;
 }
 
 </style>

@@ -5,7 +5,7 @@
       <nuxt-link type="no" slot="no" :to="{ name: 'episode-id', params: { id: loop.episode.id }}">{{loop.episode.no}}</nuxt-link>
     </BreadCrumb>
     <div class="loop-card">
-      <LoopCard :loopid="loop.id" loopType="mp4" />
+      <LoopCard :loopid="loop.id" loopType="mp4" pageType="loop" />
     </div>
     <div class="loop-info">
       <LoopInfo :loopid="loop.id" />

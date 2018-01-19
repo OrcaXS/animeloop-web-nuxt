@@ -6,7 +6,7 @@
       @mouseover="onHovered()"
       @mouseout="onUnhovered()"
     >
-      <p class="loading-spinner" v-if="!canplaythrough"><font-awesome-icon class="fa-icon" icon="spinner" spin></font-awesome-icon></p>
+      <p class="loading-spinner" v-if="!canplaythrough"><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
       <video
       ref="video"
       loop
@@ -21,7 +21,7 @@
         <track label="English" kind="captions" srcLang="en" />
       </video>
     </div>
-    <div v-else class="gif-container">
+    <div v-else class="gif-container" :class="{ 'fixed-img-size' : pageType === 'random' }">
       <gif-player :gifsrc="files.gif_360p" :jpgsrc="files.jpg_360p"></gif-player>
     </div>
   </section>
@@ -46,6 +46,15 @@ export default {
         return val === 'mp4' || val === 'gif';
       },
     },
+    pageType: {
+      type: String,
+      required: true,
+      default: 'mp4',
+      validator(val) {
+        return ['random', 'episode', 'loop'].indexOf(val) > -1;
+      },
+    },
+
   },
   components: {
     GifPlayer,
@@ -107,15 +116,22 @@ export default {
 }
 
 .gif-container {
-  object-fit: cover;
-
-
   /* proportional hack */
-  height: 0;
-  padding-bottom: 56.25%;
+  /* height: 0; */
+  /* padding-bottom: 56.25%; */
 
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); */
+
+  &.fixed-img-size {
+    width: 360px;
+    height: 203px;
+  }
 }
+
+/* .fixed-image-size {
+  width: 360px;
+  height: 203px;
+} */
 
 .video-cover {
   width: 100%;

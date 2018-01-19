@@ -82,10 +82,11 @@ export default {
   font-size: 1em;
   text-align: center;
 
-  border-radius: 2px;
+  border-radius: 5px;
   color: #999999;
-  border: 1px solid #999999;
-  background-color: #F2F2F2;
+  /* border: 0px solid #999999; */
+  border: none;
+  background-color: #f0f0f0;
   height: 2em;
   padding: 0 .5em;
 

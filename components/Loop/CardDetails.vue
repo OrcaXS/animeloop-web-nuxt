@@ -67,7 +67,8 @@ export default {
   height: 3em;
   padding: .1em .5em .1em;
   background-color: rgba(255, 255, 255, .95);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1); */
+  border-radius: 0 0 3px 3px;
 
   font-size: 1rem;
 
@@ -85,7 +86,8 @@ export default {
   display: block;
   padding: .25em .5em;
   background-color: rgba(255, 255, 255, .95);
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 3px 3px;
+  /* box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1); */
 }
 
 .anime-title {

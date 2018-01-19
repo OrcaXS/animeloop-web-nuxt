@@ -1,17 +1,23 @@
 <template>
   <div class="loop-info-grid-container">
-    <p class="info-type" v-t="'loop.timestamps'"></p>
-    <p class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</p>
-    <p class="info-type" v-t="'loop.length'"></p>
-    <p class="info-detail">{{ formattedTimeStamps.duration }}s</p>
-    <p class="info-type" v-t="'loop.downloads'"></p>
+    <div class="loop-info-tags-container">
+      <TypeTag class="loop-info-season-type" :type="loop.series.type" :season="loop.series.season" />
+      <TimeTag class="loop-info-duration" type="length" :duration="formattedTimeStamps.duration"/>
+      <TimeTag class="loop-info-timestamp" type="timestamp" :start="formattedTimeStamps.begin" :end="formattedTimeStamps.end"/>
+    </div>
+    <!-- <p class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</p> -->
+    <!-- <p class="info-type" v-t="'loop.length'"></p> -->
+    <!-- <p class="info-detail">{{ formattedTimeStamps.duration }}s</p> -->
     <div class="info-detail">
+      <p class="info-type" v-t="'loop.downloads'" />
       <Downloads :loopid="this.loopid" />
     </div>
   </div>
 </template>
 
 <script>
+import TimeTag from '~/components/Common/TimeTag';
+import TypeTag from '~/components/Common/TypeTag';
 import Downloads from './Downloads';
 
 export default {
@@ -19,6 +25,8 @@ export default {
   props: ['loopid'],
   components: {
     Downloads,
+    TimeTag,
+    TypeTag,
   },
 
   computed: {
@@ -44,19 +52,57 @@ export default {
 
   /*alignment hack*/
   /* grid-template-columns: minmax(1fr, max-content) auto auto; */
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto;
-  grid-auto-flow: column;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  /* grid-auto-flow: column; */
   grid-gap: 1em;
   justify-content: stretch;
 }
 
+.loop-info-tags-container {
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: space-between; */
+  /* width: max-content; */
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, max-content)); */
+  /* grid-template-rows: 300px; */
+  /* grid-template-columns: auto auto auto; */
+  /* grid-row-gap: .5em; */
+  /* grid-template-areas:
+    "loop-season-type loop-duration"
+    "loop-timestamp loop-timestamp"; */
+  /* grid-template-areas:
+    "loop-season-type loop-duration loop-timestamp"; */
+}
+
+.loop-info-season-type {
+  margin: .25em .25em .25em 0;
+  /* flex: 1 1 20%; */
+  /* grid-area: loop-season-type; */
+}
+
+.loop-info-duration {
+  margin: .25em .5em .25em .25em;
+  /* flex: 1 1 20%; */
+  /* grid-area: loop-duration; */
+}
+
+.loop-info-timestamp {
+  margin: .25em .25em .25em 0;
+  /* flex: 0 0 100%; */
+  /* grid-area: loop-timestamp; */
+}
+
 .info-type {
   font-weight: 500;
+  padding-bottom: 1em;
+  /* color: #333; */
 }
 
 .info-detail {
   font-weight: 400;
+  color: #333;
 }
 
 </style>

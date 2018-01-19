@@ -93,7 +93,7 @@ export default {
 
   @media (--phone-screen) {
     flex: 0 1 auto;
-    margin: 0;
+    margin: .25em 0 .25em .25em;
     order: 1;
   }
 }
@@ -130,10 +130,11 @@ export default {
 
 .series-page-description {
   grid-area: series-description;
-  align-self: center;
-  font-size: .9em;
-  /* line-height: normal; */
   align-self: start;
+
+  color: #333;
+
+  font-size: .9em;
   hyphens: auto;
 }
 

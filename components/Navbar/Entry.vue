@@ -2,7 +2,7 @@
   <div class="entry-container" :style="toggledStyle">
     <template v-for="entry in entries">
       <nuxt-link @click.native="toggleBurger" :to="{ name: entry.route }" class="entry">
-        <font-awesome-icon class="fa-icon" :icon="entry.icon"></font-awesome-icon>
+        <font-awesome-icon class="entry-fa-icon" :icon="entry.icon" />
         <span v-t="entry.name"></span>
       </nuxt-link>
     </template>
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       entries: [
-        { name: 'navbar.list', icon: 'th-list', route: 'list' },
+        { name: 'navbar.list', icon: 'th-list', route: 'list-page' },
         // { name: 'navbar.tags', icon: 'tags' },
         { name: 'navbar.random', icon: 'question-circle', route: 'random' },
         { name: 'navbar.about', icon: 'info', route: 'about' },
@@ -116,7 +116,7 @@ export default {
 
 }
 
-.fa-icon {
+.entry-fa-icon {
   margin-right: .5em;
   @media (--phone-screen) {
     /* Vertical alignment */
