@@ -31,11 +31,11 @@ const search = {
       commit('SET_SEARCHING', { data: false });
       // console.log(data);
       commit('SET_SEARCH', { data });
-      await dispatch('fillSearchtoSeries', { data });
+      await dispatch('fillSeriesList', { data });
       // commit('SET_MULTIPLE_SERIES', { data });
     },
 
-    async fillSearchtoSeries({ commit }, { data }) {
+    async fillSeriesList({ commit }, { data }) {
       commit('SET_MULTIPLE_SERIES', { data });
     },
 
