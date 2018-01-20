@@ -2,7 +2,8 @@
   <div class="gif-player-container">
     <img
       alt="Static Loop Image"
-      v-cloak v-if="playState"
+      v-cloak
+      v-if="playState"
       v-show="gifLoaded"
       class="gif"
       :src="gifsrc"
@@ -18,10 +19,8 @@
 </template>
 
 <script>
-// import { GifReader } from 'omggif';
-
 export default {
-  name: 'gif-player',
+  name: 'GifPlayer',
   props: {
     jpgsrc: {
       type: String,
@@ -38,16 +37,14 @@ export default {
       gifLoaded: false,
     };
   },
-
-  methods: {
-    imageOnload() {
-      this.gifLoaded = true;
-    },
-  },
-
   computed: {
     playState() {
       return this.$store.state.loop.play;
+    },
+  },
+  methods: {
+    imageOnload() {
+      this.gifLoaded = true;
     },
   },
 

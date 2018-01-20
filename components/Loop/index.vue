@@ -1,28 +1,43 @@
 <template>
   <section class="loop-page-grid-container">
     <BreadCrumb class="breadcrumb">
-      <nuxt-link :to="{ name: 'series-id', params: { id: loop.series.id }}" type="title" slot="title">{{ i18nTitle }}</nuxt-link>
-      <nuxt-link type="no" slot="no" :to="{ name: 'episode-id', params: { id: loop.episode.id }}">{{loop.episode.no}}</nuxt-link>
+      <nuxt-link
+        :to="{ name: 'series-id', params: { id: loop.series.id }}"
+        type="title"
+        slot="title"
+      >{{ i18nTitle }}</nuxt-link>
+      <nuxt-link
+        :to="{ name: 'episode-id', params: { id: loop.episode.id }}"
+        type="no"
+        slot="no"
+      >{{ loop.episode.no }}</nuxt-link>
     </BreadCrumb>
     <div class="loop-card">
-      <LoopCard :loopid="loop.id" loopType="mp4" pageType="loop" />
+      <LoopCard
+        :loopid="loop.id"
+        loop-type="mp4"
+        page-type="loop"
+      />
     </div>
     <div class="loop-info">
       <LoopInfo :loopid="loop.id" />
     </div>
-    <div class="vertical-title" lang="ja">
+    <div
+      class="vertical-title"
+      lang="ja"
+    >
       <p>{{ loop.series.title_japanese }}</p>
     </div>
   </section>
 </template>
 
 <script>
-import LoopInfo from './LoopInfo';
-import LoopCard from './LoopCard';
+import LoopInfo from './Info';
+import LoopCard from './Card';
 import BreadCrumb from './BreadCrumb';
 
 export default {
-  name: 'loop-page-view',
+  name: 'LoopPageView',
   components: {
     BreadCrumb,
     LoopInfo,
@@ -66,7 +81,7 @@ export default {
 
     loop() {
       if (this.pageType === 'loop') return this.$store.state.loop.loops[this.$route.params.id];
-      return this.$store.state.loop.loops[this.$store.state.loop.randomPageLoopID];
+      return this.$store.state.loop.loops[this.$store.state.loop.randomPageLoopid];
     },
   },
 };
@@ -115,7 +130,8 @@ export default {
   writing-mode: vertical-rl;
   color: #BBBBBB;
   font-size: 3em;
-  max-height: calc(100vh - 3em);
+  font-family: serif;
+  max-height: 80%;
 
   white-space: normal;
   word-break: normal;

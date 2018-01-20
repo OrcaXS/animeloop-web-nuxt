@@ -2,13 +2,27 @@
   <div class="series-page-info-container">
     <div class="series-page-title-flex">
       <span class="series-page-main-title">{{ i18nTitle }}&nbsp;</span>
-      <span v-if="currentLocale !== 'ja'" class="series-page-alt-title">{{ series.title_japanese }}</span>
+      <span
+        v-if="currentLocale !== 'ja'"
+        class="series-page-alt-title"
+      >{{ series.title_japanese }}</span>
     </div>
     <div class="series-page-genres-season-flex">
-      <Genres class="series-page-genres" :genres="series.genres"/>
-      <TypeTag class="series-page-season" :type="series.type" :season="series.season" />
+      <Genres
+        class="series-page-genres"
+        :genres="series.genres"
+      />
+      <TypeTag
+        class="series-page-season"
+        type="withSeason"
+        :anime-type="series.type"
+        :season="series.season"
+      />
     </div>
-    <p class="series-page-description" v-html="series.description" />
+    <p
+      class="series-page-description"
+      v-html="series.description"
+    />
   </div>
 </template>
 
@@ -23,9 +37,12 @@ export default {
     TypeTag,
   },
   props: {
-    seriesID: {
+    seriesid: {
       type: String,
       required: true,
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value);
+      },
     },
   },
   computed: {
@@ -51,11 +68,11 @@ export default {
     // },
 
     episodes() {
-      return this.$store.state.episode.episodeList[this.seriesID];
+      return this.$store.state.episode.episodeList[this.seriesid];
     },
 
     series() {
-      return this.$store.state.series.series[this.seriesID];
+      return this.$store.state.series.series[this.seriesid];
     },
   },
 

@@ -1,12 +1,12 @@
 <template>
-  <LoopPage pageType="loop" />
+  <LoopPage page-type="loop" />
 </template>
 
 <script>
 import LoopPage from '~/components/Loop/';
 
 export default {
-  name: 'page-loop-id',
+  name: 'PageLoopID',
   components: {
     LoopPage,
   },
@@ -17,8 +17,17 @@ export default {
     };
   },
 
-  async fetch({ store, route: { params: { id } } }) {
-    await store.dispatch('fetchLoopByID', { loopid: id });
+  async fetch({ store, error, params: { id } }) {
+    try {
+      await store.dispatch('fetchLoopByID', { loopid: id });
+    } catch (err) {
+      console.log(err);
+      error({ statusCode: 404, message: 'API returned Error' });
+    }
+  },
+
+  validate({ params }) {
+    return /^[a-z0-9]{24}$/.test(params.id);
   },
 
   computed: {

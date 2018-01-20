@@ -1,18 +1,34 @@
 <template>
-  <div class="search-container" :style="toggleContainerStyle">
+  <form
+    class="search-container"
+    :style="toggleContainerStyle"
+    action=""
+    @submit.prevent
+  >
     <input
       class="search-input"
       ref="search"
       @keyup.enter="dispatchSearch"
+      @focus="searchFocused = true"
+      @blur="searchFocused = false"
       :placeholder="searchbarPlaceholder"
       v-model="keyword"
       value=""
+      name="search"
       type="search"
-    />
-    <button class="search-button" :style="toggleArrowButtonStyle">
-      <font-awesome-icon class="fa-icon" icon="arrow-right" @click="dispatchSearch" />
+      required
+    >
+    <button
+      class="search-button"
+      :style="toggleArrowButtonStyle"
+      @click="dispatchSearch"
+    >
+      <FontAwesomeIcon
+        class="arrow-right-fa-icon"
+        icon="arrow-right"
+      />
     </button>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -26,16 +42,8 @@ export default {
   data() {
     return {
       keyword: '',
+      searchFocused: false,
     };
-  },
-  methods: {
-    dispatchSearch() {
-      console.log(this.keyword);
-      this.$store.dispatch('fetchSeriesByString', { searchString: this.keyword });
-      this.$router.push({ path: '/search', query: { keyword: this.keyword } });
-      // this.keyword = '';
-      this.$refs.search.blur();
-    },
   },
   computed: {
     navStates() {
@@ -50,10 +58,22 @@ export default {
       return {};
     },
     searchbarPlaceholder() {
-      if (!this.keyword) return this.$t('navbar.search');
-      return (this.keyword);
+      if (this.keyword) return this.keyword;
+      else if (this.searchFocused) return '';
+      return this.$t('navbar.search');
     },
   },
+  methods: {
+    dispatchSearch() {
+      if (this.keyword) {
+        this.$store.dispatch('fetchSeriesByString', { searchString: this.keyword });
+        this.$router.push({ path: '/search', query: { keyword: this.keyword } });
+        this.$refs.search.blur();
+      }
+      // this.keyword = '';
+    },
+  },
+
 };
 </script>
 
@@ -105,7 +125,7 @@ export default {
   outline: none;
   padding: 0;
   background: transparent;
-  font-size: 1.4em;
+  font-size: 1.2em;
 
 }
 

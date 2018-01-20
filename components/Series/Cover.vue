@@ -1,6 +1,10 @@
 <template>
   <section class="cover-wrapper">
-    <nuxt-link :to="{ name: 'series-id', params: { id: seriesid }}" class="cover" :style="coverBackgroundImageStyle">
+    <nuxt-link
+      :to="{ name: 'series-id', params: { id: seriesid }}"
+      class="cover"
+      :style="coverBackgroundImageStyle"
+    >
       <div class="cover-text">
         <div class="cover-title">{{ i18nTitle }}</div>
         <div class="cover-detail">
@@ -15,7 +19,16 @@
 <script>
 export default {
   name: 'SeriesCover',
-  props: ['seriesid'],
+  props: {
+    seriesid: {
+      type: String,
+      required: true,
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value);
+      },
+    },
+  },
+
 
   computed: {
     i18nTitle() {
@@ -50,8 +63,11 @@ export default {
 
 <style scoped>
 .cover-wrapper {
-  width: 225px;
-  height: 350px;
+  width: calc(225px * 0.8);
+  height: calc(350px * 0.8);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  margin: auto;
 }
 
 .cover {
@@ -76,7 +92,7 @@ export default {
 
 .cover-text {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0));
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 3px 3px;
   z-index: 2;
   height: auto;
   width: 100%;
@@ -88,6 +104,7 @@ export default {
   display: flex;
   text-align: center;
   font-size: 1em;
+  font-weight: 500;
   color: lightblue;
 }
 

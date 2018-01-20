@@ -1,14 +1,18 @@
 <template>
   <div class="logo-link">
     <nuxt-link :to="'/'">
-      <img class="logo" alt="Animeloop" src="~/assets/images/anime-loop-logo.svg" />
+      <img
+        class="logo"
+        alt="Animeloop Logo"
+        src="~/assets/images/anime-loop-logo.svg"
+      >
     </nuxt-link>
     <button
       class="play-button"
       @click="togglePlay"
       aria-label="Play or Pause button"
     >
-      <font-awesome-icon
+      <FontAwesomeIcon
         class="fa-icon"
         v-show="showPlayIcon"
         :icon="playIcon"
@@ -25,12 +29,6 @@ export default {
   components: {
     FontAwesomeIcon,
   },
-  methods: {
-    togglePlay() {
-      const isPlaying = this.playState;
-      this.$store.dispatch('setPlay', { play: !isPlaying });
-    },
-  },
   computed: {
     playState() {
       return this.$store.state.loop.play;
@@ -42,6 +40,13 @@ export default {
       return (this.$route.name === 'episode-id' || this.$route.name === 'index');
     },
   },
+  methods: {
+    togglePlay() {
+      const isPlaying = this.playState;
+      this.$store.dispatch('setPlay', { play: !isPlaying });
+    },
+  },
+
 };
 </script>
 

@@ -1,12 +1,12 @@
 <template>
-  <LoopPage pageType="random" />
+  <LoopPage page-type="random" />
 </template>
 
 <script>
 import LoopPage from '~/components/Loop/';
 
 export default {
-  name: 'page-random',
+  name: 'PageRandom',
   components: {
     LoopPage,
   },
@@ -17,8 +17,13 @@ export default {
     };
   },
 
-  async fetch({ store }) {
-    await store.dispatch('fetchRandomLoop');
+  async fetch({ store, error }) {
+    try {
+      await store.dispatch('fetchRandomLoop');
+    } catch (err) {
+      console.log(err);
+      error({ statusCode: 404, message: 'API returned Error' });
+    }
   },
 
   computed: {
@@ -40,12 +45,8 @@ export default {
     },
 
     loop() {
-      return this.$store.state.loop.loops[this.$store.state.loop.randomPageLoopID];
+      return this.$store.state.loop.loops[this.$store.state.loop.randomPageLoopid];
     },
   },
 };
 </script>
-
-<style scoped>
-
-</style>

@@ -37,7 +37,7 @@ export default {
 
 html {
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
-  font-family: "Helvetica Neue", system-ui;
+  font-family: "Helvetica Neue", system-ui, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -68,14 +68,17 @@ html {
   margin: 4em 1em 1em 1em;
 
   @media (--tablet-screen) {
-    margin: 7em 0em 4em 0em;
-    padding: 0 .5em;
-    /* hack for iPhoneX, with iOS 11.1 fallback     */
+    margin: 7em .5em 1em .5em;
+    /* padding: 0 .5em; */
+    /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
     @supports(padding: min(0px)) {
-      padding-left: max(1em, constant(safe-area-inset-left));
-      padding-left: max(1em, env(safe-area-inset-left));
-      padding-right: max(1em, constant(safe-area-inset-right));
-      padding-right: max(1em, env(safe-area-inset-right));
+      margin: 7em 0 0 0;
+      padding-left: max(8px, constant(safe-area-inset-left));
+      padding-left: max(8px, env(safe-area-inset-left));
+      padding-right: max(8px, constant(safe-area-inset-right));
+      padding-right: max(8px, env(safe-area-inset-right));
+      padding-bottom: max(8px, constant(safe-area-inset-bottom));
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
     }
   }
 

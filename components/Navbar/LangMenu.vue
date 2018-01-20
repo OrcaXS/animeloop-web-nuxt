@@ -1,22 +1,34 @@
 <template>
-  <div class="lang-menu-container" v-click-outside="onClickOutside">
+  <div
+    class="lang-menu-container"
+    v-click-outside="onClickOutside"
+  >
     <div>
-      <div class="lang-icon-container" @click="toggleLang">
-        <button class="lang-icon" aria-label="Select Language Button">
-          <font-awesome-icon icon="language" />
-          <font-awesome-icon class="down" icon="angle-down" />
-        </button>
-      </div>
-      <div
-      class="lang-menu-dropdown"
-      :style="toggleLangStyle"
+      <button
+        class="lang-icon-container"
+        aria-label="Select Language Button"
+        @click="toggleLang"
       >
-      <template v-for="locale in localeList">
-        <button class="lang-item" :class="{ 'lang-selected': currentLocale === locale.id }" @click="setLanguage(locale.id)">{{ locale.text }}</button>
-      </template>
+        <FontAwesomeIcon icon="language" />
+        <FontAwesomeIcon
+          class="down"
+          icon="angle-down"
+        />
+      </button>
+      <div
+        class="lang-menu-dropdown"
+        :style="toggleLangStyle"
+      >
+        <button
+          v-for="locale in localeList"
+          :key="locale.id"
+          class="lang-item"
+          :class="{ 'lang-selected': currentLocale === locale.id }"
+          @click="setLanguage(locale.id)"
+        >{{ locale.text }}</button>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -36,6 +48,20 @@ export default {
       ],
     };
   },
+  computed: {
+    navStates() {
+      return this.$store.state.navbar;
+    },
+
+    toggleLangStyle() {
+      if (this.navStates.langOpen) return { display: 'block' };
+      return {};
+    },
+
+    currentLocale() {
+      return this.$store.state.i18n.locale;
+    },
+  },
   methods: {
     toggleLang() {
       this.$store.dispatch('toggleNavbarState', { type: 'lang' });
@@ -51,20 +77,7 @@ export default {
       this.$store.dispatch('setLang', { lang });
     },
   },
-  computed: {
-    navStates() {
-      return this.$store.state.navbar;
-    },
 
-    toggleLangStyle() {
-      if (this.navStates.langOpen) return { display: 'block' };
-      return {};
-    },
-
-    currentLocale() {
-      return this.$store.state.i18n.locale;
-    },
-  },
 
 };
 </script>
@@ -74,16 +87,17 @@ export default {
 
 .lang-menu-container {
 
+  display: flex;
+  /* padding: 0 .2em; */
+  /* flex-direction: column; */
+  flex-shrink: 0;
+
   @media (--phone-screen) {
     margin-left: auto;
     flex: 0 1 25%;
     justify-content: flex-end;
   }
 
-  display: flex;
-  /* padding: 0 .2em; */
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
 
   & > div {
     position: relative;
@@ -94,32 +108,27 @@ export default {
   display: flex;
   align-items: center;
   border: none;
+
   &:focus {
     outline: none;
   }
 
-}
-
-.lang-icon {
   color: #333333;
 
-  display: block;
-
-  font-size: 1.2em;
   margin-left: 1rem;
+
   border: none;
   outline: none;
   padding: 0;
   background: transparent;
+
   font-size: 1.4em;
 
   & .down {
-    font-size: 1em;
+    font-size: .75em;
     margin-left: .5rem;
   }
 }
-
-
 
 .lang-menu-dropdown {
   display: none;

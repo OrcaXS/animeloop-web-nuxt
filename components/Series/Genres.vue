@@ -1,10 +1,19 @@
 <template>
   <div class="genres">
-    <template v-for="(genre, index) in genres" v-if="!!genre">
-      <span v-if="index === 0">
+    <template
+      v-for="(genre, index) in genres"
+      v-if="!!genre"
+    >
+      <span
+        v-if="index === 0"
+        :key="index"
+      >
         {{ genre }}
       </span>
-      <span v-else>
+      <span
+        v-else
+        :key="index"
+      >
         / {{ genre }}
       </span>
     </template>

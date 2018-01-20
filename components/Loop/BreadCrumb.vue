@@ -1,14 +1,14 @@
 <template>
   <nav class="breadcrumb-wrapper">
-    <span class="breadcrumb-link title"><slot name="title"></slot></span>
+    <span class="breadcrumb-link title"><slot name="title" /></span>
     <span class="breadcrumb-divider">/</span>
-    <span class="breadcrumb-link"><slot name="no"></slot></span>
+    <span class="breadcrumb-link"><slot name="no" /></span>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'breadcrumb',
+  name: 'Breadcrumb',
 };
 </script>
 

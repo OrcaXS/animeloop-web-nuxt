@@ -1,34 +1,70 @@
 <template>
   <div>
-    <h1>List ordered by season</h1>
-    <SeriesGrid type="listPage" :pageNum="this.selectedPageNum"/>
+    <h1 class="list-page-heading">List ordered by season</h1>
+    <SeriesGrid
+      type="listPage"
+      :page-num="selectedPageNum"
+    />
     <div class="pagination">
-      <div class="page-icon prev-page" :class="{ 'page-icon-disabled': !$route.params.page }">
-        <font-awesome-icon class="page-fa-icon" icon="chevron-left" />
-      </div>
+      <nuxt-link
+        v-if="!disablePrevPage"
+        class="page-icon"
+        :to="{ name: 'list-page', params: { page: (currentPageNumInt === 2) ? null : currentPageNumInt - 1 }}"
+      >
+        <PageIcon
+          :is-enabled="true"
+          direction="left"
+        />
+      </nuxt-link>
+      <PageIcon
+        v-else
+        :is-enabled="false"
+        direction="left"
+      />
       <div class="list-page-select">
-        <select v-model="selectedPageNum" @change="selectChanged">
-          <option v-for="num in pageCount" :value="num.toString()">
+        <select
+          v-model="selectedPageNum"
+          @change="selectChanged"
+        >
+          <option
+            v-for="num in pageCount"
+            :key="num.toString()"
+            :value="num.toString()"
+          >
             {{ num.toString() }}
           </option>
         </select>
       </div>
-      <div class="page-icon next-page" :class="{ 'page-icon-disabled': $route.params.page === pageCount.toString() }">
-        <font-awesome-icon class="page-fa-icon" icon="chevron-right" />
-      </div>
+      <nuxt-link
+        v-if="!disableNextPage"
+        class="page-icon"
+        :to="{ name: 'list-page', params: { page: currentPageNumInt + 1 }}"
+      >
+        <PageIcon
+          :is-enabled="true"
+          direction="right"
+        />
+      </nuxt-link>
+      <PageIcon
+        v-else
+        :is-enabled="false"
+        direction="right"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import SeriesGrid from '~/components/Series/Grid';
+import PageIcon from '~/components/Common/PageIcon';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
 export default {
-  name: 'ListPage',
+  name: 'PageList',
   components: {
     SeriesGrid,
     FontAwesomeIcon,
+    PageIcon,
   },
 
   head() {
@@ -46,10 +82,23 @@ export default {
     }
   },
 
-  asyncData({ route }) {
+  asyncData({ params }) {
     return {
-      selectedPageNum: route.params.page || '1',
+      selectedPageNum: params.page ? params.page.toString() : '1',
+      currentPageNumInt: parseInt(params.page, 10) || 1,
     };
+  },
+
+  computed: {
+    pageCount() {
+      return this.$store.state.series.seriesPageCount;
+    },
+    disablePrevPage() {
+      return this.currentPageNumInt === 1;
+    },
+    disableNextPage() {
+      return this.currentPageNumInt === this.pageCount;
+    },
   },
 
   methods: {
@@ -59,13 +108,6 @@ export default {
       } else {
         this.$router.push({ name: 'list-page', params: { page: this.selectedPageNum } });
       }
-      console.log('changed');
-    },
-  },
-
-  computed: {
-    pageCount() {
-      return this.$store.state.series.seriesPageCount;
     },
   },
 
@@ -74,6 +116,12 @@ export default {
 
 <style scoped lang="postcss">
 @import "../../assets/css/mediaquery.css";
+
+.list-page-heading {
+  @media (--phone-screen) {
+    text-align: center;
+  }
+}
 
 .list-page-grid {
   /* margin: 1em; */

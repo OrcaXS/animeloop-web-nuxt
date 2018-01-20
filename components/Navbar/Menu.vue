@@ -1,21 +1,24 @@
 <template>
-  <div class="burger-menu-container" :style="toggleSearchStyle">
-    <button
-    class="menu-button menu-icon"
-    @click="toggleBurger"
-    aria-label="Menu Icon"
-    >
-    <font-awesome-icon :icon="burgerIcon"></font-awesome-icon>
-  </button>
-  <button
-    class="menu-button"
-    v-if="!navStates.searchOpen"
-    @click="toggleSearch"
-    aria-label="Search Icon"
+  <div
+    class="burger-menu-container"
+    :style="toggleSearchStyle"
   >
-    <font-awesome-icon icon="search"></font-awesome-icon>
-  </button>
-</div>
+    <button
+      class="menu-button menu-icon"
+      @click="toggleBurger"
+      aria-label="Menu Icon"
+    >
+      <FontAwesomeIcon :icon="burgerIcon" />
+    </button>
+    <button
+      class="menu-button"
+      v-if="!navStates.searchOpen"
+      @click="toggleSearch"
+      aria-label="Search Icon"
+    >
+      <FontAwesomeIcon icon="search" />
+    </button>
+  </div>
 </template>
 
 <script>
@@ -92,7 +95,7 @@ export default {
   outline: none;
   padding: 0;
   background: transparent;
-  font-size: 1.4em;
+  font-size: 1.2em;
   /* width: 1.4rem; */
 }
 

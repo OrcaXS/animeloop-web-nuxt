@@ -1,16 +1,30 @@
 <template>
   <div class="loop-info-grid-container">
     <div class="loop-info-tags-container">
-      <TypeTag class="loop-info-season-type" :type="loop.series.type" :season="loop.series.season" />
-      <TimeTag class="loop-info-duration" type="length" :duration="formattedTimeStamps.duration"/>
-      <TimeTag class="loop-info-timestamp" type="timestamp" :start="formattedTimeStamps.begin" :end="formattedTimeStamps.end"/>
+      <TypeTag
+        class="loop-info-season-type"
+        type="withSeason"
+        :anime-type="loop.series.type"
+        :season="loop.series.season"
+      />
+      <TimeTag
+        class="loop-info-duration"
+        type="length"
+        :duration="formattedTimeStamps.duration"
+      />
+      <TimeTag
+        class="loop-info-timestamp"
+        type="timestamp"
+        :start="formattedTimeStamps.begin"
+        :end="formattedTimeStamps.end"
+      />
     </div>
-    <!-- <p class="info-detail">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</p> -->
-    <!-- <p class="info-type" v-t="'loop.length'"></p> -->
-    <!-- <p class="info-detail">{{ formattedTimeStamps.duration }}s</p> -->
     <div class="info-detail">
-      <p class="info-type" v-t="'loop.downloads'" />
-      <Downloads :loopid="this.loopid" />
+      <p
+        class="info-type"
+        v-t="'loop.downloads'"
+      />
+      <Downloads :loopid="loopid" />
     </div>
   </div>
 </template>
@@ -22,11 +36,19 @@ import Downloads from './Downloads';
 
 export default {
   name: 'LoopInfo',
-  props: ['loopid'],
   components: {
     Downloads,
     TimeTag,
     TypeTag,
+  },
+  props: {
+    loopid: {
+      type: String,
+      required: true,
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value);
+      },
+    },
   },
 
   computed: {
@@ -62,6 +84,7 @@ export default {
 .loop-info-tags-container {
   display: flex;
   flex-flow: row wrap;
+  /* font-family: 'Lato', sans-serif; */
   /* justify-content: space-between; */
   /* width: max-content; */
   /* display: grid;

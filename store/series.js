@@ -39,17 +39,20 @@ const series = {
   actions: {
     async fetchSeriesByID({ commit }, { seriesid }) {
       const { data } = await remote.getSeriesByID(seriesid);
+      if (!data) throw new Error('Cannot fetch data');
       console.log(data);
       commit('SET_SERIES', { seriesid, data });
     },
 
     async fetchSeriesPageCount({ commit }) {
       const { data } = await remote.getSeriesPageCount;
+      if (!data) throw new Error('Cannot fetch data');
       commit('SET_SERIES_PAGE_COUNT', { data });
     },
 
     async fetchSeriesByPageNum({ commit, dispatch }, { pageNum }) {
       const { data } = await remote.getSeriesByPageNum(pageNum);
+      if (!data) throw new Error('Cannot fetch data');
       // console.log(data);
       // console.log(pageNum);
       commit('SET_SERIES_BY_PAGE_NUM', { data, pageNum });

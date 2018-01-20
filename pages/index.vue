@@ -1,9 +1,12 @@
 <template>
-  <LoopGrid pageType="random" />
+  <LoopGrid
+    class="home-page"
+    page-type="random"
+  />
 </template>
 
 <script>
-import LoopGrid from '~/components/Loop/LoopGrid';
+import LoopGrid from '~/components/Loop/Grid';
 
 export default {
   name: 'Home',
@@ -17,14 +20,25 @@ export default {
     };
   },
 
-  async fetch({ store }) {
-    await store.dispatch('fetchRandomLoopList', { count: 12 });
+  async fetch({ store, error }) {
+    try {
+      await store.dispatch('fetchRandomLoopList', { count: 12 });
+    } catch (err) {
+      error({ statusCode: 404, message: 'API returned error' });
+    }
   },
 
 };
 
 </script>
+<style scoped lang="postcss">
+@import "../assets/css/mediaquery.css";
 
-<style scoped>
+.home-page {
+  @media (--tablet-screen) {
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+}
 
 </style>

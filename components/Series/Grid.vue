@@ -1,6 +1,10 @@
 <template>
   <div class="series-grid-container">
-    <SeriesCover v-for="id in series" :seriesid="id" :key="id" />
+    <SeriesCover
+      v-for="id in series"
+      :seriesid="id"
+      :key="id"
+    />
   </div>
 </template>
 
@@ -9,12 +13,17 @@ import SeriesCover from './Cover';
 
 export default {
   name: 'SeriesGrid',
+  components: {
+    SeriesCover,
+  },
   props: {
-    type: String,
-    required: true,
-    default: 'list',
-    validator(val) {
-      return ['listPage', 'search'].indexOf(val) > -1;
+    type: {
+      type: String,
+      required: true,
+      default: 'list',
+      validator(val) {
+        return ['listPage', 'search'].indexOf(val) > -1;
+      },
     },
     pageNum: {
       type: String,
@@ -22,9 +31,7 @@ export default {
       default: '1',
     },
   },
-  components: {
-    SeriesCover,
-  },
+
   data() {
     return {
     };
@@ -40,14 +47,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
+@import "../../assets/css/mediaquery.css";
+
 .series-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 225px));
+  grid-template-columns: repeat(auto-fill, calc(225px * 0.8));
+  /* grid-template-columns: repeat(auto-fill, minmax(calc(225px * 0.8), 1fr)); */
   grid-gap: 1em;
   justify-content: center;
 
   margin: 1em 0em;
+
+  @media (--phone-screen) {
+    grid-gap: .75em;
+    margin: 1em auto;
+  }
+
 }
 
 </style>

@@ -1,29 +1,73 @@
 <template>
   <section class="series-page-combined-grid">
-    <div class="upper-half-cover" :style="upperHalfBackgroundImage"></div>
+    <div
+      class="upper-half-cover"
+      :style="upperHalfBackgroundImage"
+    />
     <div class="series-page-upper-grid-container">
       <div class="series-page-cover">
-        <img :src="series.image_url_large" alt="Cover Art"/>
+        <nuxt-link :to="{ name: 'series-id', params: { id: seriesid }}">
+          <img
+            :src="series.image_url_large"
+            alt="Cover Art"
+          >
+        </nuxt-link>
       </div>
-      <Info :seriesID="currentSeriesID" class="series-page-info"/>
+      <Info
+        :seriesid="currentSeriesID"
+        class="series-page-info"
+      />
       <div v-if="!episodes">
-        <p><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
+        <p>
+          <FontAwesomeIcon
+            class="fa-icon"
+            icon="circle-notch"
+            spin
+          />
+        </p>
       </div>
-      <div v-else class="series-page-episode-selector">
+      <div
+        v-else
+        class="series-page-episode-selector"
+      >
         <div class="episode-select">
-          <select required v-model="selectedEpisodeID" @change="selectChanged">
-            <option disabled selected value="">Select Episode...</option>
-            <option v-for="episode in episodes" :value="episode.id">
+          <select
+            required
+            v-model="selectedEpisodeID"
+            @change="selectChanged"
+          >
+            <option
+              disabled
+              selected
+              value=""
+            >Select Episode...</option>
+            <option
+              v-for="episode in episodes"
+              :key="episode.no"
+              :value="episode.id"
+            >
               {{ episode.no }}
             </option>
           </select>
         </div>
       </div>
     </div>
-    <div v-if="$route.name === 'episode-id'" class="series-page-lower-grid-container">
-      <p v-if="!loops"><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
+    <div
+      v-if="$route.name === 'episode-id'"
+      class="series-page-lower-grid-container"
+    >
+      <p v-if="!loops">
+        <FontAwesomeIcon
+          class="fa-icon"
+          icon="circle-notch"
+          spin
+        />
+      </p>
       <div v-else>
-        <LoopGrid pageType="episode" :episodeid="selectedEpisodeID" />
+        <LoopGrid
+          page-type="episode"
+          :episodeid="selectedEpisodeID"
+        />
       </div>
     </div>
   </section>
@@ -32,31 +76,36 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
-import EpisodeGrid from '../EpisodeGrid';
-import LoopGrid from '../Loop/LoopGrid';
+import LoopGrid from '../Loop/Grid';
 import Genres from './Genres';
 import Info from './Info';
 
-
 export default {
   name: 'SeriesPage',
-  props: {
-    seriesid: {
-      type: String,
-      required: true,
-    },
-    episodeid: {
-      type: String,
-      required: false,
-    },
-  },
   components: {
     FontAwesomeIcon,
-    EpisodeGrid,
     LoopGrid,
     Genres,
     Info,
   },
+  props: {
+    seriesid: {
+      type: String,
+      required: true,
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value);
+      },
+    },
+    episodeid: {
+      type: String,
+      required: false,
+      default: '',
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value) || value === '';
+      },
+    },
+  },
+
 
   head() {
     if (this.episode) {
@@ -113,6 +162,12 @@ export default {
     },
   },
 
+  created() {
+    if (!this.episodes) this.fetchEpisodes();
+    if (this.$route.name === 'episode-id') this.fetchLoops();
+  },
+
+
   methods: {
     selectChanged() {
       this.$router.push({ path: `/episode/${this.selectedEpisodeID}` });
@@ -137,12 +192,6 @@ export default {
     },
   },
 
-
-  created() {
-    if (!this.episodeSelectorLoaded) this.fetchEpisodes();
-    if (!this.loopGridLoaded && this.$route.name === 'episode-id') this.fetchLoops();
-  },
-
 };
 </script>
 
@@ -151,7 +200,18 @@ export default {
 
 .series-page-combined-grid {
   /* layout hack specifically for seriespage */
+  /* padding: 0 -1em; */
   margin: 0 -1em;
+  @media (--tablet-screen) {
+    /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
+    @supports(padding: min(0px)) {
+      /* margin: 0 -16px; */
+      margin-left: -3em;
+      margin-right: -3em;
+      /* padding: 1em 3em 0; */
+    }
+  }
+
 
   @media (--phone-screen) {
     margin: 0;
@@ -161,7 +221,7 @@ export default {
 .series-page-upper-grid-container {
   z-index: 1;
   margin-top: -1em;
-  position: relative;
+  /* position: relative; */
 
   display: grid;
   grid-template-columns: 230px auto;
@@ -175,7 +235,18 @@ export default {
 
   padding: 1em 1em 0em;
 
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(224, 224, 224, 0.8));
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8));
+
+  @media (--tablet-screen) {
+    /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
+    @supports(padding: min(0px)) {
+      /* padding: 1em 1em 0em; */
+      /* margin-left: -3em;
+      margin-right: -3em; */
+      padding: 1em 3em 0;
+      /* margin: 0 -16px; */
+    }
+  }
 
   @media (--phone-screen) {
     grid-template-columns: auto;
@@ -200,7 +271,7 @@ export default {
   background-repeat: no-repeat;
   background-position: top;
   filter: blur(60px);
-  width: 100%;
+  width: calc(100vw - 1em);
   height: 40vh;
 }
 

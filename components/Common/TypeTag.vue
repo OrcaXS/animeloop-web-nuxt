@@ -1,11 +1,23 @@
 <template>
   <div>
-    <div v-if="season" class="tag-container">
-      <span class="anime-series-tag large left-half" :style="typeStyleObj(type)">{{ type }}</span>
-      <span class="anime-series-tag large right-half" :style="typeStyleObj(type, 'season')">{{ season }}</span>
+    <div
+      v-if="type === 'withSeason'"
+      class="tag-container"
+    >
+      <span
+        class="anime-series-tag large left-half"
+        :style="typeStyleObj(animeType)"
+      >{{ animeType }}</span>
+      <span
+        class="anime-series-tag large right-half"
+        :style="typeStyleObj(animeType, 'season')"
+      >{{ season }}</span>
     </div>
     <template v-else>
-      <span class="anime-series-tag" :style="typeStyleObj(type)">{{ type }}</span>
+      <span
+        class="anime-series-tag"
+        :style="typeStyleObj(animeType)"
+      >{{ animeType }}</span>
     </template>
   </div>
 </template>
@@ -17,10 +29,20 @@ export default {
     type: {
       type: String,
       required: true,
+      default: 'simple',
+      validator(value) {
+        return value === 'simple' || value === 'withSeason';
+      },
+    },
+    animeType: {
+      type: String,
+      required: true,
+      default: 'Unknown',
     },
     season: {
       type: String,
       required: false,
+      default: '2046-01',
     },
   },
   data() {
@@ -32,7 +54,8 @@ export default {
         Movie: '#ee7800',
         Special: '#b7282e',
         TV: '#1E50A2',
-        default: '#1E50A2',
+        Unknown: '#525252',
+        default: '#525252',
       },
 
     };
@@ -55,9 +78,6 @@ export default {
       };
     },
   },
-  computed: {
-
-  },
 };
 </script>
 
@@ -75,6 +95,7 @@ export default {
   color: white;
   padding: .0em .5em;
   border-radius: 5px;
+  /* font-family: 'Lato', sans-serif; */
   font-size: .9em;
 }
 

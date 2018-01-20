@@ -1,13 +1,23 @@
 <template>
-  <div v-if="type === 'loop'" class="card-detail-grid-container">
+  <div
+    v-if="type === 'loop'"
+    class="card-detail-grid-container"
+  >
     <div class="anime-title">{{ i18nTitle }}</div>
     <div class="episode-detail">
       <div class="episode-no">{{ loop.episode.no }}</div>
-      <TypeTag class="anime-type" :type="loop.series.type" />
+      <TypeTag
+        class="anime-type"
+        type="simple"
+        :anime-type="loop.series.type"
+      />
     </div>
     <div class="time-stamp">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
   </div>
-  <div v-else class="episode-card-detail-container">
+  <div
+    v-else
+    class="episode-card-detail-container"
+  >
     <div class="episode-time-stamp">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
   </div>
 </template>
@@ -24,8 +34,8 @@ export default {
     type: {
       type: String,
       required: true,
-      validator(value) {
-        return value === 'episode' || 'loop';
+      validator(val) {
+        return val === 'episode' || val === 'loop';
       },
     },
     loopid: {

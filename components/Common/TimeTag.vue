@@ -1,19 +1,33 @@
 <template>
   <div>
-    <div v-if="type === 'length'" class="tag-container">
+    <div
+      v-if="type === 'length'"
+      class="tag-container"
+    >
       <span class="time-info-tag left-half">
-        <FontAwesomeIcon class="time-fa-icon" icon="stopwatch"/>
+        <FontAwesomeIcon
+          class="time-fa-icon"
+          icon="stopwatch"
+        />
       </span>
       <span class="time-info-tag right-half">{{ duration }}s</span>
     </div>
-    <div v-if="type === 'timestamp'" class="tag-container full-length">
+    <div
+      v-if="type === 'timestamp'"
+      class="tag-container full-length">
       <span class="time-info-tag left-arrow">
-        <FontAwesomeIcon class="time-fa-icon" icon="long-arrow-alt-left"/>
+        <FontAwesomeIcon
+          class="time-fa-icon"
+          icon="long-arrow-alt-left"
+        />
       </span>
       <span class="time-info-tag start-time">{{ start }}</span>
       <span class="time-info-tag end-time">{{ end }}</span>
       <span class="time-info-tag right-arrow">
-        <FontAwesomeIcon class="time-fa-icon" icon="long-arrow-alt-right"/>
+        <FontAwesomeIcon
+          class="time-fa-icon"
+          icon="long-arrow-alt-right"
+        />
       </span>
     </div>
   </div>
@@ -24,6 +38,9 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
 export default {
   name: 'TypeTag',
+  components: {
+    FontAwesomeIcon,
+  },
   props: {
     type: {
       type: String,
@@ -32,18 +49,18 @@ export default {
     start: {
       type: String,
       required: false,
+      default: '0',
     },
     end: {
       type: String,
       required: false,
+      default: '0',
     },
     duration: {
       type: String,
       required: false,
+      default: '0',
     },
-  },
-  components: {
-    FontAwesomeIcon,
   },
   data() {
     return {
@@ -59,27 +76,6 @@ export default {
       },
 
     };
-  },
-  methods: {
-    // hex2Rgba(hex, alpha) {
-    //   const r = parseInt(hex.substring(1, 3), 16);
-    //   const g = parseInt(hex.substring(3, 5), 16);
-    //   const b = parseInt(hex.substring(5, 7), 16);
-    //   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    // },
-    // typeStyleObj(type, season = false) {
-    //   if (season === 'season') {
-    //     return {
-    //       backgroundColor: this.hex2Rgba(this.colors[type], 0.8),
-    //     };
-    //   }
-    //   return {
-    //     backgroundColor: this.colors[type],
-    //   };
-    // },
-  },
-  computed: {
-
   },
 };
 </script>

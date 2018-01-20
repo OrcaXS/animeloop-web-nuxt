@@ -13,9 +13,9 @@ function tidyTimestamp(time) {
 
 const loop = {
   state: {
-    randomLoopList: [/* Loopid */],
-    randomPageLoopID: '',
-    loopList: {/* [id: episodeid]: Loopid */},
+    randomLoopList: [/* loopid */],
+    randomPageLoopid: '',
+    loopList: {/* [id: episodeid]: loopid */},
     loops: {/* [id: loopid]: Loop */},
     play: false,
   },
@@ -36,7 +36,7 @@ const loop = {
     },
 
     SET_RANDOM_PAGE_LOOP_ID: (state, { data }) => {
-      state.randomPageLoopID = data[0].id;
+      state.randomPageLoopid = data[0].id;
     },
 
     SET_RANDOM_LOOPLIST: (state, { data }) => {
@@ -63,24 +63,27 @@ const loop = {
   actions: {
     async fetchLoopByID({ commit }, { loopid }) {
       const { data } = await remote.getLoopByID(loopid);
+      if (!data) throw new Error('Cannot fetch data');
       commit('SET_LOOP', { loopid, data });
     },
 
     async fetchRandomLoop({ dispatch, commit }) {
       const { data } = await remote.getRandomLoopList(1);
+      if (!data) throw new Error('Cannot fetch data');
       commit('SET_RANDOM_PAGE_LOOP_ID', { data });
-      console.log(data);
       await dispatch('setLoops', { data });
     },
 
     async fetchRandomLoopList({ dispatch, commit }, { count }) {
       const { data } = await remote.getRandomLoopList(count);
+      if (!data) throw new Error('Cannot fetch data');
       commit('SET_RANDOM_LOOPLIST', { data });
       await dispatch('setLoops', { data });
     },
 
     async fetchLoopsByEpisodeID({ dispatch, commit }, { episodeid }) {
       const { data } = await remote.getLoopsByEpisodeID(episodeid);
+      if (!data) throw new Error('Cannot fetch data');
       commit('SET_LOOPLIST', { episodeid, data });
       await dispatch('setLoops', { data });
     },

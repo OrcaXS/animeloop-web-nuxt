@@ -37,19 +37,12 @@ export default {
       if (this.navStates.burgerOpen) return { 'flex-wrap': 'wrap' };
       return {};
     },
-    // toggleWrapHackStyle() {
-    //   if (this.navStates.burgerOpen)
-    // },
 
   },
-  // beforeRouteUpdate(to, from, next) {
-  //   if (this.navStates.burgerOpen) this.$store.dispatch('toggleNavbarState', { type: 'burger' });
-  //   next();
-  // },
 };
 </script>
 
-  <style scoped lang="postcss">
+<style scoped lang="postcss">
 @import "../../assets/css/mediaquery.css";
 
 nav {
@@ -66,7 +59,7 @@ nav {
     backdrop-filter: blur(20px);
   }
 
-  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
 
   padding: 0 1em;
   display: flex;

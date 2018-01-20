@@ -1,10 +1,12 @@
 <template>
-  <div class="nuxt-progress" :style="{
-    'width': percent+'%',
-    'height': height,
-    'background-color': canSuccess? color : failedColor,
-    'opacity': show ? 1 : 0
-  }"></div>
+  <div
+    class="nuxt-progress"
+    :style="{
+      'width': percent+'%',
+      'height': height,
+      'background-color': canSuccess? color : failedColor,
+      'opacity': show ? 1 : 0
+  }" />
 </template>
 
 <script>
@@ -12,7 +14,7 @@
 import Vue from 'vue';
 
 export default {
-  name: 'nuxt-loading',
+  name: 'NuxtLoading',
   data() {
     return {
       percent: 0,

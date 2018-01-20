@@ -1,34 +1,48 @@
 <template>
-  <div v-if="pageType === 'random'" class="loop-grid-container">
-    <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop">
+  <div
+    v-if="pageType === 'random'"
+    class="loop-grid-container"
+  >
+    <div
+      class="loop-card-flex-container"
+      v-for="loop in loopList"
+      :key="loop"
+    >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop }}">
         <LoopCard
-        class="loop-card"
-        :loopid="loop"
-        loopType="gif"
-        pageType="random"
+          class="loop-card"
+          :loopid="loop"
+          loop-type="gif"
+          page-type="random"
         />
         <CardDetails
-        class="card-detail"
-        :loopid="loop"
-        type="loop"
+          class="card-detail"
+          :loopid="loop"
+          type="loop"
         />
       </nuxt-link>
     </div>
   </div>
-  <div v-else class="loop-grid-container">
-    <div class="loop-card-flex-container" v-for="loop in loopList" :key="loop.id">
+  <div
+    v-else
+    class="loop-grid-container"
+  >
+    <div
+      class="loop-card-flex-container"
+      v-for="loop in loopList"
+      :key="loop.id"
+    >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop.id }}">
         <LoopCard
-        class="loop-card"
-        :loopid="loop.id"
-        loopType="gif"
-        :pageType="pageType"
+          class="loop-card"
+          :loopid="loop.id"
+          loop-type="gif"
+          :page-type="pageType"
         />
         <CardDetails
-        class="card-detail"
-        :loopid="loop.id"
-        type="episode"
+          class="card-detail"
+          :loopid="loop.id"
+          type="episode"
         />
       </nuxt-link>
     </div>
@@ -36,7 +50,7 @@
 </template>
 
 <script>
-import LoopCard from './LoopCard';
+import LoopCard from './Card';
 import CardDetails from './CardDetails';
 
 export default {

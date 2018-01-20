@@ -6,23 +6,51 @@
       @mouseover="onHovered()"
       @mouseout="onUnhovered()"
     >
-      <p class="loading-spinner" v-if="!canplaythrough"><font-awesome-icon class="fa-icon" icon="circle-notch" spin /></p>
-      <video
-      ref="video"
-      loop
-      muted
-      autoplay
-      playsInline
-      @canplaythrough.once="canplay"
-      vcloak
+      <p
+        class="loading-spinner"
+        v-if="!canplaythrough"
       >
-        <source :src="files.mp4_720p" type="video/mp4" media="screen">
-        <source :src="files.mp4_1080p" type="video/mp4" media="(screen and (min-device-width: 1000px))">
-        <track label="English" kind="captions" srcLang="en" />
+        <FontAwesomeIcon
+          class="fa-icon"
+          icon="circle-notch"
+          spin
+        />
+      </p>
+      <video
+        ref="video"
+        loop
+        muted
+        autoplay
+        playsInline
+        @canplaythrough.once="canplay"
+        vcloak
+      >
+        <source
+          :src="files.mp4_720p"
+          type="video/mp4"
+          media="screen"
+        >
+        <source
+          :src="files.mp4_1080p"
+          type="video/mp4"
+          media="(screen and (min-device-width: 1000px))"
+        >
+        <track
+          label="English"
+          kind="captions"
+          srcLang="en"
+        >
       </video>
     </div>
-    <div v-else class="gif-container" :class="{ 'fixed-img-size' : pageType === 'random' }">
-      <gif-player :gifsrc="files.gif_360p" :jpgsrc="files.jpg_360p"></gif-player>
+    <div
+      v-else
+      class="gif-container"
+      :class="{ 'fixed-img-size' : pageType === 'random' }"
+    >
+      <GifPlayer
+        :gifsrc="files.gif_360p"
+        :jpgsrc="files.jpg_360p"
+      />
     </div>
   </section>
 </template>
@@ -33,10 +61,17 @@ import GifPlayer from './GifPlayer';
 
 export default {
   name: 'LoopCard',
+  components: {
+    GifPlayer,
+    FontAwesomeIcon,
+  },
   props: {
     loopid: {
       type: String,
       required: true,
+      validator(value) {
+        return /^[a-z0-9]{24}$/.test(value);
+      },
     },
     loopType: {
       type: String,
@@ -49,17 +84,13 @@ export default {
     pageType: {
       type: String,
       required: true,
-      default: 'mp4',
+      default: 'loop',
       validator(val) {
         return ['random', 'episode', 'loop'].indexOf(val) > -1;
       },
     },
+  },
 
-  },
-  components: {
-    GifPlayer,
-    FontAwesomeIcon,
-  },
   data() {
     return {
       hovered: false,
@@ -98,7 +129,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
+@import "../../assets/css/mediaquery.css";
+
 .loop-card-wrapper {
 }
 
@@ -110,12 +143,25 @@ export default {
 
   & > video {
     max-width: 100%;
-    max-height: calc(100vh - 13rem);
+    max-height: calc(100vh - 15rem);
     object-fit: contain;
+
+    @media (--phone-screen) {
+      width: 100%;
+      /* height: 100%; */
+      /* max-height: unset; */
+    }
+
+    @media (--tablet-screen) {
+      width: 75%;
+      max-height: calc(100vh - 5em);
+    }
+
   }
 }
 
 .gif-container {
+  display: flex;
   /* proportional hack */
   /* height: 0; */
   /* padding-bottom: 56.25%; */
