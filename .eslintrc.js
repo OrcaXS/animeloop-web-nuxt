@@ -2,17 +2,20 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
+    parser: 'babel-eslint',
     sourceType: 'module'
   },
   env: {
     browser: true,
   },
-  extends: 'airbnb-base',
+  extends: [
+    'airbnb-base',
+    'plugin:vue/recommended',
+  ],
   // required to lint *.vue files
   plugins: [
-    'html'
+    // 'html'
   ],
   // check if imports actually resolve
   settings: {
@@ -22,6 +25,7 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    'max-len': 'warn',
     'no-unused-vars': 'warn',
     'no-trailing-spaces': 'warn',
     'no-param-reassign': ['error', {
