@@ -11,6 +11,7 @@
 
 <script>
 import NavbarContainer from '~/components/Navbar';
+import ogIcon from '~/assets/images/icon.png';
 
 export default {
   name: 'Layout',
@@ -22,6 +23,11 @@ export default {
       htmlAttrs: {
         lang: this.langAttr,
       },
+      meta: [
+        { vmid: 'og:title', name: 'og:title', content: 'Animeloop Beta' },
+        { vmid: 'og:image', name: 'og:image', content: ogIcon },
+        { vmid: 'og:description', property: 'og:description', content: 'Animeloop Web Frontend' },
+      ],
     };
   },
   computed: {
