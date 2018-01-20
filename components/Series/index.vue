@@ -278,6 +278,9 @@ export default {
 .series-page-cover {
   grid-area: series-cover;
   justify-self: center;
+  & > a > img {
+    border-radius: 3px;
+  }
 }
 
 .series-page-info {
