@@ -4,7 +4,7 @@
       <NavbarContainer />
     </header>
     <main class="layout-main">
-      <nuxt/>
+      <nuxt />
     </main>
   </div>
 </template>
@@ -24,9 +24,9 @@ export default {
         lang: this.langAttr,
       },
       meta: [
-        { vmid: 'og:title', name: 'og:title', content: 'Animeloop Beta' },
-        { vmid: 'og:image', name: 'og:image', content: ogIcon },
-        { vmid: 'og:description', property: 'og:description', content: 'Animeloop Web Frontend' },
+        // { vmid: 'og:title', name: 'og:title', content: 'Animeloop Beta' },
+        // { vmid: 'og:image', name: 'og:image', content: ogIcon },
+        // { vmid: 'og:description', property: 'og:description', content: 'Animeloop Web Frontend' },
       ],
     };
   },
