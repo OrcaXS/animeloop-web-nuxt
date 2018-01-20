@@ -10,11 +10,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-      { hid: 'description', name: 'description', content: 'Animeloop-Nuxt' },
+      { hid: 'description', name: 'description', content: 'Animeloop Beta' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
+    // link: [
+    //   { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    // ],
   },
   /*
   ** Customize the progress bar color
@@ -75,6 +75,8 @@ module.exports = {
   ],
 
   manifest: {
+    name: 'Animeloop Beta',
+    description: 'Animeloop Web Frontend',
     theme_color: '#FFFFFF',
   },
 

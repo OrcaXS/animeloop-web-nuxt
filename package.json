@@ -1,7 +1,7 @@
 {
   "name": "animeloop-web-nuxt",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "Animeloop frontend, written from scratch using Nuxt.js",
   "author": "OrcaXS Suen <sun16281394@gmail.com>",
   "private": true,
   "config": {

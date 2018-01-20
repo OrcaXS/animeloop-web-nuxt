@@ -17,7 +17,7 @@
         :seriesid="currentSeriesID"
         class="series-page-info"
       />
-      <div v-if="!episodes">
+      <div v-if="!episodeList">
         <p>
           <FontAwesomeIcon
             class="fa-icon"
@@ -42,7 +42,7 @@
               value=""
             >Select Episode...</option>
             <option
-              v-for="episode in episodes"
+              v-for="episode in episodeList"
               :key="episode.no"
               :value="episode.id"
             >
@@ -104,17 +104,26 @@ export default {
         return /^[a-z0-9]{24}$/.test(value) || value === '';
       },
     },
+    episodeno: {
+      type: String,
+      required: false,
+      default: '-1',
+      validator(value) {
+        return /^[a-z0-9]{0,10}$/.test(value) || value === '';
+      },
+    },
   },
 
 
   head() {
-    if (this.episode) {
-      return {
-        title: `${this.episodes.no} | ${this.i18nTitle} | Animeloop`,
-      };
-    }
     return {
-      title: `${this.i18nTitle} | Animeloop`,
+      title: this.metaTitle,
+      meta: [
+        { vmid: 'og:title', name: 'og:title', content: this.episodeid ? `${this.series.title_japanese} ${this.episodeno}` : this.series.title_japanese },
+        { vmid: 'og:description', property: 'og:description', content: this.series.description },
+        { vmid: 'og:site_name', name: 'og:site_name', content: 'Animeloop Beta' },
+        { vmid: 'og:image', property: 'og:image', content: this.series.image_url_large },
+      ],
     };
   },
 
@@ -126,6 +135,13 @@ export default {
   },
 
   computed: {
+    metaTitle() {
+      if (this.episodeid) {
+        return `${this.episodeno} | ${this.i18nTitle} | Animeloop`;
+      }
+      return `${this.i18nTitle} | Animeloop`;
+    },
+
     i18nTitle() {
       switch (this.currentLocale) {
         case 'ja':
@@ -147,7 +163,7 @@ export default {
       return this.$store.state.loop.loopList[this.selectedEpisodeID];
     },
 
-    episodes() {
+    episodeList() {
       return this.$store.state.episode.episodeList[this.currentSeriesID];
     },
 
@@ -163,7 +179,7 @@ export default {
   },
 
   created() {
-    if (!this.episodes) this.fetchEpisodes();
+    if (!this.episodeList) this.fetchEpisodes();
     if (this.$route.name === 'episode-id') this.fetchLoops();
   },
 

@@ -2,6 +2,7 @@
   <SeriesPage
     :seriesid="episodes.series.id"
     :episodeid="episodeid"
+    :episodeno="episodes.no"
   />
 </template>
 
