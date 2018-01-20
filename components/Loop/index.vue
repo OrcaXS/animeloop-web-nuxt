@@ -101,7 +101,9 @@ export default {
   "loop-info vertical-title"
   "loop-info vertical-title";
 
-  max-height: calc(100vh - 3rem);
+  align-content: start;
+
+  /* max-height: calc(100vh - 3rem); */
   /* margin: 0 1em; */
 
   @media (--tablet-screen) {
@@ -131,7 +133,7 @@ export default {
   color: #BBBBBB;
   font-size: 3em;
   font-family: serif;
-  max-height: 80%;
+  max-height: calc(100vh - 5rem);
 
   white-space: normal;
   word-break: normal;

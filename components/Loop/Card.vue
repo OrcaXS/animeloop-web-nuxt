@@ -153,7 +153,7 @@ export default {
     }
 
     @media (--tablet-screen) {
-      width: 75%;
+      width: 100%;
       max-height: calc(100vh - 5em);
     }
 
