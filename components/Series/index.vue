@@ -109,7 +109,7 @@ export default {
       required: false,
       default: '-1',
       validator(value) {
-        return /^[a-z0-9]{0,10}$/.test(value) || value === '';
+        return /^[\w]{0,10}$/.test(value) || value === '';
       },
     },
   },
