@@ -77,6 +77,8 @@ module.exports = {
   manifest: {
     name: 'Animeloop Beta',
     description: 'Animeloop Web Frontend',
+    ogTitle: false,
+    ogDescription: false,
     theme_color: '#FFFFFF',
   },
 
