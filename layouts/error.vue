@@ -1,11 +1,17 @@
 <template>
-  <div class="container">
+  <div
+    class="container"
+    lang="en"
+  >
     <div v-if="error.statusCode === 404">
       <img
         src="~/assets/images/transparent_akkarin.jpg"
         alt="Akkarin not found image"
       >
-      <p class="img-link">(Credit: <a href="https://www.pixiv.net/member_illust.php?mode=medium&illust_id=22876424">はらぺこ@仕事につきROM専</a>)</p>
+      <p class="img-link">(Credit: <a
+        href="https://www.pixiv.net/member_illust.php?mode=medium&illust_id=22876424"
+        lang="ja"
+      >はらぺこ@仕事につきROM専</a>)</p>
       <h1>404 Page not found</h1>
     </div>
     <div v-else>
