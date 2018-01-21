@@ -96,12 +96,12 @@ export default {
   padding: 0;
   background: transparent;
   font-size: 1.2em;
-  /* width: 1.4rem; */
+  width: 1.3rem;
 }
 
 /* fixed menu-icon width */
 .menu-icon {
-  width: 1.2rem;
+  width: 1.1rem;
 }
 
 /* .search-icon {

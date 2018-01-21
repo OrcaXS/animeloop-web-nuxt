@@ -50,7 +50,7 @@ export default {
       return this.$store.state.navbar;
     },
     toggleContainerStyle() {
-      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.4rem)' };
+      if (this.navStates.searchOpen) return { display: 'flex', 'max-width': 'calc(100% - 2.1rem)' };
       return {};
     },
     toggleArrowButtonStyle() {
