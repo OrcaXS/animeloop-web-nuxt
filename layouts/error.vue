@@ -35,6 +35,10 @@ export default {
   head() {
     return {
       title: 'Error | Animeloop',
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: 'Error | Animeloop Beta' },
+        { hid: 'og:description', property: 'og:description', content: 'Animeloop Beta Error Page' },
+      ],
     };
   },
   computed: {
