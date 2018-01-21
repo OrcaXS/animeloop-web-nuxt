@@ -24,9 +24,9 @@ export default {
         lang: this.langAttr,
       },
       meta: [
-        // { vmid: 'og:title', name: 'og:title', content: 'Animeloop Beta' },
-        // { vmid: 'og:image', name: 'og:image', content: ogIcon },
-        // { vmid: 'og:description', property: 'og:description', content: 'Animeloop Web Frontend' },
+        { hid: 'og:title', name: 'og:title', content: 'Animeloop Beta' },
+        { hid: 'og:image', name: 'og:image', content: ogIcon },
+        { hid: 'og:description', property: 'og:description', content: 'Animeloop Web Frontend' },
       ],
     };
   },

@@ -107,7 +107,7 @@ export default {
     episodeno: {
       type: String,
       required: false,
-      default: '-1',
+      default: '',
       validator(value) {
         return /^[\w]{0,10}$/.test(value) || value === '';
       },
@@ -119,10 +119,10 @@ export default {
     return {
       title: this.metaTitle,
       meta: [
-        { vmid: 'og:title', name: 'og:title', content: this.episodeid ? `${this.series.title_japanese} ${this.episodeno}` : this.series.title_japanese },
-        { vmid: 'og:description', property: 'og:description', content: this.series.description },
-        { vmid: 'og:site_name', name: 'og:site_name', content: 'Animeloop Beta' },
-        { vmid: 'og:image', property: 'og:image', content: this.series.image_url_large },
+        { hid: 'og:title', name: 'og:title', content: this.episodeid ? `${this.series.title_japanese} ${this.episodeno}` : this.series.title_japanese },
+        { hid: 'og:description', property: 'og:description', content: this.series.description },
+        { hid: 'og:site_name', name: 'og:site_name', content: 'Animeloop Beta' },
+        { hid: 'og:image', property: 'og:image', content: this.series.image_url_large },
       ],
     };
   },
