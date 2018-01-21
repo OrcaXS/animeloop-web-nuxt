@@ -36,7 +36,6 @@ async function callApi(request) {
   try {
     const res = await fetch(url, init);
     const json = await res.json();
-    console.log(url);
     return json;
   } catch (error) {
     throw error;

@@ -39,6 +39,6 @@ $ yarn generate
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
 ## Credit
-[Nanozuki](https://twitter.com/nanozukicrows): API Handler, Navbar
+@Nanozuki (Telegram): API Handler, Navbar
 
 [OrcaXS Suen](https://github.com/orcaxs): Other stuffs

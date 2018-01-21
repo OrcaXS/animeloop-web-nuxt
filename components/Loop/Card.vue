@@ -104,26 +104,18 @@ export default {
     },
   },
   methods: {
-    // videoLoaded() {
-    //   console.log('imgLoaded');
-    //   this.isVideoLoaded = true;
-    // },
     onHovered() {
-      // console.log('hovered');
       if (!this.hovered) {
         this.hovered = true;
         this.$refs.video.play();
       }
     },
     onUnhovered() {
-      // console.log('unhovered');
       this.hovered = false;
       this.$refs.video.pause();
     },
     canplay() {
-      console.log('canplaythrough');
       this.canplaythrough = true;
-      // this.showVid = true;
     },
   },
 };

@@ -40,7 +40,6 @@ const series = {
     async fetchSeriesByID({ commit }, { seriesid }) {
       const { data } = await remote.getSeriesByID(seriesid);
       if (!data) throw new Error('Cannot fetch data');
-      console.log(data);
       commit('SET_SERIES', { seriesid, data });
     },
 

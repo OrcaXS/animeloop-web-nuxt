@@ -194,16 +194,15 @@ export default {
       try {
         this.$store.dispatch('fetchEpisodesBySeriesID', { seriesid: this.currentSeriesID });
       } catch (e) {
-        console.log(e);
+        throw new Error(e);
       }
     },
 
     fetchLoops() {
-      console.log('fetching Loops');
       try {
         this.$store.dispatch('fetchLoopsByEpisodeID', { episodeid: this.selectedEpisodeID });
       } catch (e) {
-        console.log(e);
+        throw new Error(e);
       }
     },
   },

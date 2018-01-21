@@ -26,7 +26,6 @@ export default {
     try {
       await store.dispatch('fetchEpisodeByID', { episodeid: id });
     } catch (err) {
-      console.log(err);
       error({ statusCode: 404, message: 'API returned Error' });
     }
   },
