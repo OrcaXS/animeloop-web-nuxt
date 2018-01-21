@@ -72,7 +72,7 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  /* font-family: monospace; */
 
   height: 1.5em;
   margin: .25em;
