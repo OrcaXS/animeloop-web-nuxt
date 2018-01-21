@@ -1,22 +1,44 @@
 # animeloop-web-nuxt
+Animeloop web app written from scratch, built with Nuxt.js.
 
-> Nuxt.js project
+> Currently serves as Animeloop Beta.
+
+
+## Features
+- Service Worker
+- Dirty i18n
+
+## Todo
+
+- [ ] Clean up Spaghetti code 
+- [ ] SeriesPage code refactoring
+- [ ] Unit Testing
+- [ ] ListPage by Season
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-$ npm install # Or yarn install
+# add API config
+$ cp config.example.js config.js
+$ $EDITOR config.js
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3333
+$ yarn dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn generate
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+## Credit
+[Nanozuki](https://twitter.com/nanozukicrows): API Handler, Navbar
+
+[OrcaXS Suen](https://github.com/orcaxs): Other stuffs
