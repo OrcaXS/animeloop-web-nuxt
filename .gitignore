@@ -25,6 +25,7 @@ dist
 sw.*
 
 # config
+config.js
 
 # Heroku
 .env
