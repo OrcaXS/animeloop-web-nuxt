@@ -12,9 +12,6 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       { hid: 'description', name: 'description', content: 'Animeloop Beta' },
     ],
-    // link: [
-    //   { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    // ],
   },
   /*
   ** Customize the progress bar color
@@ -69,7 +66,7 @@ module.exports = {
   },
 
   modules: [
-    '@nuxtjs/webpackmonitor',
+    // '@nuxtjs/webpackmonitor',
     'nuxt-webpackdashboard',
     '@nuxtjs/pwa',
   ],
