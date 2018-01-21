@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container"
+    class="error-container"
     lang="en"
   >
     <div v-if="error.statusCode === 404">
@@ -16,11 +16,11 @@
     </div>
     <div v-else>
       <h1>An error occured</h1>
-      <!-- <pre>{{ JSON.Stringify(error) }}</pre> -->
       <pre>{{ error.statusCode }}</pre>
     </div>
-    <pre>{{ error.message }}</pre>
-    <!-- <nuxt-link to="/">Home page</nuxt-link> -->
+    <div class="error-message">
+      <pre>{{ error.message }}</pre>
+    </div>
   </div>
 </template>
 
@@ -44,9 +44,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.error-container {
   font-family: sans-serif;
   text-align: center;
+  max-width: 100%;
   /* height: 100vw; */
 }
 
@@ -58,11 +59,20 @@ export default {
   margin-bottom: 1em;
 }
 
+.error-message {
+  max-width: 100%;
+}
+
 h1 {
   font-size: 20px;
 }
 
 img {
+  max-width: 100%;
   margin-bottom: 1em;
+}
+
+pre {
+  white-space: pre-wrap;
 }
 </style>
