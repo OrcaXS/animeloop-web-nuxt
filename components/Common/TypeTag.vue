@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tag">
     <div
       v-if="type === 'withSeason'"
       class="tag-container"
@@ -85,17 +85,17 @@ export default {
 .tag-container {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
 }
 
 .anime-series-tag {
   max-width: 8em;
   max-height: 1.5em;
   text-align: center;
-  /* line-height: 1.5em; */
   color: white;
   padding: .0em .5em;
   border-radius: 5px;
-  /* font-family: 'Lato', sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
   font-size: .9em;
 }
 

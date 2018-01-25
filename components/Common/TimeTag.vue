@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tag">
     <div
       v-if="type === 'length'"
       class="tag-container"
@@ -137,6 +137,10 @@ export default {
 .right-arrow {
   border-radius: 0 5px 5px 0;
   padding-left: 0em;
+}
+
+.time-fa-icon {
+  align-self: center;
 }
 
 </style>

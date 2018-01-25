@@ -31,7 +31,6 @@ export default {
 }
 
 .breadcrumb-link {
-  /* vertical-align: baseline; */
   display: inline-block;
   max-width: calc(100% - 3em);
 
