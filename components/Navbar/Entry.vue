@@ -105,7 +105,7 @@ export default {
   color: #333333;
 
   &:hover {
-    border-bottom: .2rem solid #1e50a2;
+    border-bottom: .15rem solid #1e50a2;
     padding-bottom: .2rem;
   }
 

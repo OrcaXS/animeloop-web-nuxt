@@ -113,6 +113,11 @@ export default {
     outline: none;
   }
 
+  &:hover {
+    border-bottom: .15rem solid #1e50a2;
+    margin-bottom: -.15rem;
+  }
+
   color: #333333;
 
   margin-left: 1rem;
@@ -148,10 +153,14 @@ export default {
   cursor: pointer;
 
   color: #333333;
+
+  &:hover {
+    padding: .6em .6em .6em .3em;
+    border-left: .3em solid rgba(12, 31, 64, 0.5);
+  }
 }
 
 .lang-selected {
-  /* margin: 0; */
   padding: .6em .6em .6em .3em;
   border-left: .3em solid #1E50A2;
 }
