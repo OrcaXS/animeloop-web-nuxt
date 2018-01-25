@@ -39,6 +39,8 @@ $ yarn generate
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
 ## Credit
-@Nanozuki (Telegram): API Handler, Navbar
+Moeoverflow: Animeloop API Backend
 
-[OrcaXS Suen](https://github.com/orcaxs): Other stuffs
+@Nanozuki (Telegram): API Handler, Navbar, Some code formatting
+
+[OrcaXS Suen](https://github.com/orcaxs): Everything else
