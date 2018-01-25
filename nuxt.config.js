@@ -12,6 +12,9 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       { hid: 'description', name: 'description', content: 'Animeloop Beta' },
     ],
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans' },
+    ],
   },
   /*
   ** Customize the progress bar color
@@ -73,6 +76,7 @@ module.exports = {
 
   manifest: {
     name: 'Animeloop Beta',
+    short_name: 'Animeloop β',
     description: 'Animeloop Web Frontend',
     ogTitle: false,
     ogDescription: false,
