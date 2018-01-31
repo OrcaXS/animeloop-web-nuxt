@@ -1,0 +1,27 @@
+image: Visual Studio 2017
+platform: x64
+
+environment:
+  nodejs_version: "9"
+
+cache:
+  - node_modules
+
+init:
+  - git config --global core.autocrlf input
+  # - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+install:
+  - ps: Install-Product node 9 x64
+  - echo Preparing API config...
+  - ps: Add-Content config.js "const apiPrefix = `'$Env:ANIMELOOP_API_URL`';"
+  - ps: Add-Content config.js "`r`nexport default apiPrefix;"
+
+  - echo Performing yarn install...
+  - yarn install
+
+build_script:
+  - echo Performing yarn build
+  - yarn build
+
+test: off
