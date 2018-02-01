@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "9"
+
+install:
+  - echo "const apiPrefix = '$ANIMELOOP_API_URL';" > config.js
+  - echo "" >> config.js
+  - echo "export default apiPrefix" >> config.js
+  - yarn install
+
+script:
+  - yarn build
