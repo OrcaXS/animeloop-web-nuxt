@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .search-heading-text {
   /* font-size: 4vw; */

@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .series-grid-container {
   display: grid;

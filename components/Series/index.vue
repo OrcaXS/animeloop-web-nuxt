@@ -211,7 +211,7 @@ export default {
 </script>
 
 <style scoped>
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .series-page-combined-grid {
   /* layout hack specifically for seriespage */

@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .nuxt-progress {
   position: fixed;

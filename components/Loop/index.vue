@@ -89,7 +89,7 @@ export default {
 
 <style scoped lang="postcss">
 @import '~/assets/css/colors.css';
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .loop-page-grid-container {
   display: grid;

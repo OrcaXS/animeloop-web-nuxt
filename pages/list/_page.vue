@@ -118,7 +118,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 .list-page-heading {
   @media (--phone-screen) {

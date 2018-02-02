@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/mediaquery.css";
+@import "~/assets/css/mediaqueries.css";
 
 html {
   font-family: "Helvetica Neue", system-ui, sans-serif;
