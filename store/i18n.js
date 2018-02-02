@@ -13,8 +13,6 @@ const i18n = {
       Vue.set(state, 'locale', lang);
       // state.locale = lang;
       // VueCookie.set('locale', lang);
-
-
       // this.app.$i18n.locale = lang;
     },
   },
@@ -27,7 +25,7 @@ const i18n = {
       await dispatch('setLangCookie', { lang });
       await dispatch('setAppLang', { lang });
     },
-    async setLangCookie({ commit }, { lang }) {
+    async setLangCookie({ lang }) {
       try {
         // console.log(lang);
         this.app.$cookies.set('locale', lang);
@@ -36,7 +34,7 @@ const i18n = {
           ${err}`);
       }
     },
-    async setAppLang({ commit }, { lang }) {
+    async setAppLang({ lang }) {
       try {
         // console.log(lang);
         // console.table(this.app);

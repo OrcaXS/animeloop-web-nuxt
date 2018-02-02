@@ -83,7 +83,8 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/colors.css";
+@import "~/assets/css/mediaquery.css";
 
 .lang-menu-container {
 
@@ -114,7 +115,7 @@ export default {
   }
 
   &:hover {
-    border-bottom: .15rem solid #1e50a2;
+    border-bottom: .15rem solid var(--key-color-light);
     margin-bottom: -.15rem;
   }
 
@@ -152,17 +153,17 @@ export default {
   padding: .6em;
   cursor: pointer;
 
-  color: #333333;
+  color: var(--black1);
 
   &:hover {
     padding: .6em .6em .6em .3em;
-    border-left: .3em solid rgba(12, 31, 64, 0.5);
+    border-left: .3em solid rgba(var(--key-color-light), 0.8);
   }
 }
 
 .lang-selected {
   padding: .6em .6em .6em .3em;
-  border-left: .3em solid #1E50A2;
+  border-left: .3em solid var(--key-color-light);
 }
 
 

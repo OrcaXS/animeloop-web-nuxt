@@ -25,7 +25,7 @@ const search = {
   },
 
   actions: {
-    async fetchSeriesByString({ dispatch, commit, state }, { searchString }) {
+    async fetchSeriesByString({ dispatch, commit }, { searchString }) {
       if (/^[\w]{0,3}$/.test(searchString)) throw new Error('Keyword too short');
       commit('SET_SEARCHING', { data: true });
       const { data } = await remote.getSeriesByString(searchString);

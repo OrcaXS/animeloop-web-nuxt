@@ -39,10 +39,9 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 html {
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
   font-family: "Helvetica Neue", system-ui, sans-serif;
   font-size: 16px;
   word-spacing: 1px;

@@ -9,7 +9,10 @@
       <nuxt-link
         v-if="!disablePrevPage"
         class="page-icon"
-        :to="{ name: 'list-page', params: { page: (currentPageNumInt === 2) ? null : currentPageNumInt - 1 }}"
+        :to="{
+          name: 'list-page',
+          params: { page: (currentPageNumInt === 2) ? null : currentPageNumInt - 1 }
+        }"
       >
         <PageIcon
           :is-enabled="true"
@@ -115,7 +118,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .list-page-heading {
   @media (--phone-screen) {

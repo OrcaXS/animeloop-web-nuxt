@@ -1,4 +1,4 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import remote from '~/assets/js/api/fetch';
 
 const series = {

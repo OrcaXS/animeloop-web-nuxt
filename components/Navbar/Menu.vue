@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .burger-menu-container {
   display: none;
@@ -87,7 +87,7 @@ export default {
 }
 
 .menu-button {
-  color: #333333;
+  color: var(--black1);
 
   display: block;
   margin-right: .5rem;

@@ -62,34 +62,11 @@ export default {
       default: '0',
     },
   },
-  data() {
-    return {
-      colors: {
-        lightGrey: '#969696',
-        darkGrey: '#6A6A6A',
-        lightBlack: '#333',
-        ONA: '#47885e',
-        Movie: '#ee7800',
-        Special: '#b7282e',
-        TV: '#1E50A2',
-        default: '#1E50A2',
-      },
-
-    };
-  },
 };
 </script>
 
 <style scoped lang="postcss">
-:root {
-  --grey1: #E6E6E6;
-  --grey2: #D6D6D6;
-  --grey3: #969798;
-  --grey4: #818181;
-  --grey5: #6A6A6A;
-  --grey6: #525252;
-  --black1: #333;
-}
+@import "~/assets/css/colors.css";
 
 .tag-container {
   display: flex;
@@ -119,10 +96,7 @@ export default {
 }
 
 .full-length {
-
-  /* border-radius: 5px; */
   color: var(--grey5);
-  /* background-color: var(--grey1); */
 
   & > span {
     background-color: var(--grey1);

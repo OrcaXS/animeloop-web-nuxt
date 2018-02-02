@@ -211,7 +211,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .series-page-combined-grid {
   /* layout hack specifically for seriespage */
@@ -250,7 +250,12 @@ export default {
 
   padding: 1em 1em 0em;
 
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.8));
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.8)
+  );
 
   @media (--tablet-screen) {
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */

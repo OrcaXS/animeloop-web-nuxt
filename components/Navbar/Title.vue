@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .logo {
   font-size: 1.2em;

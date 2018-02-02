@@ -18,7 +18,9 @@
     v-else
     class="episode-card-detail-container"
   >
-    <div class="episode-time-stamp">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
+    <div class="episode-time-stamp">
+      {{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}
+    </div>
   </div>
 </template>
 

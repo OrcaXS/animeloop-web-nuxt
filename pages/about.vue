@@ -1,6 +1,7 @@
 <template>
   <div class="about-page">
     <h1>Animeloop Beta</h1>
+    <!-- eslint-disable max-len -->
     <p>
       <a href="https://github.com/OrcaXS/animeloop-web-nuxt">Animeloop-web-nuxt</a> is an open-source web app built with <a href="https://nuxtjs.org">Nuxt.js</a>, aims to provide better experience than the original Animeloop-server. <br> Currently serves as Animeloop Beta.
     </p>
@@ -19,6 +20,7 @@
     <p>
       In addition, special thanks to <a href="https://whatanime.ga/">whatanime.ga</a> provided by the animation screenshot recognition service support. Thanks to <a href="https://twitter.com/democyann">呆萌ちゃん</a> for Japanese translation, <a href="https://src.moe/">POJO</a> for French translation.
     </p>
+    <!-- eslint-enable max-len -->
   </div>
 </template>
 

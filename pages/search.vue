@@ -4,13 +4,17 @@
       <h2 class="search-heading-text">{{ errMsg }}</h2>
     </div>
     <div v-else-if="isSearching">
-      <h2 class="search-heading-text">Loading search result for "{{ this.$route.query.keyword }}"</h2>
+      <h2 class="search-heading-text">
+        Loading search result for "{{ this.$route.query.keyword }}"
+      </h2>
     </div>
     <div v-else-if="isEmptyResult">
       <h2 class="search-heading-text">No Results for "{{ this.$route.query.keyword }}"</h2>
     </div>
     <div v-else>
-      <h2 class="search-heading-text">Displaying search result for "{{ this.$route.query.keyword }}"</h2>
+      <h2 class="search-heading-text">
+        Displaying search result for "{{ this.$route.query.keyword }}"
+      </h2>
       <SeriesGrid type="search" />
     </div>
   </div>
@@ -83,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .search-heading-text {
   /* font-size: 4vw; */

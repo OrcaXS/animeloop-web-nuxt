@@ -32,7 +32,7 @@ export default {
 
 </script>
 <style scoped lang="postcss">
-@import "../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 .home-page {
   @media (--tablet-screen) {

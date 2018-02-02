@@ -88,7 +88,8 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import '~/assets/css/colors.css';
+@import "~/assets/css/mediaquery.css";
 
 .loop-page-grid-container {
   display: grid;
@@ -130,7 +131,7 @@ export default {
 .vertical-title {
   grid-area: vertical-title;
   writing-mode: vertical-rl;
-  color: #BBBBBB;
+  color: var(--grey3);
   font-size: 3em;
   font-family: serif;
   max-height: calc(100vh - 5rem);

@@ -6,17 +6,17 @@
     >
       <span
         class="anime-series-tag large left-half"
-        :style="typeStyleObj(animeType)"
+        :class="typeClassObj({ type: animeType })"
       >{{ animeType }}</span>
       <span
-        class="anime-series-tag large right-half"
-        :style="typeStyleObj(animeType, 'season')"
+        class="anime-series-tag large right-half light"
+        :class="typeClassObj({ type: animeType })"
       >{{ season }}</span>
     </div>
     <template v-else>
       <span
         class="anime-series-tag"
-        :style="typeStyleObj(animeType)"
+        :class="typeClassObj({ type: animeType })"
       >{{ animeType }}</span>
     </template>
   </div>
@@ -47,34 +47,22 @@ export default {
   },
   data() {
     return {
-      colors: {
-        'TV Short': '#2a83a2',
-        OVA: '#745399',
-        ONA: '#47885e',
-        Movie: '#ee7800',
-        Special: '#b7282e',
-        TV: '#1E50A2',
-        Unknown: '#525252',
-        default: '#525252',
+      typeClasses: {
+        OVA: 'tag-ova',
+        ONA: 'tag-ona',
+        Movie: 'tag-movie',
+        Special: 'tag-special',
+        'TV Short': 'tag-tv-short',
+        TV: 'tag-tv',
+        Other: 'tag-other',
       },
-
     };
   },
   methods: {
-    hex2Rgba(hex, alpha) {
-      const r = parseInt(hex.substring(1, 3), 16);
-      const g = parseInt(hex.substring(3, 5), 16);
-      const b = parseInt(hex.substring(5, 7), 16);
-      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    },
-    typeStyleObj(type, season = false) {
-      if (season === 'season') {
-        return {
-          backgroundColor: this.hex2Rgba(this.colors[type], 0.8),
-        };
-      }
+    typeClassObj({ type }) {
+      const typeClass = this.typeClasses[type] || 'Other';
       return {
-        backgroundColor: this.colors[type],
+        [typeClass]: true,
       };
     },
   },
@@ -82,6 +70,8 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+@import "~/assets/css/colors.css";
+
 .tag-container {
   display: flex;
   flex-flow: row nowrap;
@@ -97,6 +87,7 @@ export default {
   border-radius: 5px;
   /* font-family: 'Roboto', sans-serif; */
   font-size: .9em;
+  letter-spacing: .25px;
 }
 
 .left-half {
@@ -110,6 +101,55 @@ export default {
 .large {
   font-size: 1.1em;
   padding: .1em .5em;
+}
+
+.tag-tv {
+  background-color: var(--tag-blue);
+  &.light {
+    background-color: var(--tag-blue-light);
+  }
+}
+
+.tag-ova {
+  background-color: var(--tag-purple);
+  &.light {
+    background-color: var(--tag-purple-light);
+  }
+}
+
+.tag-ona {
+  background-color: var(--tag-orange);
+  &.light {
+    background-color: var(--tag-orange-light);
+  }
+}
+
+.tag-movie {
+  background-color: var(--tag-green);
+  &.light {
+    background-color: var(--tag-green-light);
+  }
+}
+
+.tag-tv-short {
+  background-color: var(--tag-cyan);
+  &.light {
+    background-color: var(--tag-cyan-light);
+  }
+}
+
+.tag-special {
+  background-color: var(--tag-red);
+  &.light {
+    background-color: var(--tag-red-light);
+  }
+}
+
+.tag-other {
+  background-color: var(--black1);
+  &.light {
+    background-color: var(--grey6);
+  }
 }
 
 

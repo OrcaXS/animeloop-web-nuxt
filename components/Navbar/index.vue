@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/mediaquery.css";
 
 nav {
   grid-area: nav;

@@ -66,7 +66,8 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "../../assets/css/mediaquery.css";
+@import "~/assets/css/colors.css";
+@import "~/assets/css/mediaquery.css";
 
 .entry-container {
   display: flex;
@@ -102,10 +103,10 @@ export default {
   margin: 0 .5em;
   padding: .4em 0;
 
-  color: #333333;
+  color: var(--black1);
 
   &:hover {
-    border-bottom: .15rem solid #1e50a2;
+    border-bottom: .15rem solid var(--key-color-light);
     padding-bottom: .2rem;
   }
 
