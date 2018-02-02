@@ -70,6 +70,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+@import "~/assets/css/colors.css";
 @import "~/assets/css/mediaquery.css";
 
 .burger-menu-container {
