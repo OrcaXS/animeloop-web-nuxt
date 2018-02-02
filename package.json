@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "dev": "webpack-dashboard -- nuxt",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -21,17 +21,17 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome": "=1.0.1",
-    "@fortawesome/fontawesome-free-regular": "^5.0.4",
-    "@fortawesome/fontawesome-free-solid": "^5.0.4",
-    "@fortawesome/vue-fontawesome": "=0.0.21",
+    "@fortawesome/fontawesome": "^1.1.3",
+    "@fortawesome/fontawesome-free-regular": "^5.0.6",
+    "@fortawesome/fontawesome-free-solid": "^5.0.6",
+    "@fortawesome/vue-fontawesome": "^0.0.22",
     "@nuxtjs/pwa": "^2.0.5",
     "cookie": "^0.3.1",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
-    "nuxt": "^1.1.1",
+    "nuxt": "^1.3.0",
     "v-click-outside": "^1.0.2",
-    "vue-i18n": "^7.3.3",
+    "vue-i18n": "^7.4.2",
     "vue-i18n-extensions": "^0.1.0"
   },
   "devDependencies": {
@@ -41,21 +41,24 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-loader": "^1.9.0",
-    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-html": "^4.0.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.2.0",
+    "eslint-plugin-vue": "^4.2.2",
     "node-fetch": "^1.7.3",
     "nuxt-webpackdashboard": "^0.0.3",
     "path": "^0.12.7",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-loader": "^2.0.9",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-hexrgba": "^1.0.0",
+    "postcss-import": "^11.0.0",
+    "postcss-import-resolver": "^1.1.0",
     "postcss-reporter": "^5.0.0",
+    "postcss-url": "^7.3.0",
     "stylelint": "^8.3.1",
     "stylelint-config-recommended": "^2.0.0",
     "stylelint-processor-html": "^1.0.0",
-    "webpack-dashboard": "^1.0.2"
+    "webpack-dashboard": "^1.1.1"
   }
 }
