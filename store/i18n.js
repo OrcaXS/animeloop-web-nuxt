@@ -5,42 +5,38 @@ const i18n = {
     locale: '',
   },
 
-  getters: {
-  },
+  getters: {},
 
   mutations: {
-    SET_LANG: (state, { lang }) => {
-      Vue.set(state, 'locale', lang);
+    SET_LOCALE: (state, { locale }) => {
+      Vue.set(state, 'locale', locale);
       // state.locale = lang;
-      // VueCookie.set('locale', lang);
       // this.app.$i18n.locale = lang;
     },
   },
 
   actions: {
-    async setLang({ dispatch, commit }, { lang }) {
-      commit('SET_LANG', { lang });
+    async setLang({ dispatch, commit }, { locale }) {
+      console.log(locale);
+      commit('SET_LOCALE', { locale });
       commit('TOGGLE_NAVBAR_STATE', { type: 'langOpen' });
       // this.app.$cookies.set('locale', lang);
-      await dispatch('setLangCookie', { lang });
-      await dispatch('setAppLang', { lang });
+      await dispatch('setLangCookie', { locale });
+      await dispatch('setAppLang', { locale });
     },
-    async setLangCookie({ lang }) {
+    setLangCookie(_, { locale }) {
       try {
-        // console.log(lang);
-        this.app.$cookies.set('locale', lang);
+        this.app.$cookies.set('locale', locale);
       } catch (err) {
         throw new Error(`Cannot modify cookies.
           ${err}`);
       }
     },
-    async setAppLang({ lang }) {
+    setAppLang(_, { locale }) {
       try {
-        // console.log(lang);
-        // console.table(this.app);
-        this.app.i18n.locale = lang;
+        this.app.i18n.locale = locale;
       } catch (err) {
-        throw new Error(`Cannot set app lang.
+        throw new Error(`Cannot set app locale.
           ${err}`);
       }
     },

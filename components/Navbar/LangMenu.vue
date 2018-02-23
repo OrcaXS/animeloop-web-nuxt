@@ -73,8 +73,8 @@ export default {
       }
     },
 
-    setLanguage(lang) {
-      this.$store.dispatch('setLang', { lang });
+    setLanguage(locale) {
+      this.$store.dispatch('setLang', { locale });
     },
   },
 

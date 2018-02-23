@@ -7,7 +7,7 @@
       v-for="entry in entries"
       :key="entry.route"
       @click.native="toggleBurger"
-      :to="{ name: entry.route }"
+      :to="{ name: entry.routeName }"
       class="entry"
     >
       <FontAwesomeIcon
@@ -30,10 +30,10 @@ export default {
   data() {
     return {
       entries: [
-        { name: 'navbar.list', icon: 'th-list', route: 'list-page' },
+        { name: 'navbar.list', icon: 'th-list', routeName: 'list' },
         // { name: 'navbar.tags', icon: 'tags' },
-        { name: 'navbar.random', icon: 'question-circle', route: 'random' },
-        { name: 'navbar.about', icon: 'info', route: 'about' },
+        { name: 'navbar.random', icon: 'question-circle', routeName: 'random' },
+        { name: 'navbar.about', icon: 'info', routeName: 'about' },
       ],
 
     };

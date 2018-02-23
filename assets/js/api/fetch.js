@@ -1,3 +1,7 @@
+/**
+ * Originally written by NanozukiCrows
+ */
+
 import fetch from 'isomorphic-fetch';
 import qs from 'qs';
 
@@ -43,17 +47,27 @@ async function callApi(request) {
 }
 
 const remote = {
-  getOneRandomLoop: callApi({ url: 'rand/loop/full' }),
-  getRandomLoopList: count => callApi({ url: `rand/loop/${count}/full` }),
-  getLoopByID: id => callApi({ url: `loop/${id}/full` }),
-  getLoopsByEpisodeID: id => callApi({ url: 'loop', data: { episode: id } }),
-  getEpisodeByID: id => callApi({ url: `episode/${id}/full` }),
-  getEpisodesBySeriesID: id => callApi({ url: 'episode', data: { series: id } }),
-  getTagsByID: id => callApi({ url: 'tag', data: { loop: id } }),
-  getSeriesByID: id => callApi({ url: `series/${id}` }),
+  getOneRandomLoop: callApi({ url: 'rand/loop', data: { full: true, limit: 1 } }),
+  getRandomLoopList: count => callApi({ url: 'rand/loop', data: { full: true, limit: count } }),
+  getLoopByID: id => callApi({ url: 'loop', data: { id } }),
+  getLoopsByEpisodeID: id => callApi({ url: 'loop', data: { episodeid: id } }),
+  getEpisodeByID: id => callApi({ url: 'episode', data: { id } }),
+  getEpisodesBySeriesID: id => callApi({ url: 'episode', data: { seriesid: id } }),
+  getTagsByID: id => callApi({ url: 'tag', data: { loopid: id } }),
+  getSeriesByID: id => callApi({ url: 'series', data: { id } }),
   getSeriesByString: string => callApi({ url: 'search/series', data: { value: string } }),
-  getSeriesPageCount: callApi({ url: 'series/page/count' }),
-  getSeriesByPageNum: num => callApi({ url: 'series', data: { page: num } }),
+  // getSeriesPageCount: callApi({ url: 'series/page/count' }),
+  // getSeriesByPageNum: num => callApi({ url: 'series', data: { page: num } }),
+  // getSeriesBySeason: seasonString => call({ url: ''})
+  getAllSeasons: callApi({ url: 'series/season' }),
+  getSeriesGroup: ({
+    type, season, page, limit,
+  } = {}) => callApi({
+    url: 'series',
+    data: {
+      type, season, page, limit,
+    },
+  }),
 };
 
 export default remote;

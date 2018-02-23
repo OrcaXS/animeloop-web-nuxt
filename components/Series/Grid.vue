@@ -1,9 +1,9 @@
 <template>
   <div class="series-grid-container">
     <SeriesCover
-      v-for="id in series"
-      :seriesid="id"
-      :key="id"
+      v-for="series in seriesList"
+      :seriesid="series.id"
+      :key="series.id"
     />
   </div>
 </template>
@@ -37,11 +37,14 @@ export default {
     };
   },
   computed: {
-    series() {
+    seriesList() {
       if (this.type === 'search') return this.$store.state.search.searchResult;
-      if (this.type === 'listPage') return this.$store.state.series.seriesListByPage[this.pageNum];
+      if (this.type === 'listPage') return this.$store.state.series.seriesListByGroupFilter;
       return {};
     },
+    // seriesGroup() {
+    //   return this.$store.state.series.seriesListByGroupFilter;
+    // },
 
   },
 };
