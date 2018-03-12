@@ -7,7 +7,7 @@ export default function ({
   //   app.i18n.locale = store.state.i18n.locale;
   //   return;
   // }
-  const { locale } = app.$cookies.cookies;
+  const locale = app.$cookies.cookies.locale ? app.$cookies.cookies.locale : 'en';
   // console.log(app.$cookies.cookies.locale);
   app.i18n.locale = locale;
   // Set locale
