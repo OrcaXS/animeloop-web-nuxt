@@ -57,14 +57,17 @@
     <SeriesGrid
       type="listPage"
     />
-    <!-- <div class="pagination">
+    <div
+      v-if="pageCount > 1"
+      class="pagination"
+    >
       <nuxt-link
         v-if="!disablePrevPage"
-        class="page-icon"
         :to="{
-          name: 'list-page',
-          params: { page: (currentPageNumInt === 2) ? null : currentPageNumInt - 1 }
+          name: 'list',
+          query: prevPageQueryObj,
         }"
+        class="page-icon"
       >
         <PageIcon
           :is-enabled="true"
@@ -79,7 +82,7 @@
       <div class="list-page-select">
         <select
           v-model="selectedPageNum"
-          @change="selectChanged"
+          @change="pageChanged"
         >
           <option
             v-for="num in pageCount"
@@ -92,8 +95,11 @@
       </div>
       <nuxt-link
         v-if="!disableNextPage"
+        :to="{
+          name: 'list',
+          query: Object.assign({}, this.$route.query, { page: currentPageNumInt + 1 }),
+        }"
         class="page-icon"
-        :to="{ name: 'list-page', params: { page: currentPageNumInt + 1 }}"
       >
         <PageIcon
           :is-enabled="true"
@@ -105,7 +111,7 @@
         :is-enabled="false"
         direction="right"
       />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -128,11 +134,15 @@ export default {
     };
   },
 
+  watchQuery: ['type', 'season', 'page'],
+  key: to => to.fullPath,
+
   data() {
     const latestYear = Object.keys(this.$store.state.series.seasons)[Object.keys(this.$store.state.series.seasons).length - 1];
-    const latestMonth = Math.max(this.$store.state.series.seasons[latestYear].map(Number));
+    const latestMonth = Math.max(...this.$store.state.series.seasons[latestYear].map(Number));
     const { type = '', season = `${latestYear}-${latestMonth}`, page = '1' } = this.$route.query;
     return {
+      selectedPageNum: page.toString(),
       selectedType: type,
       selectedYear: season.split('-')[0],
       selectedMonth: season.split('-')[1],
@@ -145,35 +155,60 @@ export default {
       await store.dispatch('fetchAllSeasons');
     }
 
+    if (query.page === '1') {
+      const { page: _page, ...queryWithoutPage } = query;
+      redirect(301, '/list', queryWithoutPage);
+    }
+
     const latestYear = Object.keys(store.state.series.seasons)[Object.keys(store.state.series.seasons).length - 1];
-    const latestMonth = Math.max(store.state.series.seasons[latestYear].map(Number));
+    const latestMonth = Math.max(...store.state.series.seasons[latestYear].map(Number));
+    // const latestMonth = 1;
     // await store.dispatch('fetchAllSeasons');
-    const { type, season = `${latestYear}-${latestMonth}`, page = '1' } = query;
+    const { type = '', season = `${latestYear}-${latestMonth}`, page = 1 } = query;
     // await store.dispatch('fetchSeriesPageCount');
-    await store.dispatch('fetchSeriesGroup', ({
-      type,
-      season,
-      // page,
-      // limit: 30,
-    }));
-
-
-  // await store.dispatch('fetchSeriesByPageNum', { pageNum: params.page || '1' });
-    // if (params.page === '1') {
-    //   redirect(301, '/list');
-    // }
+    await Promise.all([
+      store.dispatch('fetchSeriesGroup', ({
+        type,
+        season,
+        page,
+        // limit: 30,
+      })),
+      store.dispatch('fetchSeriesCount', ({
+        type,
+        season,
+      })),
+    ]);
   },
 
   computed: {
-    // pageCount() {
-    //   return this.$store.state.series.seriesPageCount;
-    // },
-    // disablePrevPage() {
-    //   return this.currentPageNumInt === 1;
-    // },
-    // disableNextPage() {
-    //   return this.currentPageNumInt === this.pageCount;
-    // },
+    seriesCount() {
+      return this.$store.state.series.seriesCount;
+    },
+
+    pageCount() {
+      return Math.ceil(this.seriesCount / 30);
+    },
+
+    currentPageNumInt() {
+      return this.$route.query.page ? parseInt(this.$route.query.page, 10) : 1;
+    },
+
+    prevPageQueryObj() {
+      if (this.$route.query.page === 2) {
+        const { page: _page, ...queryWithoutPage } = this.$route.query;
+        return queryWithoutPage;
+      }
+      return Object.assign({}, this.$route.query, { page: this.currentPageNumInt - 1 });
+    },
+
+    disablePrevPage() {
+      return this.currentPageNumInt === 1;
+    },
+
+    disableNextPage() {
+      return this.currentPageNumInt === this.pageCount;
+    },
+
     seasons() {
       return this.$store.state.series.seasons;
     },
@@ -184,7 +219,7 @@ export default {
 
     latestSeason() {
       const latestYear = Object.keys(this.$store.state.series.seasons)[Object.keys(this.$store.state.series.seasons).length - 1];
-      const latestMonth = Math.max(this.$store.state.series.seasons[latestYear].map(Number));
+      const latestMonth = Math.max(...this.$store.state.series.seasons[latestYear].map(Number));
       return `${latestYear}-${latestMonth}`;
       // return Object.keys(state.seasons).length;
     },
@@ -196,26 +231,27 @@ export default {
     // getSeasonYears: state => state.seasons.map((val) => val.split('-')[0]),
   },
 
-  watch: {
-    $route: 'fetchNewGroup',
-  },
 
   methods: {
-    // selectChanged() {
-    //   if (this.selectedPageNum === 1) {
-    //     this.$router.push({ name: 'list-page' });
-    //   } else {
-    //     this.$router.push({ name: 'list-page', params: { page: this.selectedPageNum } });
-    //   }
-    // },
-    async fetchNewGroup() {
-      await this.$store.dispatch('fetchSeriesGroup', ({
-        type: this.selectedType,
-        season: this.selectedSeason,
-        // this.page
-        // limit: 30,
-      }));
+    pageChanged() {
+      this.$router.push({ name: 'list', query: Object.assign({}, this.$route.query, { page: this.selectedPageNum }) });
     },
+
+    async fetchNewGroup() {
+      await Promise.all([
+        this.$store.dispatch('fetchSeriesGroup', ({
+          type: this.selectedType,
+          season: this.selectedSeason,
+          page: this.selectedPageNum,
+          // limit: 30,
+        })),
+        this.$store.dispatch('fetchSeriesCount', ({
+          type: this.selectedType,
+          season: this.selectedSeason,
+        })),
+      ]);
+    },
+
     applyFilter() {
       const queryObj = { season: this.selectedSeason };
       Object.assign(queryObj, this.selectedType && { type: this.selectedType });
@@ -225,7 +261,6 @@ export default {
       });
     },
   },
-
 
 };
 </script>
@@ -283,6 +318,22 @@ export default {
     }
   }
 
+  /* Centering hack, since Safari doesn't support text-align-last */
+
+  &.month-selector {
+    & > select {
+      padding-left: 1em;
+      padding-right: 2em;
+    }
+  }
+
+  &.type-selector {
+    & > select {
+      padding-left: 1em;
+      padding-right: 2em;
+    }
+  }
+
   & > select {
     display: block;
     position: relative;
@@ -303,6 +354,7 @@ export default {
     color: #444444;
 
     font-size: 1em;
+    text-align: center;
     text-align-last: center;
 
     cursor: pointer;
