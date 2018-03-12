@@ -8,12 +8,15 @@ Animeloop web app written from scratch, built with Nuxt.js.
 - Service Worker
 - Dirty i18n
 
+## Recent Updates
+- Updated to API v2
+
 ## Todo
 
 - [ ] Clean up Spaghetti code 
 - [ ] SeriesPage code refactoring
 - [ ] Unit Testing
-- [ ] ListPage by Season
+- [x] ListPage by Season
 
 ## Build Setup
 
