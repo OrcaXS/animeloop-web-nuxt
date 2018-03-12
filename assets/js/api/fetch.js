@@ -68,6 +68,15 @@ const remote = {
       type, season, page, limit,
     },
   }),
+  getSeriesCount: ({
+    type, season,
+  } = {}) => callApi({
+    url: 'series/count',
+    data: {
+      season, type,
+      // Avoid request being blocked by uBlock
+    },
+  }),
 };
 
 export default remote;
