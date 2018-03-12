@@ -17,7 +17,6 @@ const i18n = {
 
   actions: {
     async setLang({ dispatch, commit }, { locale }) {
-      console.log(locale);
       commit('SET_LOCALE', { locale });
       commit('TOGGLE_NAVBAR_STATE', { type: 'langOpen' });
       // this.app.$cookies.set('locale', lang);

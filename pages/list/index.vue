@@ -133,13 +133,14 @@ export default {
       title: `${this.$t('list')} | Animeloop`,
     };
   },
-
+  // undocumented, see https://github.com/nuxt/nuxt.js/blob/dev/examples/routes-transitions/pages/users.vue
   watchQuery: ['type', 'season', 'page'],
   key: to => to.fullPath,
 
   data() {
-    const latestYear = Object.keys(this.$store.state.series.seasons)[Object.keys(this.$store.state.series.seasons).length - 1];
-    const latestMonth = Math.max(...this.$store.state.series.seasons[latestYear].map(Number));
+    const { seasons } = this.$store.state.series;
+    const latestYear = Object.keys(seasons)[Object.keys(seasons).length - 1];
+    const latestMonth = Math.max(...seasons[latestYear].map(Number));
     const { type = '', season = `${latestYear}-${latestMonth}`, page = '1' } = this.$route.query;
     return {
       selectedPageNum: page.toString(),
@@ -160,12 +161,10 @@ export default {
       redirect(301, '/list', queryWithoutPage);
     }
 
-    const latestYear = Object.keys(store.state.series.seasons)[Object.keys(store.state.series.seasons).length - 1];
-    const latestMonth = Math.max(...store.state.series.seasons[latestYear].map(Number));
-    // const latestMonth = 1;
-    // await store.dispatch('fetchAllSeasons');
+    const { seasons } = store.state.series;
+    const latestYear = Object.keys(seasons)[Object.keys(seasons).length - 1];
+    const latestMonth = Math.max(...seasons[latestYear].map(Number));
     const { type = '', season = `${latestYear}-${latestMonth}`, page = 1 } = query;
-    // await store.dispatch('fetchSeriesPageCount');
     await Promise.all([
       store.dispatch('fetchSeriesGroup', ({
         type,
@@ -216,21 +215,7 @@ export default {
     selectedSeason() {
       return `${this.selectedYear}-${this.selectedMonth}`;
     },
-
-    latestSeason() {
-      const latestYear = Object.keys(this.$store.state.series.seasons)[Object.keys(this.$store.state.series.seasons).length - 1];
-      const latestMonth = Math.max(...this.$store.state.series.seasons[latestYear].map(Number));
-      return `${latestYear}-${latestMonth}`;
-      // return Object.keys(state.seasons).length;
-    },
-    // getSeasonYears: (state) => {
-    //   // const fieldIndex = (field === 'year') ? 0 : 1;
-    //   const arr = state.seasons.map(val => val.split('-')[0]);
-    //   return [...new Set(arr)].sort();
-    // },
-    // getSeasonYears: state => state.seasons.map((val) => val.split('-')[0]),
   },
-
 
   methods: {
     pageChanged() {

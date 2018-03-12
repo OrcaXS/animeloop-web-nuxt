@@ -8,6 +8,7 @@ const series = {
     seriesListByGroupFilter: [],
     seasons: {/* [year]: month */},
     seriesCount: 0,
+    maxSeriesInPage: 30,
   },
 
   mutations: {
@@ -68,8 +69,8 @@ const series = {
       commit('SET_SERIES_COUNT', { data });
     },
 
-    async fetchSeriesGroup({ commit, dispatch }, {
-      type, season, page, limit = 30,
+    async fetchSeriesGroup({ state, commit, dispatch }, {
+      type, season, page, limit = state.maxSeriesInPage,
     }) {
       const { data } = await remote.getSeriesGroup({
         type, season, page, limit,
