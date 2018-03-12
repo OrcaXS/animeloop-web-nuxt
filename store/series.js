@@ -7,7 +7,7 @@ const series = {
     // seriesListByPage: {/* [page: pagenum]: seriesid */},
     seriesListByGroupFilter: [],
     seasons: {/* [year]: month */},
-    seriesPageCount: 0,
+    seriesCount: 0,
   },
 
   mutations: {
@@ -21,8 +21,8 @@ const series = {
       state.series[seriesid] = data;
     },
 
-    SET_SERIES_PAGE_COUNT: (state, { data }) => {
-      state.seriesPageCount = data;
+    SET_SERIES_COUNT: (state, { data }) => {
+      state.seriesCount = data.count;
     },
 
     SET_SERIES_BY_PAGE_NUM: (state, { data, pageNum }) => {
@@ -58,21 +58,18 @@ const series = {
       commit('SET_SERIES', { seriesid, data });
     },
 
-    async fetchSeriesPageCount({ commit }) {
-      const { data } = await remote.getSeriesPageCount;
+    async fetchSeriesCount({ commit }, {
+      type, season,
+    }) {
+      const { data } = await remote.getSeriesCount({
+        type, season,
+      });
       if (!data) throw new Error('Cannot fetch data');
-      commit('SET_SERIES_PAGE_COUNT', { data });
+      commit('SET_SERIES_COUNT', { data });
     },
 
-    // async fetchSeriesByPageNum({ commit, dispatch }, { pageNum }) {
-    //   const { data } = await remote.getSeriesByPageNum(pageNum);
-    //   if (!data) throw new Error('Cannot fetch data');
-    //   commit('SET_SERIES_BY_PAGE_NUM', { data, pageNum });
-    //   await dispatch('fillSeriesList', { data });
-    // },
-
     async fetchSeriesGroup({ commit, dispatch }, {
-      type, season, page, limit = 50,
+      type, season, page, limit = 30,
     }) {
       const { data } = await remote.getSeriesGroup({
         type, season, page, limit,
