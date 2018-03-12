@@ -1,26 +1,26 @@
 <template>
   <form
-    class="search-container"
     :style="toggleContainerStyle"
+    class="search-container"
     action=""
     @submit.prevent
   >
     <input
-      class="search-input"
       ref="search"
-      @keyup.enter="dispatchSearch"
-      @focus="searchFocused = true"
-      @blur="searchFocused = false"
       :placeholder="searchbarPlaceholder"
       v-model="keyword"
       value=""
       name="search"
       type="search"
       required
+      class="search-input"
+      @keyup.enter="dispatchSearch"
+      @focus="searchFocused = true"
+      @blur="searchFocused = false"
     >
     <button
-      class="search-button"
       :style="toggleArrowButtonStyle"
+      class="search-button"
       @click="dispatchSearch"
     >
       <FontAwesomeIcon

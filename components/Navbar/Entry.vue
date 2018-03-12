@@ -1,18 +1,18 @@
 <template>
   <div
-    class="entry-container"
     :style="toggledStyle"
+    class="entry-container"
   >
     <nuxt-link
       v-for="entry in entries"
       :key="entry.route"
-      @click.native="toggleBurger"
       :to="{ name: entry.routeName }"
       class="entry"
+      @click.native="toggleBurger"
     >
       <FontAwesomeIcon
-        class="entry-fa-icon"
         :icon="entry.icon"
+        class="entry-fa-icon"
       />
       <span v-t="entry.name" />
     </nuxt-link>

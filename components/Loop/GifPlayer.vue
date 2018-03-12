@@ -1,19 +1,19 @@
 <template>
   <div class="gif-player-container">
     <img
-      alt="Static Loop Image"
       v-cloak
       v-if="playState"
       v-show="gifLoaded"
-      class="gif"
       :src="gifsrc"
+      class="gif"
+      alt="Static Loop Image"
       @load="imageOnload"
     >
     <img
-      alt="Animated Loop Image"
       v-if="!gifLoaded || !playState"
       :src="jpgsrc"
       :class="{ blur: playState }"
+      alt="Animated Loop Image"
     >
   </div>
 </template>

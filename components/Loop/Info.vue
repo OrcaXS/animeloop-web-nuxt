@@ -2,27 +2,27 @@
   <div class="loop-info-grid-container">
     <div class="loop-info-tags-container">
       <TypeTag
-        class="loop-info-season-type"
-        type="withSeason"
         :anime-type="loop.series.type"
         :season="loop.series.season"
+        class="loop-info-season-type"
+        type="withSeason"
       />
       <TimeTag
+        :duration="formattedTimeStamps.duration"
         class="loop-info-duration"
         type="length"
-        :duration="formattedTimeStamps.duration"
       />
       <TimeTag
-        class="loop-info-timestamp"
-        type="timestamp"
         :start="formattedTimeStamps.begin"
         :end="formattedTimeStamps.end"
+        class="loop-info-timestamp"
+        type="timestamp"
       />
     </div>
     <div class="info-detail">
       <p
-        class="info-type"
         v-t="'loop.downloads'"
+        class="info-type"
       />
       <Downloads :loopid="loopid" />
     </div>

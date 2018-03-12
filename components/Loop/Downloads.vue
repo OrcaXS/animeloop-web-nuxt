@@ -3,8 +3,8 @@
     <div
       v-for="entry in downloadEntries"
       :key="entry.name"
-      class="download-tag"
       :class="entry.typeClass"
+      class="download-tag"
     >
       <a
         :href="entry.url"

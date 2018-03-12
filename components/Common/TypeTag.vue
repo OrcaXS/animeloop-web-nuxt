@@ -5,18 +5,18 @@
       class="tag-container"
     >
       <span
-        class="anime-series-tag large left-half"
         :class="typeClassObj({ type: animeType })"
+        class="anime-series-tag large left-half"
       >{{ animeType }}</span>
       <span
-        class="anime-series-tag large right-half light"
         :class="typeClassObj({ type: animeType })"
+        class="anime-series-tag large right-half light"
       >{{ season }}</span>
     </div>
     <template v-else>
       <span
-        class="anime-series-tag"
         :class="typeClassObj({ type: animeType })"
+        class="anime-series-tag"
       >{{ animeType }}</span>
     </template>
   </div>

@@ -9,14 +9,14 @@
     </div>
     <div class="series-page-genres-season-flex">
       <Genres
-        class="series-page-genres"
         :genres="series.genres"
+        class="series-page-genres"
       />
       <TypeTag
-        class="series-page-season"
-        type="withSeason"
         :anime-type="series.type"
         :season="series.season"
+        class="series-page-season"
+        type="withSeason"
       />
     </div>
     <p

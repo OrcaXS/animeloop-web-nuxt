@@ -1,20 +1,20 @@
 <template>
   <div
-    class="burger-menu-container"
     :style="toggleSearchStyle"
+    class="burger-menu-container"
   >
     <button
       class="menu-button menu-icon"
-      @click="toggleBurger"
       aria-label="Menu Icon"
+      @click="toggleBurger"
     >
       <FontAwesomeIcon :icon="burgerIcon" />
     </button>
     <button
-      class="menu-button"
       v-if="!navStates.searchOpen"
-      @click="toggleSearch"
+      class="menu-button"
       aria-label="Search Icon"
+      @click="toggleSearch"
     >
       <FontAwesomeIcon icon="search" />
     </button>

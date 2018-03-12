@@ -1,7 +1,7 @@
 <template>
   <div
-    class="lang-menu-container"
     v-click-outside="onClickOutside"
+    class="lang-menu-container"
   >
     <div>
       <button
@@ -16,14 +16,14 @@
         />
       </button>
       <div
-        class="lang-menu-dropdown"
         :style="toggleLangStyle"
+        class="lang-menu-dropdown"
       >
         <button
           v-for="locale in localeList"
           :key="locale.id"
-          class="lang-item"
           :class="{ 'lang-selected': currentLocale === locale.id }"
+          class="lang-item"
           @click="setLanguage(locale.id)"
         >{{ locale.text }}</button>
       </div>

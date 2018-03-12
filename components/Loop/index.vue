@@ -2,14 +2,14 @@
   <section class="loop-page-grid-container">
     <BreadCrumb class="breadcrumb">
       <nuxt-link
+        slot="title"
         :to="{ name: 'series-id', params: { id: loop.series.id }}"
         type="title"
-        slot="title"
       >{{ i18nTitle }}</nuxt-link>
       <nuxt-link
+        slot="no"
         :to="{ name: 'episode-id', params: { id: loop.episode.id }}"
         type="no"
-        slot="no"
       >{{ loop.episode.no }}</nuxt-link>
     </BreadCrumb>
     <div class="loop-card">

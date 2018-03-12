@@ -9,13 +9,13 @@
     </nuxt-link>
     <button
       class="play-button"
-      @click="togglePlay"
       aria-label="Play or Pause button"
+      @click="togglePlay"
     >
       <FontAwesomeIcon
-        class="fa-icon"
         v-show="showPlayIcon"
         :icon="playIcon"
+        class="fa-icon"
       />
     </button>
   </div>

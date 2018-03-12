@@ -7,9 +7,9 @@
     <div class="episode-detail">
       <div class="episode-no">{{ loop.episode.no }}</div>
       <TypeTag
+        :anime-type="loop.series.type"
         class="anime-type"
         type="simple"
-        :anime-type="loop.series.type"
       />
     </div>
     <div class="time-stamp">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>

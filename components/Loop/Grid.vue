@@ -4,20 +4,20 @@
     class="loop-grid-container"
   >
     <div
-      class="loop-card-flex-container"
       v-for="loop in loopList"
       :key="loop"
+      class="loop-card-flex-container"
     >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop }}">
         <LoopCard
-          class="loop-card"
           :loopid="loop"
+          class="loop-card"
           loop-type="gif"
           page-type="random"
         />
         <CardDetails
-          class="card-detail"
           :loopid="loop"
+          class="card-detail"
           type="loop"
         />
       </nuxt-link>
@@ -28,20 +28,20 @@
     class="loop-grid-container"
   >
     <div
-      class="loop-card-flex-container"
       v-for="loop in loopList"
       :key="loop.id"
+      class="loop-card-flex-container"
     >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop.id }}">
         <LoopCard
-          class="loop-card"
           :loopid="loop.id"
-          loop-type="gif"
           :page-type="pageType"
+          class="loop-card"
+          loop-type="gif"
         />
         <CardDetails
-          class="card-detail"
           :loopid="loop.id"
+          class="card-detail"
           type="episode"
         />
       </nuxt-link>

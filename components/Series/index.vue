@@ -1,8 +1,8 @@
 <template>
   <section class="series-page-combined-grid">
     <div
-      class="upper-half-cover"
       :style="upperHalfBackgroundImage"
+      class="upper-half-cover"
     />
     <div class="series-page-upper-grid-container">
       <div class="series-page-cover">
@@ -32,8 +32,8 @@
       >
         <div class="episode-select">
           <select
-            required
             v-model="selectedEpisodeID"
+            required
             @change="selectChanged"
           >
             <option
@@ -65,8 +65,8 @@
       </p>
       <div v-else>
         <LoopGrid
-          page-type="episode"
           :episodeid="selectedEpisodeID"
+          page-type="episode"
         />
       </div>
     </div>

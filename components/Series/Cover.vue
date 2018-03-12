@@ -2,8 +2,8 @@
   <section class="cover-wrapper">
     <nuxt-link
       :to="{ name: 'series-id', params: { id: seriesid }}"
-      class="cover"
       :style="coverBackgroundImageStyle"
+      class="cover"
     >
       <div class="cover-text">
         <div class="cover-title">{{ i18nTitle }}</div>

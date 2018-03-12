@@ -3,8 +3,8 @@
     :class="{ 'page-icon': !isEnabled, 'page-icon-disabled': !isEnabled }"
   >
     <FontAwesomeIcon
-      class="page-fa-icon"
       :icon="faIcon"
+      class="page-fa-icon"
     />
   </div>
 </template>

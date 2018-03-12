@@ -7,8 +7,8 @@
       @mouseout="onUnhovered()"
     >
       <p
-        class="loading-spinner"
         v-if="!canplaythrough"
+        class="loading-spinner"
       >
         <FontAwesomeIcon
           class="fa-icon"
@@ -22,8 +22,8 @@
         muted
         autoplay
         playsInline
-        @canplaythrough.once="canplay"
         vcloak
+        @canplaythrough.once="canplay"
       >
         <source
           :src="files.mp4_720p"
@@ -44,8 +44,8 @@
     </div>
     <div
       v-else
-      class="gif-container"
       :class="{ 'fixed-img-size' : pageType === 'random' }"
+      class="gif-container"
     >
       <GifPlayer
         :gifsrc="files.gif_360p"
