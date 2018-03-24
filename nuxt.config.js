@@ -72,6 +72,11 @@ module.exports = {
     // '@nuxtjs/webpackmonitor',
     'nuxt-webpackdashboard',
     '@nuxtjs/pwa',
+    // Simple usage
+    ['@nuxtjs/google-analytics', {
+      // id: 'UA-XXXXXX-4',
+    }],
+    // '@nuxtjs/bulma',
   ],
 
   manifest: {
