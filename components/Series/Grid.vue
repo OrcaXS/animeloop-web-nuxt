@@ -1,10 +1,19 @@
 <template>
   <div class="series-grid-container">
-    <SeriesCover
-      v-for="series in seriesList"
-      :seriesid="series.id"
-      :key="series.id"
-    />
+    <template v-if="type === 'listPage'">
+      <SeriesCover
+        v-for="series in seriesList"
+        :seriesid="series.id"
+        :key="series.id"
+      />
+    </template>
+    <template v-if="type === 'search'">
+      <SeriesCover
+        v-for="id in seriesList"
+        :seriesid="id"
+        :key="id"
+      />
+    </template>
   </div>
 </template>
 
