@@ -20,6 +20,7 @@
     </div>
     <div class="error-message">
       <pre>{{ error.message }}</pre>
+      <pre v-if="error.customMsg">{{ error.customMsg }}</pre>
     </div>
   </div>
 </template>

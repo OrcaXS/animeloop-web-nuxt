@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import remote from '~/assets/js/api/fetch';
+import validate from '~/assets/js/utils/validate';
 
 const episode = {
   state: {
@@ -24,7 +25,7 @@ const episode = {
   actions: {
     async fetchEpisodeByID({ dispatch, commit }, { episodeid }) {
       const { data } = await remote.getEpisodeByID(episodeid);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.obj(data)) throw new Error('Cannot fetch data');
       await dispatch('setSeriesByID', { seriesid: data.series.id, data: data.series });
       commit('SET_EPISODE', { episodeid, data });
     },
@@ -35,7 +36,7 @@ const episode = {
 
     async fetchEpisodesBySeriesID({ commit }, { seriesid }) {
       const { data } = await remote.getEpisodesBySeriesID(seriesid);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_EPISODES_BY_SERIES', { seriesid, data });
     },
 

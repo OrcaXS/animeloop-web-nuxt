@@ -1,5 +1,6 @@
 // import Vue from 'vue';
 import remote from '~/assets/js/api/fetch';
+import validate from '~/assets/js/utils/validate';
 
 const series = {
   state: {
@@ -55,7 +56,7 @@ const series = {
   actions: {
     async fetchSeriesByID({ commit }, { seriesid }) {
       const { data } = await remote.getSeriesByID(seriesid);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.obj(data)) throw new Error('Cannot fetch data');
       commit('SET_SERIES', { seriesid, data });
     },
 
@@ -65,7 +66,7 @@ const series = {
       const { data } = await remote.getSeriesCount({
         type, season,
       });
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.obj(data)) throw new Error('Cannot fetch data');
       commit('SET_SERIES_COUNT', { data });
     },
 
@@ -75,14 +76,14 @@ const series = {
       const { data } = await remote.getSeriesGroup({
         type, season, page, limit,
       });
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_SERIES_GROUP', { data });
       await dispatch('fillSeriesList', { data });
     },
 
     async fetchAllSeasons({ commit }) {
       const { data } = await remote.getAllSeasons;
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_SEASONS', { data });
     },
   },

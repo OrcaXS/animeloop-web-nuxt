@@ -1,4 +1,5 @@
 import remote from '~/assets/js/api/fetch';
+import validate from '~/assets/js/utils/validate';
 
 const search = {
   state: {
@@ -29,7 +30,7 @@ const search = {
       if (/^[\w]{0,3}$/.test(searchString)) throw new Error('Keyword too short');
       commit('SET_SEARCHING', { data: true });
       const { data } = await remote.getSeriesByString(searchString);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_SEARCHING', { data: false });
       // console.log(data);
       commit('SET_SEARCH', { data });

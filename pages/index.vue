@@ -24,7 +24,7 @@ export default {
     try {
       await store.dispatch('fetchRandomLoopList', { count: 12 });
     } catch (err) {
-      error({ statusCode: 404, message: 'API returned error' });
+      error({ statusCode: 404, message: 'API returned error', customMsg: err.message });
     }
   },
 

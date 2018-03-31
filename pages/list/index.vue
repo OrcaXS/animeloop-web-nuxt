@@ -151,32 +151,38 @@ export default {
     };
   },
 
-  async fetch({ store, query, redirect }) {
-    if (Object.keys(store.state.series.seasons).length === 0) {
-      await store.dispatch('fetchAllSeasons');
-    }
+  async fetch({
+    store, query, redirect, error,
+  }) {
+    try {
+      if (Object.keys(store.state.series.seasons).length === 0) {
+        await store.dispatch('fetchAllSeasons');
+      }
 
-    if (query.page === '1') {
-      const { page: _page, ...queryWithoutPage } = query;
-      redirect(301, '/list', queryWithoutPage);
-    }
+      if (query.page === '1') {
+        const { page: _page, ...queryWithoutPage } = query;
+        redirect(301, '/list', queryWithoutPage);
+      }
 
-    const { seasons } = store.state.series;
-    const latestYear = Object.keys(seasons)[Object.keys(seasons).length - 1];
-    const latestMonth = Math.max(...seasons[latestYear].map(Number));
-    const { type = '', season = `${latestYear}-${latestMonth}`, page = 1 } = query;
-    await Promise.all([
-      store.dispatch('fetchSeriesGroup', ({
-        type,
-        season,
-        page,
-        // limit: 30,
-      })),
-      store.dispatch('fetchSeriesCount', ({
-        type,
-        season,
-      })),
-    ]);
+      const { seasons } = store.state.series;
+      const latestYear = Object.keys(seasons)[Object.keys(seasons).length - 1];
+      const latestMonth = Math.max(...seasons[latestYear].map(Number));
+      const { type = '', season = `${latestYear}-${latestMonth}`, page = 1 } = query;
+      await Promise.all([
+        store.dispatch('fetchSeriesGroup', ({
+          type,
+          season,
+          page,
+          // limit: 30,
+        })),
+        store.dispatch('fetchSeriesCount', ({
+          type,
+          season,
+        })),
+      ]);
+    } catch (err) {
+      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
+    }
   },
 
   computed: {

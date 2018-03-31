@@ -24,7 +24,7 @@ export default {
     try {
       await store.dispatch('fetchSeriesByID', { seriesid: id });
     } catch (err) {
-      error({ statusCode: 404, message: 'API returned Error' });
+      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
     }
   },
 

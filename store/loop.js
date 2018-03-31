@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import remote from '~/assets/js/api/fetch';
+import validate from '~/assets/js/utils/validate';
 
 function tidyTimestamp(time) {
   const arr = time.split(':');
@@ -63,27 +64,27 @@ const loop = {
   actions: {
     async fetchLoopByID({ commit }, { loopid }) {
       const { data } = await remote.getLoopByID(loopid);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.obj(data)) throw new Error('Cannot fetch data');
       commit('SET_LOOP', { loopid, data });
     },
 
     async fetchRandomLoop({ dispatch, commit }) {
       const { data } = await remote.getRandomLoopList(1);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_RANDOM_PAGE_LOOP_ID', { data });
       await dispatch('setLoops', { data });
     },
 
     async fetchRandomLoopList({ dispatch, commit }, { count }) {
       const { data } = await remote.getRandomLoopList(count);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_RANDOM_LOOPLIST', { data });
       await dispatch('setLoops', { data });
     },
 
     async fetchLoopsByEpisodeID({ dispatch, commit }, { episodeid }) {
       const { data } = await remote.getLoopsByEpisodeID(episodeid);
-      if (!data) throw new Error('Cannot fetch data');
+      if (!validate.arr(data)) throw new Error('Cannot fetch data');
       commit('SET_LOOPLIST', { episodeid, data });
       await dispatch('setLoops', { data });
     },
