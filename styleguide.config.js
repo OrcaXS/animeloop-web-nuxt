@@ -5,6 +5,7 @@ module.exports = {
   // components() {
   //   return ['components#<{(||)}>#*.vue', 'pages#<{(||)}>#*.vue'];
   // },
+  styleguideDir: 'docs',
   sections: [
     {
       name: 'Components',
