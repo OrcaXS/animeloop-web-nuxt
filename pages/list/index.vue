@@ -121,7 +121,7 @@ import PageIcon from '~/components/Common/PageIcon';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
 export default {
-  name: 'ListPage',
+  name: 'PageList',
   components: {
     SeriesGrid,
     FontAwesomeIcon,

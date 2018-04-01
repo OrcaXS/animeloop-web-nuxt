@@ -34,6 +34,9 @@ import TimeTag from '~/components/Common/TimeTag';
 import TypeTag from '~/components/Common/TypeTag';
 import Downloads from './Downloads';
 
+/**
+ * Info of current Loop, used in the `LoopPage`.
+ */
 export default {
   name: 'LoopInfo',
   components: {
@@ -42,6 +45,9 @@ export default {
     TypeTag,
   },
   props: {
+    /**
+     * `loopid` of current loop.
+     */
     loopid: {
       type: String,
       required: true,

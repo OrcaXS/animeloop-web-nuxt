@@ -59,6 +59,10 @@
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import GifPlayer from './GifPlayer';
 
+/**
+ * Loop Card components for Loop/Series/Episode pages.
+ * Basically a Wrapper for video/GIF player.
+ */
 export default {
   name: 'LoopCard',
   components: {
@@ -66,13 +70,21 @@ export default {
     FontAwesomeIcon,
   },
   props: {
+    /**
+    * `loopid` of the LoopCard.
+    */
     loopid: {
       type: String,
       required: true,
-      validator(value) {
-        return /^[a-z0-9]{24}$/.test(value);
+      validator(val) {
+        return /^[a-z0-9]{24}$/.test(val);
       },
     },
+    /**
+    * Video Format of the LoopCard.
+    *
+    * `mp4, gif`
+    */
     loopType: {
       type: String,
       required: true,
@@ -81,6 +93,11 @@ export default {
         return val === 'mp4' || val === 'gif';
       },
     },
+    /**
+    * The type of page using this component.
+    *
+    * `random, episode, loop`
+    */
     pageType: {
       type: String,
       required: true,
@@ -104,16 +121,34 @@ export default {
     },
   },
   methods: {
+    /**
+     * When LoopCard is hovered, play the video.
+     *
+     * @event onHovered
+     * @type {Function}
+     */
     onHovered() {
       if (!this.hovered) {
         this.hovered = true;
         this.$refs.video.play();
       }
     },
+    /**
+     * When LoopCard is not hovered, pause the video.
+     *
+     * @event onUnhovered
+     * @type {Function}
+     */
     onUnhovered() {
       this.hovered = false;
       this.$refs.video.pause();
     },
+    /**
+     * When video.canplaythrough is fired, show the video.
+     *
+     * @event canplay
+     * @type {Function}
+     */
     canplay() {
       this.canplaythrough = true;
     },
@@ -123,10 +158,6 @@ export default {
 
 <style scoped lang="postcss">
 @import "~/assets/css/mediaqueries.css";
-
-.loop-card-wrapper {
-}
-
 
 .video-container {
   position: relative;
@@ -165,11 +196,6 @@ export default {
     height: 203px;
   }
 }
-
-/* .fixed-image-size {
-  width: 360px;
-  height: 203px;
-} */
 
 .video-cover {
   width: 100%;

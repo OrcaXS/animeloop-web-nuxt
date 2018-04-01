@@ -24,6 +24,9 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Burger Menu of the Navbar. Enabled in Mobile(phone) layout only.
+ */
 export default {
   name: 'BurgerMenu',
   components: {

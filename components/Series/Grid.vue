@@ -20,12 +20,20 @@
 <script>
 import SeriesCover from './Cover';
 
+/**
+ * Grid containing `SeriesCover`. Used by `SeriesPage` and `SearchPage`.
+ */
 export default {
   name: 'SeriesGrid',
   components: {
     SeriesCover,
   },
   props: {
+    /**
+     * Type of page that this component is used in.
+     *
+     * `listPage, search`
+     */
     type: {
       type: String,
       required: true,
@@ -33,11 +41,6 @@ export default {
       validator(val) {
         return ['listPage', 'search'].indexOf(val) > -1;
       },
-    },
-    pageNum: {
-      type: String,
-      required: false,
-      default: '1',
     },
   },
 

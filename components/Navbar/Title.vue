@@ -4,8 +4,9 @@
       <img
         class="logo"
         alt="Animeloop Logo"
-        src="~/assets/images/anime-loop-logo.svg"
+        src="~@/assets/images/anime-loop-logo.svg"
       >
+      <!-- `~@`: Webpack path hack for styleguidist -->
     </nuxt-link>
     <button
       class="play-button"
@@ -24,6 +25,9 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Title on the Navbar.
+ */
 export default {
   name: 'NavbarTitle',
   components: {

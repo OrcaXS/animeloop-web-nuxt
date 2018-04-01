@@ -19,13 +19,24 @@
 </template>
 
 <script>
+/**
+ * Wrapper for `.gif` files.
+ */
 export default {
   name: 'GifPlayer',
   props: {
+
+    /**
+     * Src path for `.jpg` file.
+     */
     jpgsrc: {
       type: String,
       required: true,
     },
+
+    /**
+     * Src path for `.gif` file.
+     */
     gifsrc: {
       type: String,
       required: true,
@@ -43,6 +54,12 @@ export default {
     },
   },
   methods: {
+    /**
+     * Show the `gif` once it completes loading.
+     *
+     * @event imageOnload
+     * @type {Function}
+     */
     imageOnload() {
       this.gifLoaded = true;
     },

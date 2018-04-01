@@ -7,6 +7,9 @@
 </template>
 
 <script>
+/**
+ * Breadcrumb Component for Loop Pages.
+ */
 export default {
   name: 'Breadcrumb',
 };

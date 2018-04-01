@@ -17,9 +17,15 @@
 </template>
 
 <script>
+/**
+ * Cover component. Wrapping Series Key visual with an overlay displaying title and aired date.
+ */
 export default {
   name: 'SeriesCover',
   props: {
+    /**
+     * `seriesid` of current Series.
+     */
     seriesid: {
       type: String,
       required: true,

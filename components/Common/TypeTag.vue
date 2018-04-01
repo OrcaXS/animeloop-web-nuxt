@@ -23,9 +23,17 @@
 </template>
 
 <script>
+/**
+ * Series Type Component for Loop/Series/Episode Pages.
+ */
 export default {
   name: 'TypeTag',
   props: {
+    /**
+     * Type of the Anime Type Tag
+     *
+     * `simple, withSeason`
+     */
     type: {
       type: String,
       required: true,
@@ -34,11 +42,17 @@ export default {
         return value === 'simple' || value === 'withSeason';
       },
     },
+    /**
+     * Type of the Series
+     */
     animeType: {
       type: String,
       required: true,
       default: 'Unknown',
     },
+    /**
+     * Season of the Series
+     */
     season: {
       type: String,
       required: false,
@@ -59,6 +73,14 @@ export default {
     };
   },
   methods: {
+    /**
+     * Returns CSS class object used by Vue.
+     *
+     * @public
+     * @param {Object} obj - Object for destruction.
+     * @param {string} obj.type - Type of the Series.
+     * @returns {Object} The object containing CSS class to be applied, differentiated by colors.
+     */
     typeClassObj({ type }) {
       const typeClass = this.typeClasses[type] || 'Other';
       return {

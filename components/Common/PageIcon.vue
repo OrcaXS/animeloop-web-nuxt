@@ -12,17 +12,26 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Icon Component for Pagination Buttons.
+ */
 export default {
   name: 'PageIcon',
   components: {
     FontAwesomeIcon,
   },
   props: {
+    /**
+     * The status of the button.
+     */
     isEnabled: {
       type: Boolean,
       required: true,
       default: false,
     },
+    /**
+     * The direction of the arrow icon.
+     */
     direction: {
       type: String,
       required: true,

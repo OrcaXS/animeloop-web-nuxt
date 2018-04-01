@@ -36,26 +36,47 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Time Tag Component for Loop Pages.
+ */
 export default {
-  name: 'TypeTag',
+  name: 'TimeTag',
   components: {
     FontAwesomeIcon,
   },
   props: {
+    /**
+     * Type of the Time Tag
+     *
+     * `length, timestamp`
+     */
     type: {
       type: String,
       required: true,
+      default: 'length',
+      validator(val) {
+        return val === 'length' || val === 'timestamp';
+      },
     },
+    /**
+     * The starting time, when `type` is `timestamp`
+     */
     start: {
       type: String,
       required: false,
       default: '0',
     },
+    /**
+     * The ending time, when `type` is `timestamp`
+     */
     end: {
       type: String,
       required: false,
       default: '0',
     },
+    /**
+     * The duration, when `type` is `length`
+     */
     duration: {
       type: String,
       required: false,

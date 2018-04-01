@@ -21,12 +21,19 @@
 </template>
 
 <script>
+/**
+ * Iterates and displays genres from array.
+ */
 export default {
   name: 'Genres',
   props: {
+    /**
+     * The array containing genres.
+     */
     genres: {
       type: Array,
       required: true,
+      default: () => ['Unknown Genre'],
     },
   },
 };

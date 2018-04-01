@@ -27,12 +27,22 @@
 <script>
 import TypeTag from '../Common/TypeTag';
 
+/**
+ * Details of Loop, shown below LoopCard in Series/Episode/Home Pages.
+ */
 export default {
   name: 'CardDetails',
   components: {
     TypeTag,
   },
   props: {
+    /**
+    * The type of the `LoopCard` details.
+    *
+    * `loops` shows full detail while `episode` shows timestamps only.
+    *
+    * `episode, loop`
+    */
     type: {
       type: String,
       required: true,
@@ -40,9 +50,15 @@ export default {
         return val === 'episode' || val === 'loop';
       },
     },
+    /**
+    * `loopid` of the `LoopCard`.
+    */
     loopid: {
       type: String,
       required: true,
+      validator(val) {
+        return /^[a-z0-9]{24}$/.test(val);
+      },
     },
   },
   computed: {

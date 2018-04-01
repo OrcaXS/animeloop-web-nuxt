@@ -15,14 +15,20 @@
 </template>
 
 <script>
+/**
+ * Download section of Loop Page.
+ */
 export default {
   name: 'Downloads',
   props: {
+    /**
+    * `loopid` of the `LoopCard`.
+    */
     loopid: {
       type: String,
       required: true,
-      validator(value) {
-        return /^[a-z0-9]{24}$/.test(value);
+      validator(val) {
+        return /^[a-z0-9]{24}$/.test(val);
       },
     },
   },

@@ -80,8 +80,11 @@ import LoopGrid from '../Loop/Grid';
 import Genres from './Genres';
 import Info from './Info';
 
+/**
+ * View component of `SeriesPage`.
+ */
 export default {
-  name: 'SeriesPage',
+  name: 'SeriesPageView',
   components: {
     FontAwesomeIcon,
     LoopGrid,
@@ -89,6 +92,9 @@ export default {
     Info,
   },
   props: {
+    /**
+     * `seriesid` of current Series.
+     */
     seriesid: {
       type: String,
       required: true,
@@ -96,6 +102,9 @@ export default {
         return /^[a-z0-9]{24}$/.test(value);
       },
     },
+    /**
+     * `episodeid` of current Episode.
+     */
     episodeid: {
       type: String,
       required: false,
@@ -104,6 +113,9 @@ export default {
         return /^[a-z0-9]{24}$/.test(value) || value === '';
       },
     },
+    /**
+     * The number of episode in current Series.
+     */
     episodeno: {
       type: String,
       required: false,
@@ -185,11 +197,21 @@ export default {
 
 
   methods: {
+  /**
+   * When episode selection menu changed, navigate to selected `EpisodePage`.
+   *
+   * @event selectChanged
+   * @type {Function}
+   */
     selectChanged() {
       this.$router.push({ path: `/episode/${this.selectedEpisodeID}` });
       this.fetchLoops();
     },
-
+    /**
+     * Fetch Episodes.
+     *
+     * @function fetchLoops
+     */
     fetchEpisodes() {
       try {
         this.$store.dispatch('fetchEpisodesBySeriesID', { seriesid: this.currentSeriesID });
@@ -197,7 +219,11 @@ export default {
         throw new Error(e);
       }
     },
-
+    /**
+     * Fetch Loops.
+     *
+     * @function fetchLoops
+     */
     fetchLoops() {
       try {
         this.$store.dispatch('fetchLoopsByEpisodeID', { episodeid: this.selectedEpisodeID });

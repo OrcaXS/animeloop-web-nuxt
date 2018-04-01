@@ -34,6 +34,9 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Search Bar of the Navbar.
+ */
 export default {
   name: 'NavbarSearch',
   components: {

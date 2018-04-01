@@ -24,7 +24,7 @@
 import SeriesGrid from '~/components/Series/Grid';
 
 export default {
-  name: 'SearchPage',
+  name: 'PageSearch',
   components: {
     SeriesGrid,
   },

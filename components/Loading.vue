@@ -14,6 +14,11 @@
 /* eslint-disable no-underscore-dangle */
 import Vue from 'vue';
 
+/**
+ * Loading bar provided by Nuxt, with customized color and position.
+ * @see See [Nuxt Loading Property](https://nuxtjs.org/api/configuration-loading/)
+ * @see See [Nuxt: nuxt-loading.vue](https://github.com/nuxt/nuxt.js/blob/master/lib/app/components/nuxt-loading.vue)
+ */
 export default {
   name: 'NuxtLoading',
   data() {

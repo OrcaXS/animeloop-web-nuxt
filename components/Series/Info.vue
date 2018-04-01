@@ -30,6 +30,9 @@
 import Genres from './Genres';
 import TypeTag from '../Common/TypeTag';
 
+/**
+ * Anime Series Info for current Series, part of `SeriesPage`.
+ */
 export default {
   name: 'SeriesInfo',
   components: {
@@ -37,6 +40,9 @@ export default {
     TypeTag,
   },
   props: {
+    /**
+     * `seriesid` of current Series.
+     */
     seriesid: {
       type: String,
       required: true,

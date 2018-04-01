@@ -16,6 +16,9 @@ import NavbarBurgerMenu from './Menu';
 import NavbarSearch from './Search';
 import NavbarTitle from './Title';
 
+/**
+ * The Navbar component.
+ */
 export default {
   name: 'NavbarContainer',
   components: {

@@ -34,6 +34,9 @@
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 
+/**
+ * Language Menu of the Navbar.
+ */
 export default {
   name: 'NavbarLangMenu',
   components: {

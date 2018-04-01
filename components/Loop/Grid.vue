@@ -53,6 +53,9 @@
 import LoopCard from './Card';
 import CardDetails from './CardDetails';
 
+/**
+ * Grid layout wrapper for `LoopCard`.
+ */
 export default {
   name: 'LoopGrid',
   components: {
@@ -60,6 +63,11 @@ export default {
     CardDetails,
   },
   props: {
+    /**
+     * The type of page including this component.
+     *
+     * `random, episode`
+     */
     pageType: {
       type: String,
       required: true,
@@ -68,10 +76,16 @@ export default {
         return val === 'random' || val === 'episode';
       },
     },
+    /**
+     * `episodeid` of the Episode, when `pageType` is `episode`.
+     */
     episodeid: {
       type: String,
       required: false,
       default: '',
+      validator(val) {
+        return /^[a-z0-9]{24}$/.test(val);
+      },
     },
   },
   computed: {

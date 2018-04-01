@@ -36,6 +36,9 @@ import LoopInfo from './Info';
 import LoopCard from './Card';
 import BreadCrumb from './BreadCrumb';
 
+/**
+ * View component of `LoopPage`.
+ */
 export default {
   name: 'LoopPageView',
   components: {
@@ -45,6 +48,11 @@ export default {
   },
 
   props: {
+    /**
+     * Type of current `LoopPage`.
+     *
+     * `loop, random`
+     */
     pageType: {
       type: String,
       required: true,
