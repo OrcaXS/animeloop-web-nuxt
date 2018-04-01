@@ -18,7 +18,7 @@ module.exports = {
         {
           name: 'Loop',
           components: 'components/Loop/*.vue',
-          description: 'Components for Loop Page.'
+          description: 'Components for Loop Page.',
         },
         {
           name: 'Navbar',
