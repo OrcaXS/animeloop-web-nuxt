@@ -29,3 +29,6 @@ config.js
 
 # Heroku
 .env
+
+# Styleguidist
+styleguide
