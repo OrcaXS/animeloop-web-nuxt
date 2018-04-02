@@ -1,11 +1,11 @@
 # animeloop-web-nuxt
 Animeloop web app written from scratch, built with Nuxt.js.
 
-> Currently serves as Animeloop Beta.
-
+The backend is powered by [animeloop-server](https://github.com/moeoverflow/animeloop-server).
+The loops is generated using [animeloop-cli](https://github.com/moeoverflow/animeloop-cli).
 
 ## Features
-- Service Worker
+- PWA with Service Worker
 - Dirty i18n
 
 ## Recent Updates
@@ -13,7 +13,8 @@ Animeloop web app written from scratch, built with Nuxt.js.
 
 ## Todo
 
-- [ ] Clean up Spaghetti code 
+- [ ] Clean up Spaghetti code
+- [ ] Styles refactoring
 - [ ] SeriesPage code refactoring
 - [ ] Unit Testing
 - [x] ListPage by Season
@@ -30,6 +31,9 @@ $ yarn install
 
 # serve with hot reload at localhost:3333
 $ yarn dev
+
+# generate styleguidist
+$ yarn styleguidist:build
 
 # build for production and launch server
 $ yarn build
