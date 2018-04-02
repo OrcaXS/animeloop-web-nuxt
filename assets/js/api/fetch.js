@@ -7,6 +7,8 @@ import qs from 'qs';
 
 import apiPrefix from '~/config';
 
+const apiBaseUrl = process.client ? apiPrefix.browser : apiPrefix.server;
+
 function encodeFormData(data) {
   return Object.entries(data).map(item => (
     `${item[0]}=${encodeURIComponent(item[1])}`
@@ -34,8 +36,8 @@ async function callApi(request) {
 
   // url
   const url = ((!hasBody) && (request.data))
-    ? `${apiPrefix}${request.url}${qs.stringify(request.data, { addQueryPrefix: true })}`
-    : `${apiPrefix}${request.url}`;
+    ? `${apiBaseUrl}${request.url}${qs.stringify(request.data, { addQueryPrefix: true })}`
+    : `${apiBaseUrl}${request.url}`;
 
   try {
     const res = await fetch(url, init);
