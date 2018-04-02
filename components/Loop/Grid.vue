@@ -84,7 +84,7 @@ export default {
       required: false,
       default: '',
       validator(val) {
-        return /^[a-z0-9]{24}$/.test(val);
+        return /^[a-z0-9]{24}$/.test(val) || val === '';
       },
     },
   },
