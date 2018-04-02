@@ -14,7 +14,10 @@ init:
 install:
   - ps: Install-Product node 9 x64
   - echo Preparing API config...
-  - ps: Add-Content config.js "const apiPrefix = `'$Env:ANIMELOOP_API_URL`';"
+  - ps: Add-Content config.js "const apiPrefix = {"
+  - ps: Add-Content config.js "  server:`'$Env:ANIMELOOP_API_URL`',"
+  - ps: Add-Content config.js "  browser:`'$Env:ANIMELOOP_API_URL`',"
+  - ps: Add-Content config.js "};"
   - ps: Add-Content config.js "`r`nexport default apiPrefix;"
 
   - echo Performing yarn install...
