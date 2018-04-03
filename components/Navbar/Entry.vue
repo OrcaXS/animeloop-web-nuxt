@@ -14,7 +14,7 @@
         :icon="entry.icon"
         class="entry-fa-icon"
       />
-      <span v-t="entry.name" />
+      <span>{{ $t(entry.name) }}</span>
     </nuxt-link>
   </div>
 </template>
