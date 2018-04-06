@@ -4,7 +4,7 @@
     <NavbarTitle v-if="!navStates.searchOpen"/>
     <NavbarEntry />
     <NavbarSearch />
-    <NavbarLangMenu v-if="!navStates.searchOpen"/>
+    <!-- <NavbarLangMenu v&#45;if="!navStates.searchOpen"/> -->
     <div class="line-break" />
   </nav>
 </template>

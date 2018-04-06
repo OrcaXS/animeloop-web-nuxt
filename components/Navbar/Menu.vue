@@ -85,7 +85,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     margin-right: auto;
-    flex: 0 1 25%;
+    flex: 0 1 10%;
   }
 
 }

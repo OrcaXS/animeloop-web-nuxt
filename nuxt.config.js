@@ -1,5 +1,5 @@
 // const VueI18n = require('vue-i18n');
-const i18nExtensions = require('vue-i18n-extensions');
+// const i18nExtensions = require('vue-i18n-extensions');
 
 module.exports = {
   /*
@@ -25,7 +25,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['vue-i18n', '@fortawesome/vue-fontawesome'],
+    vendor: ['@fortawesome/vue-fontawesome'],
     /*
     ** Run ESLint on save
     */
@@ -50,28 +50,28 @@ module.exports = {
   render: {
     // confiture `render`
     // see Nuxt.js docs: https://nuxtjs.org/api/configuration-render#bundleRenderer
-    bundleRenderer: {
-      directives: {
-        t: i18nExtensions.directive,
-      },
-    },
+    // bundleRenderer: {
+    //   directives: {
+    //     t: i18nExtensions.directive,
+    //   },
+    // },
   },
 
   plugins: [
-    '~/plugins/i18n.js',
-    '~/plugins/cookies.js',
+    // '~/plugins/i18n.js',
+    // '~/plugins/cookies.js',
     '~/plugins/font-awesome.js',
     { src: '~/plugins/v-click-outside', ssr: false },
   ],
 
   router: {
-    middleware: 'setLang',
+    // middleware: 'setLang',
   },
 
   modules: [
     // '@nuxtjs/webpackmonitor',
-    'nuxt-webpackdashboard',
-    '@nuxtjs/pwa',
+    // 'nuxt-webpackdashboard',
+    // '@nuxtjs/pwa',
     // Simple usage
     // ['@nuxtjs/google-analytics', {
     // id: 'UA-XXXXXX-4',
@@ -79,14 +79,14 @@ module.exports = {
     // '@nuxtjs/bulma',
   ],
 
-  manifest: {
-    name: 'Animeloop Beta',
-    short_name: 'Animeloop β',
-    description: 'Animeloop Web Frontend',
-    ogTitle: false,
-    ogDescription: false,
-    theme_color: '#FFFFFF',
-  },
+  // manifest: {
+  //   name: 'Animeloop Beta',
+  //   short_name: 'Animeloop β',
+  //   description: 'Animeloop Web Frontend',
+  //   ogTitle: false,
+  //   ogDescription: false,
+  //   theme_color: '#FFFFFF',
+  // },
 
   // workbox: {
   //   runtimeCaching: [

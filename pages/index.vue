@@ -16,7 +16,7 @@ export default {
 
   head() {
     return {
-      title: `${this.$t('home')} | Animeloop`,
+      title: 'Home | Animeloop',
     };
   },
 

@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 const i18n = {
   state: {
-    locale: '',
+    locale: 'en',
   },
 
   getters: {},

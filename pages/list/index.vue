@@ -130,7 +130,7 @@ export default {
 
   head() {
     return {
-      title: `${this.$t('list')} | Animeloop`,
+      title: 'List | Animeloop',
     };
   },
   // undocumented, see https://github.com/nuxt/nuxt.js/blob/dev/examples/routes-transitions/pages/users.vue

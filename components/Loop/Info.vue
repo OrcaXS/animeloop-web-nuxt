@@ -20,10 +20,7 @@
       />
     </div>
     <div class="info-detail">
-      <p
-        v-t="'loop.downloads'"
-        class="info-type"
-      />
+      <p class="info-type">Downloads</p>
       <Downloads :loopid="loopid" />
     </div>
   </div>

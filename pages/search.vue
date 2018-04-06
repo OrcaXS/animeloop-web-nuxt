@@ -31,7 +31,7 @@ export default {
 
   head() {
     return {
-      title: this.hasKeyword ? `"${this.keyword}" | ${this.$t('search')} | Animeloop` : `${this.$t('search')} | Animeloop`,
+      title: this.hasKeyword ? `"${this.keyword}" | 'Search' | Animeloop` : 'Search | Animeloop',
     };
   },
 

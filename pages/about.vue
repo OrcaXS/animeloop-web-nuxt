@@ -30,7 +30,7 @@ export default {
 
   head() {
     return {
-      title: `${this.$t('about')} | Animeloop`,
+      title: 'About | Animeloop',
     };
   },
 

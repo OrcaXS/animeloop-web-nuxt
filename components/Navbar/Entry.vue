@@ -14,7 +14,7 @@
         :icon="entry.icon"
         class="entry-fa-icon"
       />
-      <span>{{ $t(entry.name) }}</span>
+      <span>{{ entry.name }}</span>
     </nuxt-link>
   </div>
 </template>
@@ -33,10 +33,10 @@ export default {
   data() {
     return {
       entries: [
-        { name: 'navbar.list', icon: 'th-list', routeName: 'list' },
+        { name: 'List', icon: 'th-list', routeName: 'list' },
         // { name: 'navbar.tags', icon: 'tags' },
-        { name: 'navbar.random', icon: 'question-circle', routeName: 'random' },
-        { name: 'navbar.about', icon: 'info', routeName: 'about' },
+        { name: 'Random', icon: 'question-circle', routeName: 'random' },
+        { name: 'About', icon: 'info', routeName: 'about' },
       ],
 
     };
