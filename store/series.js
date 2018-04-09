@@ -3,14 +3,14 @@ import remote from '~/assets/js/api/fetch';
 import validate from '~/assets/js/utils/validate';
 
 const series = {
-  state: {
+  state: () => ({
     series: {/* [id: seriesid]: Series */},
     // seriesListByPage: {/* [page: pagenum]: seriesid */},
     seriesListByGroupFilter: [],
     seasons: {/* [year]: month */},
     seriesCount: 0,
     maxSeriesInPage: 30,
-  },
+  }),
 
   mutations: {
     SET_MULTIPLE_SERIES: (state, { data }) => {

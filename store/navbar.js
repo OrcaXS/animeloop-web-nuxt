@@ -1,11 +1,11 @@
 // import Vue from 'vue';
 
 const navbar = {
-  state: {
+  state: () => ({
     burgerOpen: false,
     searchOpen: false,
     langOpen: false,
-  },
+  }),
 
   getters: {
   },

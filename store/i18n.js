@@ -1,9 +1,9 @@
 import Vue from 'vue';
 
 const i18n = {
-  state: {
+  state: () => ({
     locale: '',
-  },
+  }),
 
   getters: {},
 

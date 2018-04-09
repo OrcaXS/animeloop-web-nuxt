@@ -2,10 +2,10 @@ import remote from '~/assets/js/api/fetch';
 import validate from '~/assets/js/utils/validate';
 
 const search = {
-  state: {
+  state: () => ({
     searchResult: [/* Series id returned for search */],
     isSearching: false,
-  },
+  }),
 
   mutations: {
     SET_SEARCH: (state, { data }) => {

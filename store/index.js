@@ -13,9 +13,9 @@ import navbar from './navbar';
 Vue.use(Vuex);
 
 const createStore = () => new Vuex.Store({
-  state: {
+  state: () => ({
     // currentLocale: 'en',
-  },
+  }),
   modules: {
     loop,
     series,

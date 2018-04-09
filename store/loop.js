@@ -13,13 +13,13 @@ function tidyTimestamp(time) {
 }
 
 const loop = {
-  state: {
+  state: () => ({
     randomLoopList: [/* loopid */],
     randomPageLoopid: '',
     loopList: {/* [id: episodeid]: loopid */},
     loops: {/* [id: loopid]: Loop */},
     play: false,
-  },
+  }),
 
   mutations: {
     SET_LOOP: (state, { loopid, data }) => {
