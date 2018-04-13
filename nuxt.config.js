@@ -1,5 +1,8 @@
 // const VueI18n = require('vue-i18n');
 const i18nExtensions = require('vue-i18n-extensions');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob-all');
+const path = require('path');
 
 module.exports = {
   /*
@@ -25,18 +28,31 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
     vendor: ['vue-i18n', '@fortawesome/vue-fontawesome'],
     /*
     ** Run ESLint on save
     */
-    extend(config, ctx) {
-      if (ctx.isDev && ctx.isClient) {
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
         });
+      }
+      if (!isDev) {
+        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
+        // for more information about purgecss.
+        config.plugins.push(new PurgecssPlugin({
+          paths: glob.sync([
+            path.join(__dirname, './pages/**/*.vue'),
+            path.join(__dirname, './layouts/**/*.vue'),
+            path.join(__dirname, './components/**/*.vue'),
+          ]),
+          whitelist: ['html', 'body'],
+        }));
       }
     },
   },
