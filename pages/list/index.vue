@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 class="ListPage-heading">List Anime by Filter</h1>
     <div class="ListPage-filter">
       <div class="ListPage-select year-selector">
         <select
