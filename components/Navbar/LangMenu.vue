@@ -1,11 +1,11 @@
 <template>
   <div
     v-click-outside="onClickOutside"
-    class="lang-menu-container"
+    class="NavbarLangMenu"
   >
     <div>
       <button
-        class="lang-icon-container"
+        class="NavbarLangMenu-icon"
         aria-label="Select Language Button"
         @click="toggleLang"
       >
@@ -17,13 +17,13 @@
       </button>
       <div
         :style="toggleLangStyle"
-        class="lang-menu-dropdown"
+        class="NavbarLangMenu-dropdown"
       >
         <button
           v-for="locale in localeList"
           :key="locale.id"
-          :class="{ 'lang-selected': currentLocale === locale.id }"
-          class="lang-item"
+          :class="{ 'NavbarLangMenu-selected': currentLocale === locale.id }"
+          class="NavbarLangMenu-dropdownItem"
           @click="setLanguage(locale.id)"
         >{{ locale.text }}</button>
       </div>
@@ -86,17 +86,15 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/colors.css";
-@import "~/assets/css/mediaqueries.css";
+/** @define NavbarLangMenu */
 
-.lang-menu-container {
-
+.NavbarLangMenu {
   display: flex;
   /* padding: 0 .2em; */
   /* flex-direction: column; */
   flex-shrink: 0;
 
-  @media (--phone-screen) {
+  @screen phone {
     margin-left: auto;
     flex: 0 1 25%;
     justify-content: flex-end;
@@ -108,7 +106,7 @@ export default {
   }
 }
 
-.lang-icon-container {
+.NavbarLangMenu-icon {
   display: flex;
   align-items: center;
   border: none;
@@ -118,7 +116,7 @@ export default {
   }
 
   &:hover {
-    border-bottom: .15rem solid var(--key-color-light);
+    border-bottom: .15rem solid config('colors.accent-color-light');
     margin-bottom: -.15rem;
   }
 
@@ -139,14 +137,14 @@ export default {
   }
 }
 
-.lang-menu-dropdown {
+.NavbarLangMenu-dropdown {
   display: none;
   position: absolute;
   background: white;
   box-shadow: 0 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
-.lang-item {
+.NavbarLangMenu-dropdownItem {
   border: none;
   outline: none;
   padding: 0;
@@ -156,17 +154,17 @@ export default {
   padding: .6em;
   cursor: pointer;
 
-  color: var(--black1);
+  color: config('colors.black1');
 
   &:hover {
     padding: .6em .6em .6em .3em;
-    border-left: .3em solid rgba(var(--key-color-light), 0.8);
+    border-left: .3em solid rgba(config('colors.accent-color-light'), 0.8);
   }
 }
 
-.lang-selected {
+.NavbarLangMenu-selected {
   padding: .6em .6em .6em .3em;
-  border-left: .3em solid var(--key-color-light);
+  border-left: .3em solid config('colors.accent-color-light');
 }
 
 

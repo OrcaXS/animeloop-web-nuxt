@@ -1,28 +1,28 @@
 <template>
-  <div class="loop-info-grid-container">
-    <div class="loop-info-tags-container">
+  <div class="LoopInfo">
+    <div class="LoopInfo-tags">
       <TypeTag
         :anime-type="loop.series.type"
         :season="loop.series.season"
-        class="loop-info-season-type"
+        class="LoopInfo-season"
         type="withSeason"
       />
       <TimeTag
         :duration="formattedTimeStamps.duration"
-        class="loop-info-duration"
+        class="LoopInfo-duration"
         type="length"
       />
       <TimeTag
         :start="formattedTimeStamps.begin"
         :end="formattedTimeStamps.end"
-        class="loop-info-timestamp"
+        class="LoopInfo-timestamp"
         type="timestamp"
       />
     </div>
-    <div class="info-detail">
+    <div class="LoopInfo-downloads">
       <p
         v-t="'loop.downloads'"
-        class="info-type"
+        class="LoopInfo-downloadsText"
       />
       <Downloads :loopid="loopid" />
     </div>
@@ -70,8 +70,10 @@ export default {
 };
 </script>
 
-<style>
-.loop-info-grid-container {
+<style scoped lang="postcss">
+/** @define LoopInfo */
+
+.LoopInfo {
   grid-area: loop-info;
 
   display: grid;
@@ -87,51 +89,38 @@ export default {
   justify-content: stretch;
 }
 
-.loop-info-tags-container {
+.LoopInfo-tags {
   display: flex;
   flex-flow: row wrap;
-  /* font-family: 'Lato', sans-serif; */
-  /* justify-content: space-between; */
-  /* width: max-content; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, max-content)); */
-  /* grid-template-rows: 300px; */
-  /* grid-template-columns: auto auto auto; */
-  /* grid-row-gap: .5em; */
-  /* grid-template-areas:
-    "loop-season-type loop-duration"
-    "loop-timestamp loop-timestamp"; */
-  /* grid-template-areas:
-    "loop-season-type loop-duration loop-timestamp"; */
 }
 
-.loop-info-season-type {
+.LoopInfo-season {
   margin: .25em .25em .25em 0;
   /* flex: 1 1 20%; */
   /* grid-area: loop-season-type; */
 }
 
-.loop-info-duration {
+.LoopInfo-duration {
   margin: .25em .5em .25em .25em;
   /* flex: 1 1 20%; */
   /* grid-area: loop-duration; */
 }
 
-.loop-info-timestamp {
+.LoopInfo-timestamp {
   margin: .25em .25em .25em 0;
   /* flex: 0 0 100%; */
   /* grid-area: loop-timestamp; */
 }
 
-.info-type {
-  font-weight: 500;
-  padding-bottom: 1em;
-  /* color: #333; */
-}
-
-.info-detail {
+.LoopInfo-downloads {
   font-weight: 400;
   color: #333;
 }
+
+.LoopInfo-downloadsText {
+  font-weight: 500;
+  padding-bottom: 1em;
+}
+
 
 </style>

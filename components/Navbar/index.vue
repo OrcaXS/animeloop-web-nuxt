@@ -1,11 +1,14 @@
 <template>
-  <nav :style="toggleContainerStyle">
+  <nav
+    :style="toggleContainerStyle"
+    class="Navbar z-10"
+  >
     <NavbarBurgerMenu />
     <NavbarTitle v-if="!navStates.searchOpen"/>
     <NavbarEntry />
     <NavbarSearch />
     <NavbarLangMenu v-if="!navStates.searchOpen"/>
-    <div class="line-break" />
+    <div class="Navbar-lineBreak" />
   </nav>
 </template>
 
@@ -20,7 +23,7 @@ import NavbarTitle from './Title';
  * The Navbar component.
  */
 export default {
-  name: 'NavbarContainer',
+  name: 'Navbar',
   components: {
     NavbarEntry,
     NavbarLangMenu,
@@ -46,11 +49,10 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define Navbar */
 
-nav {
+.Navbar {
   grid-area: nav;
-  z-index: 10;
   position: fixed;
   top: 0;
   width: 100%;
@@ -68,14 +70,14 @@ nav {
   display: flex;
   align-items: center;
 
-  @media (--tablet-screen) {
+  @screen tablet {
     /* margin: 2em 2em; */
     padding: 0 2em;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  @media(--phone-screen) {
+  @screen phone {
     flex-wrap: nowrap;
 
     /* &::after {
@@ -90,9 +92,9 @@ nav {
 /* Tablet Hack */
 /* Cause amoutn of Entries currently less than 4 */
 
-.line-break {
+.Navbar-lineBreak {
   display: none;
-  @media (--tablet-screen) {
+  @screen tablet {
     display: block;
   }
   content: "";

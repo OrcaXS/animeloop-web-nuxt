@@ -1,11 +1,11 @@
 <template>
-  <section class="series-page-combined-grid">
+  <section class="SeriesPage">
     <div
       :style="upperHalfBackgroundImage"
-      class="upper-half-cover"
+      class="SeriesPage-upperHalfCover"
     />
-    <div class="series-page-upper-grid-container">
-      <div class="series-page-cover">
+    <div class="SeriesPage-upperGrid">
+      <div class="SeriesPage-cover">
         <nuxt-link :to="{ name: 'series-id', params: { id: seriesid }}">
           <img
             :src="series.image_url_large"
@@ -15,12 +15,12 @@
       </div>
       <Info
         :seriesid="currentSeriesID"
-        class="series-page-info"
+        class="SeriesPage-info"
       />
       <div v-if="!episodeList">
         <p>
           <FontAwesomeIcon
-            class="fa-icon"
+            class="SeriesPage-faIcon"
             icon="circle-notch"
             spin
           />
@@ -28,9 +28,9 @@
       </div>
       <div
         v-else
-        class="series-page-episode-selector"
+        class="SeriesPage-episodeSelector"
       >
-        <div class="episode-select">
+        <div class="SeriesPage-episodeSelect">
           <select
             v-model="selectedEpisodeID"
             required
@@ -54,11 +54,11 @@
     </div>
     <div
       v-if="$route.name === 'episode-id'"
-      class="series-page-lower-grid-container"
+      class="SeriesPage-lowerGrid"
     >
       <p v-if="!loops">
         <FontAwesomeIcon
-          class="fa-icon"
+          class="SeriesPage-faIcon"
           icon="circle-notch"
           spin
         />
@@ -237,13 +237,13 @@ export default {
 </script>
 
 <style scoped>
-@import "~/assets/css/mediaqueries.css";
+/** @define SeriesPage */
 
-.series-page-combined-grid {
+.SeriesPage {
   /* layout hack specifically for seriespage */
   /* padding: 0 -1em; */
   margin: 0 -1em;
-  @media (--tablet-screen) {
+  @screen tablet {
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
     @supports(padding: min(0px)) {
       /* margin: 0 -16px; */
@@ -254,12 +254,12 @@ export default {
   }
 
 
-  @media (--phone-screen) {
+  @screen phone {
     margin: 0;
   }
 }
 
-.series-page-upper-grid-container {
+.SeriesPage-upperGrid {
   z-index: 1;
   margin-top: -1em;
   /* position: relative; */
@@ -283,7 +283,7 @@ export default {
     rgba(255, 255, 255, 0.8)
   );
 
-  @media (--tablet-screen) {
+  @screen tablet {
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
     @supports(padding: min(0px)) {
       /* padding: 1em 1em 0em; */
@@ -294,7 +294,7 @@ export default {
     }
   }
 
-  @media (--phone-screen) {
+  @screen phone {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
@@ -305,11 +305,7 @@ export default {
 
 }
 
-.series-page-lower-grid-container {
-  /* background-color: rgba(224, 224, 224, 0.8); */
-}
-
-.upper-half-cover {
+.SeriesPage-upperHalfCover {
   position: absolute;
   top: 4em;
   z-index: -1;
@@ -321,7 +317,7 @@ export default {
   height: 40vh;
 }
 
-.series-page-cover {
+.SeriesPage-cover {
   grid-area: series-cover;
   justify-self: center;
   & > a > img {
@@ -329,15 +325,15 @@ export default {
   }
 }
 
-.series-page-info {
+.SeriesPage-info {
   grid-area: series-page-info;
 }
 
-.series-page-episode-selector {
+.SeriesPage-episodeSelector {
   grid-area: episode-selector;
 }
 
-.episode-select {
+.SeriesPage-episodeSelect {
   display: inline-block;
   position: relative;
 
@@ -395,7 +391,7 @@ export default {
   }
 }
 
-.series-page-lower-grid-container {
+.SeriesPage-lowerGrid {
   z-index: 2;
   margin-top: 1em;
 
@@ -405,12 +401,7 @@ export default {
   }
 }
 
-.series-page-category-divider {
-  display: inline-block;
-  padding: 0em .5rem;
-}
-
-.fa-icon {
+.SeriesPage-faIcon {
   color: #333;
 }
 

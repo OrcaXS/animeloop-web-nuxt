@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="list-page-heading">List Anime by Filter</h1>
-    <div class="list-page-filter">
-      <div class="list-page-select year-selector">
+    <h1 class="ListPage-heading">List Anime by Filter</h1>
+    <div class="ListPage-filter">
+      <div class="ListPage-select year-selector">
         <select
           v-model="selectedYear"
         >
@@ -15,7 +15,7 @@
           </option>
         </select>
       </div>
-      <div class="list-page-select month-selector">
+      <div class="ListPage-select month-selector">
         <select
           v-model="selectedMonth"
         >
@@ -28,7 +28,7 @@
           </option>
         </select>
       </div>
-      <div class="list-page-select type-selector">
+      <div class="ListPage-select type-selector">
         <select
           v-model="selectedType"
         >
@@ -46,7 +46,7 @@
         </select>
       </div>
       <button
-        class="filter-button"
+        class="ListPage-filterBtn"
         @click="applyFilter"
       >
         <FontAwesomeIcon
@@ -59,7 +59,7 @@
     />
     <div
       v-if="pageCount > 1"
-      class="pagination"
+      class="ListPage-pagination"
     >
       <nuxt-link
         v-if="!disablePrevPage"
@@ -67,7 +67,7 @@
           name: 'list',
           query: prevPageQueryObj,
         }"
-        class="page-icon"
+        class="ListPage-pageIcon"
       >
         <PageIcon
           :is-enabled="true"
@@ -79,7 +79,7 @@
         :is-enabled="false"
         direction="left"
       />
-      <div class="list-page-select">
+      <div class="ListPage-select">
         <select
           v-model="selectedPageNum"
           @change="pageChanged"
@@ -99,7 +99,7 @@
           name: 'list',
           query: Object.assign({}, this.$route.query, { page: currentPageNumInt + 1 }),
         }"
-        class="page-icon"
+        class="ListPage-pageIcon"
       >
         <PageIcon
           :is-enabled="true"
@@ -257,22 +257,21 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import '~/assets/css/colors.css';
-@import "~/assets/css/mediaqueries.css";
+/** @define ListPage */
 
-.list-page-heading {
-  @media (--phone-screen) {
+.ListPage-heading {
+  @screen phone {
     text-align: center;
   }
 }
 
-.list-page-grid {
+.ListPage-grid {
   /* margin: 1em; */
   display: grid;
   grid-template-columns: auto;
 }
 
-.list-page-filter {
+.ListPage-filter {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -284,14 +283,14 @@ export default {
   /* width: 90%; */
   /* min-width: 320px; */
 
-  @media (--phone-screen) {
+  @screen phone {
     width: 100%;
     justify-content: center;
   }
 
 }
 
-.list-page-select {
+.ListPage-select {
   /* display: inline-block; */
   /* width: 100%; */
   position: relative;
@@ -371,8 +370,8 @@ export default {
   }
 }
 
-.filter-button {
-  border: 1px solid var(--key-color-light);
+.ListPage-filterBtn {
+  border: 1px solid config('colors.accent-color-light');
   border-radius: 5px;
   outline: none;
   padding: 0 1rem;
@@ -381,10 +380,10 @@ export default {
   font-size: 1.1em;
 
   color: white;
-  background-color: var(--key-color);
+  background-color: config('colors.accent-color');
 }
 
-.pagination {
+.ListPage-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -394,12 +393,12 @@ export default {
   width: 90%;
   min-width: 320px;
 
-  @media (--phone-screen) {
+  @screen phone {
     width: 100%;
   }
 }
 
-.page-icon {
+.ListPage-pageIcon {
   background-color: #f0f0f0;
   padding: .5em 2em;
   border-radius: 5px;
@@ -409,7 +408,7 @@ export default {
   flex: 2 2 auto;
 }
 
-.page-icon-disabled {
+.ListPage-pageIcon--disabled {
   color: #dddddd;
 }
 

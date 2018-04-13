@@ -1,5 +1,5 @@
 <template>
-  <div class="genres">
+  <div class="SeriesGenres">
     <template
       v-for="(genre, index) in genres"
       v-if="!!genre"
@@ -25,7 +25,7 @@
  * Iterates and displays genres from array.
  */
 export default {
-  name: 'Genres',
+  name: 'SeriesGenres',
   props: {
     /**
      * The array containing genres.
@@ -40,7 +40,9 @@ export default {
 </script>
 
 <style scoped>
-.genres {
+/** @define SereisGenres */
+
+.SeriesGenres {
   color: #444444;
   font-style: italic;
   font-size : 0.9em;

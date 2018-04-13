@@ -1,6 +1,6 @@
 <template>
-  <section class="loop-page-grid-container">
-    <BreadCrumb class="breadcrumb">
+  <section class="LoopPage">
+    <Breadcrumb class="LoopPage-breadcrumb">
       <nuxt-link
         slot="title"
         :to="{ name: 'series-id', params: { id: loop.series.id }}"
@@ -12,18 +12,18 @@
         type="no"
       >{{ loop.episode.no }}</nuxt-link>
     </BreadCrumb>
-    <div class="loop-card">
+    <div class="LoopPage-loopCard">
       <LoopCard
         :loopid="loop.id"
         loop-type="mp4"
         page-type="loop"
       />
     </div>
-    <div class="loop-info">
+    <div class="LoopPage-info">
       <LoopInfo :loopid="loop.id" />
     </div>
     <div
-      class="vertical-title"
+      class="LoopPage-verticalTitle"
       lang="ja"
     >
       <p>{{ loop.series.title_japanese }}</p>
@@ -34,7 +34,7 @@
 <script>
 import LoopInfo from './Info';
 import LoopCard from './Card';
-import BreadCrumb from './BreadCrumb';
+import Breadcrumb from './Breadcrumb';
 
 /**
  * View component of `LoopPage`.
@@ -42,7 +42,7 @@ import BreadCrumb from './BreadCrumb';
 export default {
   name: 'LoopPageView',
   components: {
-    BreadCrumb,
+    Breadcrumb,
     LoopInfo,
     LoopCard,
   },
@@ -96,10 +96,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import '~/assets/css/colors.css';
-@import "~/assets/css/mediaqueries.css";
+/** @define LoopPage */
 
-.loop-page-grid-container {
+.LoopPage {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
@@ -115,7 +114,7 @@ export default {
   /* max-height: calc(100vh - 3rem); */
   /* margin: 0 1em; */
 
-  @media (--tablet-screen) {
+  @screen tablet {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
@@ -124,7 +123,7 @@ export default {
     "loop-info";
   }
 
-  @media (--phone-screen) {
+  @screen phone {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
@@ -136,10 +135,10 @@ export default {
   }
 }
 
-.vertical-title {
+.LoopPage-verticalTitle {
   grid-area: vertical-title;
   writing-mode: vertical-rl;
-  color: var(--grey3);
+  color: config('colors.grey3');
   font-size: 3em;
   font-family: serif;
   max-height: calc(100vh - 5rem);
@@ -147,30 +146,30 @@ export default {
   white-space: normal;
   word-break: normal;
 
-  @media (--tablet-screen) {
+  @screen tablet {
     display: none;
   }
 
-  @media (--phone-screen) {
+  @screen phone {
     display: none;
   }
 }
 
-.loop-card {
+.LoopPage-loopCard {
   grid-area: loop-card;
   /* max-height: 75vh; */
   /* width: 100%; */
 }
 
-.loop-info {
-  @media (--phone-screen) {
+.LoopPage-info {
+  @screen phone {
     margin: 0 .5em;
   }
 }
 
-.breadcrumb {
+.LoopPage-breadcrumb {
   grid-area: breadcrumb;
-  @media (--phone-screen) {
+  @screen phone {
     margin: 0 .5em;
   }
 }

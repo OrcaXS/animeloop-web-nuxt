@@ -1,22 +1,21 @@
 <template>
-  <div class="logo-link">
+  <div class="NavbarTitle-logoLink">
     <nuxt-link :to="'/'">
       <img
-        class="logo"
+        class="NavbarTitle-logo"
         alt="Animeloop Logo"
         src="~@/assets/images/anime-loop-logo.svg"
       >
       <!-- `~@`: Webpack path hack for styleguidist -->
     </nuxt-link>
     <button
-      class="play-button"
+      class="NavbarTitle-playBtn"
       aria-label="Play or Pause button"
       @click="togglePlay"
     >
       <FontAwesomeIcon
         v-show="showPlayIcon"
         :icon="playIcon"
-        class="fa-icon"
       />
     </button>
   </div>
@@ -55,21 +54,21 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define NavbarTitle */
 
-.logo {
+.NavbarTitle-logo {
   font-size: 1.2em;
   display: block;
   height: 1.6em;
 }
 
-.logo-link {
+.NavbarTitle-logoLink {
   display: flex;
   /* align-items: center; */
   cursor: pointer;
 
 
-  @media (--phone-screen) {
+  @screen phone {
     /* display: block; */
     /* position: absolute; */
     /* transform: translate(-50%, -50%); */
@@ -81,7 +80,7 @@ export default {
   }
 }
 
-.play-button {
+.NavbarTitle-playBtn {
   border: none;
   outline: none;
   background: transparent;
@@ -92,7 +91,4 @@ export default {
   font-size: 1.2em;
 }
 
-.fa-icon {
-  /* margin-left: .2em; */
-}
 </style>

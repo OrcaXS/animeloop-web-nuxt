@@ -1,31 +1,28 @@
 <template>
-  <div class="tag">
+  <div class="font-opensans">
     <div
       v-if="type === 'length'"
       class="tag-container"
     >
-      <span class="time-info-tag left-half">
+      <span class="TimeTag-info TimeTag-leftHalf">
         <FontAwesomeIcon
-          class="time-fa-icon"
           icon="stopwatch"
         />
       </span>
-      <span class="time-info-tag right-half">{{ duration }}s</span>
+      <span class="TimeTag-info TimeTag-rightHalf">{{ duration }}s</span>
     </div>
     <div
       v-if="type === 'timestamp'"
-      class="tag-container full-length">
-      <span class="time-info-tag left-arrow">
+      class="tag-container TimeTag-fullLength">
+      <span class="TimeTag-info TimeTag-leftArrow">
         <FontAwesomeIcon
-          class="time-fa-icon"
           icon="long-arrow-alt-left"
         />
       </span>
-      <span class="time-info-tag start-time">{{ start }}</span>
-      <span class="time-info-tag end-time">{{ end }}</span>
-      <span class="time-info-tag right-arrow">
+      <span class="TimeTag-info start-time">{{ start }}</span>
+      <span class="TimeTag-info end-time">{{ end }}</span>
+      <span class="TimeTag-info TimeTag-rightArrow">
         <FontAwesomeIcon
-          class="time-fa-icon"
           icon="long-arrow-alt-right"
         />
       </span>
@@ -87,55 +84,42 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/colors.css";
+/** @define TimeTag */
 
-.tag-container {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.time-info-tag {
-  /* width: 100%; */
+.TimeTag-info {
   max-width: 8em;
   max-height: 1.5em;
   text-align: center;
   padding: .1em .75em;
-  /* border-radius: 5px; */
   font-size: 1.1em;
 }
 
-.left-half {
+.TimeTag-leftHalf {
   border-radius: 5px 0 0 5px;
-  color: var(--grey5);
-  background-color: var(--grey2);
+  color: config('colors.grey5');
+  background-color: config('colors.grey2');
 }
 
-.right-half {
+.TimeTag-rightHalf {
   border-radius: 0 5px 5px 0;
-  color: var(--grey6);
-  background-color: var(--grey2);
+  color: config('colors.grey6');
+  background-color: config('colors.grey2');
 }
 
-.full-length {
-  color: var(--grey5);
-
-  & > span {
-    background-color: var(--grey1);
-  }
+.TimeTag-fullLength {
+  border-radius: 5px;
+  color: config('colors.grey5');
+  background-color: config('colors.grey1');
 }
 
-.left-arrow {
+.TimeTag-leftArrow {
   border-radius: 5px 0 0 5px;
   padding-right: 0em;
 }
 
-.right-arrow {
+.TimeTag-rightArrow {
   border-radius: 0 5px 5px 0;
   padding-left: 0em;
-}
-
-.time-fa-icon {
-  align-self: center;
 }
 
 </style>

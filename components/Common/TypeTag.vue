@@ -1,22 +1,22 @@
 <template>
-  <div class="tag">
+  <div class="font-opensans">
     <div
       v-if="type === 'withSeason'"
       class="tag-container"
     >
       <span
         :class="typeClassObj({ type: animeType })"
-        class="anime-series-tag large left-half"
+        class="TypeTag TypeTag-large TypeTag-leftHalf text-lg "
       >{{ animeType }}</span>
       <span
         :class="typeClassObj({ type: animeType })"
-        class="anime-series-tag large right-half light"
+        class="TypeTag TypeTag-large TypeTag-rightHalf text-lg light"
       >{{ season }}</span>
     </div>
     <template v-else>
       <span
         :class="typeClassObj({ type: animeType })"
-        class="anime-series-tag"
+        class="TypeTag text-sm"
       >{{ animeType }}</span>
     </template>
   </div>
@@ -62,13 +62,13 @@ export default {
   data() {
     return {
       typeClasses: {
-        OVA: 'tag-ova',
-        ONA: 'tag-ona',
-        Movie: 'tag-movie',
-        Special: 'tag-special',
-        'TV Short': 'tag-tv-short',
-        TV: 'tag-tv',
-        Other: 'tag-other',
+        OVA: 'Series--ova',
+        ONA: 'Series--ona',
+        Movie: 'Series--movie',
+        Special: 'Series--special',
+        'TV Short': 'Series--tvShort',
+        TV: 'Series--tv',
+        Other: 'Series--other',
       },
     };
   },
@@ -92,15 +92,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/colors.css";
+/** @define TypeTag */
 
-.tag-container {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-}
-
-.anime-series-tag {
+.TypeTag {
   max-width: 8em;
   max-height: 1.5em;
   text-align: center;
@@ -108,71 +102,19 @@ export default {
   padding: .0em .5em;
   border-radius: 5px;
   /* font-family: 'Roboto', sans-serif; */
-  font-size: .9em;
   letter-spacing: .25px;
 }
 
-.left-half {
+.TypeTag-leftHalf {
   border-radius: 5px 0 0 5px;
 }
 
-.right-half {
+.TypeTag-rightHalf {
   border-radius: 0 5px 5px 0;
 }
 
-.large {
-  font-size: 1.1em;
+.TypeTag-large {
   padding: .1em .5em;
 }
-
-.tag-tv {
-  background-color: var(--tag-blue);
-  &.light {
-    background-color: var(--tag-blue-light);
-  }
-}
-
-.tag-ova {
-  background-color: var(--tag-purple);
-  &.light {
-    background-color: var(--tag-purple-light);
-  }
-}
-
-.tag-ona {
-  background-color: var(--tag-orange);
-  &.light {
-    background-color: var(--tag-orange-light);
-  }
-}
-
-.tag-movie {
-  background-color: var(--tag-green);
-  &.light {
-    background-color: var(--tag-green-light);
-  }
-}
-
-.tag-tv-short {
-  background-color: var(--tag-cyan);
-  &.light {
-    background-color: var(--tag-cyan-light);
-  }
-}
-
-.tag-special {
-  background-color: var(--tag-red);
-  &.light {
-    background-color: var(--tag-red-light);
-  }
-}
-
-.tag-other {
-  background-color: var(--black1);
-  &.light {
-    background-color: var(--grey6);
-  }
-}
-
 
 </style>

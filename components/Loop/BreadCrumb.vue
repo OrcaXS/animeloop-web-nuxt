@@ -1,8 +1,8 @@
 <template>
-  <nav class="breadcrumb-wrapper">
-    <span class="breadcrumb-link title"><slot name="title" /></span>
-    <span class="breadcrumb-divider">/</span>
-    <span class="breadcrumb-link"><slot name="no" /></span>
+  <nav class="Breadcrumb-wrapper">
+    <span class="Breadcrumb-link Breadcrumb-title"><slot name="title" /></span>
+    <span class="Breadcrumb-divider">/</span>
+    <span class="Breadcrumb-link"><slot name="no" /></span>
   </nav>
 </template>
 
@@ -16,7 +16,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.breadcrumb-wrapper {
+/** @define Breadcrumb */
+
+.Breadcrumb-wrapper {
   display: inline-flex;
   align-items: center;
 
@@ -27,34 +29,24 @@ export default {
 
   /*hack for ellipsis color*/
   color: rgba(21, 81, 166, 0.5);
-
-  /* hack for i18n alignment */
-  line-height: 1.15;
-
 }
 
-.breadcrumb-link {
+.Breadcrumb-link {
   display: inline-block;
   max-width: calc(100% - 3em);
 
-  & a {
+  & > a {
     color: #1e50a2;
-  }
-
-  &.title {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 }
 
-/*.breadcrumb-link-id {
-  & a {
-    color: rgba(21, 81, 166, 0.5);
-  }
-}*/
+.Breadcrumb-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-.breadcrumb-divider {
+.Breadcrumb-divider {
   display: inline-block;
   color: #95989A;
   padding: 0em .5rem;

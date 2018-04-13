@@ -1,21 +1,20 @@
 <template>
-  <section class="loop-card-wrapper">
+  <section>
     <div
       v-if="loopType === 'mp4'"
-      class="video-container"
       @mouseover="onHovered()"
       @mouseout="onUnhovered()"
     >
-      <p
+      <div
         v-if="!canplaythrough"
-        class="loading-spinner"
+        class="LoopCard-spinner"
       >
         <FontAwesomeIcon
-          class="fa-icon"
+          class="LoopCard-faIcon"
           icon="circle-notch"
           spin
         />
-      </p>
+      </div>
       <video
         ref="video"
         loop
@@ -23,6 +22,7 @@
         autoplay
         playsInline
         vcloak
+        class="LoopCard-video"
         @canplaythrough.once="canplay"
       >
         <source
@@ -44,8 +44,8 @@
     </div>
     <div
       v-else
-      :class="{ 'fixed-img-size' : pageType === 'random' }"
-      class="gif-container"
+      :class="{ 'LoopCard-fixedImageSize' : pageType === 'home' }"
+      class="flex"
     >
       <GifPlayer
         :gifsrc="files.gif_360p"
@@ -96,14 +96,14 @@ export default {
     /**
     * The type of page using this component.
     *
-    * `random, episode, loop`
+    * `home, episode, loop`
     */
     pageType: {
       type: String,
       required: true,
       default: 'loop',
       validator(val) {
-        return ['random', 'episode', 'loop'].indexOf(val) > -1;
+        return ['home', 'episode', 'loop'].indexOf(val) > -1;
       },
     },
   },
@@ -157,60 +157,44 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define LoopCard */
 
-.video-container {
-  position: relative;
+.LoopCard-video {
+  max-width: 100%;
+  max-height: calc(100vh - 15rem);
+  object-fit: contain;
 
-  /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); */
+  @screen phone {
+    width: 100%;
+    /* height: 100%; */
+    /* max-height: unset; */
+  }
 
-  & > video {
-    max-width: 100%;
-    max-height: calc(100vh - 15rem);
-    object-fit: contain;
-
-    @media (--phone-screen) {
-      width: 100%;
-      /* height: 100%; */
-      /* max-height: unset; */
-    }
-
-    @media (--tablet-screen) {
-      width: 100%;
-      max-height: calc(100vh - 5em);
-    }
-
+  @screen tablet {
+    width: 100%;
+    max-height: calc(100vh - 5em);
   }
 }
 
-.gif-container {
-  display: flex;
-  /* proportional hack */
-  /* height: 0; */
-  /* padding-bottom: 56.25%; */
-
-  /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); */
-
-  &.fixed-img-size {
-    width: 360px;
-    height: 203px;
-  }
+.LoopCard-fixedImageSize {
+  width: 360px;
+  height: 203px;
 }
 
-.video-cover {
+.LoopCard-videoCover {
   width: 100%;
   transition: all 0.5s;
 }
 
-.blur {
+.LoopCard--blur {
   filter: blur(10px);
 }
 
-.fa-icon {
+.LoopCard-faIcon {
   margin: 0em .5em;
 }
 
-.loading-spinner {
+.LoopCard-spinner {
   background-color: rgba(255, 255, 255, 0.5);
 
   top: 50%;

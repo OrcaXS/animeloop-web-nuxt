@@ -97,8 +97,6 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/mediaqueries.css";
-
 .nuxt-progress {
   position: fixed;
   top: 3em;
@@ -111,7 +109,7 @@ export default {
   background-color: #efc14e;
   z-index: 999999;
 
-  @media (--tablet-screen) {
+  @screen tablet {
     top: 6em;
   }
 

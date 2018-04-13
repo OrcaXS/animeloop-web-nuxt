@@ -1,26 +1,26 @@
 <template>
-  <div class="series-page-info-container">
-    <div class="series-page-title-flex">
-      <span class="series-page-main-title">{{ i18nTitle }}&nbsp;</span>
+  <div class="SeriesInfo">
+    <div class="SeriesInfo-title">
+      <span class="SeriesInfo-title--main">{{ i18nTitle }}&nbsp;</span>
       <span
         v-if="currentLocale !== 'ja'"
-        class="series-page-alt-title"
+        class="SeriesInfo-title--alt"
       >{{ series.title_japanese }}</span>
     </div>
-    <div class="series-page-genres-season-flex">
+    <div class="SeriesInfo-seasonWithGenres">
       <Genres
         :genres="series.genres"
-        class="series-page-genres"
+        class="SeriesInfo-genres"
       />
       <TypeTag
         :anime-type="series.type"
         :season="series.season"
-        class="series-page-season"
+        class="SeriesInfo-season"
         type="withSeason"
       />
     </div>
     <p
-      class="series-page-description"
+      class="SeriesInfo-description"
       v-html="series.description"
     />
   </div>
@@ -86,9 +86,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define SeriesInfo */
 
-.series-page-info-container {
+.SeriesInfo {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: minmax(2em, auto) minmax(1em, auto) auto;
@@ -100,37 +100,37 @@ export default {
   align-content: start;
 }
 
-.series-page-genres-season-flex {
+.SeriesInfo-seasonWithGenres {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
 
-  @media (--phone-screen) {
+  @screen phone {
     margin: .4em 0;
   }
 }
 
-.series-page-genres {
+.SeriesInfo-genres {
   flex: 0 1 100%;
   margin: .25em 0 0;
 
-  @media (--phone-screen) {
+  @screen phone {
     flex: 0 1 auto;
     margin: .25em 0 .25em .25em;
     order: 1;
   }
 }
 
-.series-page-season {
+.SeriesInfo-season {
   margin: .4em 0 .4em;
 
-  @media (--phone-screen) {
+  @screen phone {
     flex: 0 1 auto;
     margin: 0 .25em 0 0;
   }
 }
 
-.series-page-title-flex {
+.SeriesInfo-title {
   grid-area: series-title;
 
   display: flex;
@@ -138,12 +138,12 @@ export default {
   align-items: baseline;
 }
 
-.series-page-main-title {
+.SeriesInfo-title--main {
   font-size: 2em;
   font-weight: 600;
 }
 
-.series-page-alt-title {
+.SeriesInfo-title--alt {
   /* width: 100%; */
   font-size: 1em;
   font-weight: normal;
@@ -151,7 +151,7 @@ export default {
   /* margin-left: .5em; */
 }
 
-.series-page-description {
+.SeriesInfo-description {
   grid-area: series-description;
   align-self: start;
 

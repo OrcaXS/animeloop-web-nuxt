@@ -1,5 +1,5 @@
 <template>
-  <div class="about-page">
+  <div class="AboutPage">
     <h1>Animeloop Beta</h1>
     <!-- eslint-disable max-len -->
     <p>
@@ -42,7 +42,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.about-page {
+/** @define AboutPage */
+
+.AboutPage {
   padding: 0 1em;
   margin-left: auto;
   margin-right: auto;

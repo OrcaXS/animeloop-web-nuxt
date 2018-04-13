@@ -1,23 +1,22 @@
 <template>
   <div
-    v-if="pageType === 'random'"
-    class="loop-grid-container"
+    v-if="pageType === 'home'"
+    class="LoopGrid"
   >
     <div
       v-for="loop in loopList"
       :key="loop"
-      class="loop-card-flex-container"
+      class="LoopGrid-child"
     >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop }}">
         <LoopCard
           :loopid="loop"
-          class="loop-card"
           loop-type="gif"
-          page-type="random"
+          page-type="home"
         />
         <CardDetails
           :loopid="loop"
-          class="card-detail"
+          class="z-1"
           type="loop"
         />
       </nuxt-link>
@@ -25,23 +24,22 @@
   </div>
   <div
     v-else
-    class="loop-grid-container"
+    class="LoopGrid"
   >
     <div
       v-for="loop in loopList"
       :key="loop.id"
-      class="loop-card-flex-container"
+      class="LoopGrid-child"
     >
       <nuxt-link :to="{ name: 'loop-id', params: { id: loop.id }}">
         <LoopCard
           :loopid="loop.id"
-          :page-type="pageType"
-          class="loop-card"
+          page-type="episode"
           loop-type="gif"
         />
         <CardDetails
           :loopid="loop.id"
-          class="card-detail"
+          class="z-1"
           type="episode"
         />
       </nuxt-link>
@@ -66,14 +64,14 @@ export default {
     /**
      * The type of page including this component.
      *
-     * `random, episode`
+     * `home, episode`
      */
     pageType: {
       type: String,
       required: true,
-      default: 'mp4',
+      default: 'home',
       validator(val) {
-        return val === 'random' || val === 'episode';
+        return val === 'home' || val === 'episode';
       },
     },
     /**
@@ -92,7 +90,7 @@ export default {
     loopList() {
       if (this.pageType === 'episode') {
         return this.$store.state.loop.loopList[this.episodeid];
-      } else if (this.pageType === 'random') {
+      } else if (this.pageType === 'home') {
         return this.$store.state.loop.randomLoopList;
       }
       return [];
@@ -103,12 +101,10 @@ export default {
 
 </script>
 
-<style scoped>
-a {
-  color: unset;
-}
+<style scoped lang="postcss">
+/** @define LoopGrid */
 
-.loop-grid-container {
+.LoopGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 360px));
   grid-template-rows: auto;
@@ -118,22 +114,16 @@ a {
   /* background-color: rgba(224, 224, 224, 0.2); */
 
   /* margin-top: 1em; */
+  & a {
+    color: black;
+  }
 }
 
-.loop-card-flex-container {
+.LoopGrid-child {
   display: flex;
   flex-flow: column nowrap;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
-
-.loop-card {
-  z-index: 1;
-}
-
-.card-detail {
-  z-index: 2;
-}
-
 
 </style>

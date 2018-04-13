@@ -1,18 +1,19 @@
 <template>
-  <div class="gif-player-container">
+  <div class="GifPlayer">
     <img
       v-cloak
       v-if="playState"
       v-show="gifLoaded"
       :src="gifsrc"
-      class="gif"
+      class="GifPlayer-gif"
       alt="Static Loop Image"
       @load="imageOnload"
     >
     <img
       v-if="!gifLoaded || !playState"
       :src="jpgsrc"
-      :class="{ blur: playState }"
+      :class="{ 'GifPlayer-blur': playState }"
+      class="GifPlayer-img"
       alt="Animated Loop Image"
     >
   </div>
@@ -69,7 +70,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.gif-player-container {
+/** @define GifPlayer */
+
+.GifPlayer {
   display: flex;
   position: relative;
   overflow: hidden;
@@ -77,23 +80,22 @@ export default {
   max-width: 100%;
   border-radius: 3px 3px 0 0;
   /* object-fit: contain; */
-
-
-  & img {
-    transition: all 0.5s;
-    object-fit: contain;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  & .gif {
-    /* gif size hack */
-    width: 360px;
-    height: 100%;
-  }
 }
 
-.blur {
+.GifPlayer-img {
+  transition: all 0.5s;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.GifPlayer-gif {
+  /* gif size hack */
+  width: 360px;
+  height: 100%;
+}
+
+.GifPlayer-blur {
   filter: blur(20px);
 }
 

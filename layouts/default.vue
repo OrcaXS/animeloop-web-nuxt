@@ -1,9 +1,9 @@
 <template>
-  <div class="layout-container">
+  <div class="Layout-container">
     <header>
       <NavbarContainer />
     </header>
-    <main class="layout-main">
+    <main class="Layout-main">
       <nuxt />
     </main>
   </div>
@@ -39,20 +39,7 @@ export default {
 </script>
 
 <style lang="postcss">
-@import "~/assets/css/mediaqueries.css";
-
-html {
-  font-family: "Helvetica Neue", system-ui, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-.layout-container {
+.Layout-container {
   width: 100%;
 
   display: grid;
@@ -65,14 +52,14 @@ html {
 
   & a {
     text-decoration: none;
-    color: black;
+    /* color: black; */
   }
 }
 
-.layout-main {
+.Layout-main {
   margin: 4em 1em 1em 1em;
 
-  @media (--tablet-screen) {
+  @screen tablet {
     margin: 7em .5em 1em .5em;
     /* padding: 0 .5em; */
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
@@ -87,21 +74,10 @@ html {
     }
   }
 
-  @media (--phone-screen) {
+  @screen phone {
     margin: 4em 0em;
   }
 
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.tag {
-  font-family: 'Open Sans', Arial, sans-serif;
-  /* line-height: 1.0; */
 }
 
 </style>

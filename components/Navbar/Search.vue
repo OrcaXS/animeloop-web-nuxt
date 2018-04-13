@@ -1,7 +1,7 @@
 <template>
   <form
     :style="toggleContainerStyle"
-    class="search-container"
+    class="NavbarSearch"
     action=""
     @submit.prevent
   >
@@ -13,14 +13,14 @@
       name="search"
       type="search"
       required
-      class="search-input"
+      class="NavbarSearch-input"
       @keyup.enter="dispatchSearch"
       @focus="searchFocused = true"
       @blur="searchFocused = false"
     >
     <button
       :style="toggleArrowButtonStyle"
-      class="search-button"
+      class="NavbarSearch-button"
       @click="dispatchSearch"
     >
       <FontAwesomeIcon
@@ -81,9 +81,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define NavbarSearch */
 
-.search-container {
+.NavbarSearch {
   height: 3em;
   display: flex;
   align-items: center;
@@ -91,14 +91,14 @@ export default {
   margin: 0 0 0 auto;
   max-width: 30em;
 
-  @media (--phone-screen) {
+  @screen phone {
     display: none;
     margin: 0 0 0 .5rem;
     flex: 0 1 95%;
   }
 }
 
-.search-input {
+.NavbarSearch-input {
   width: 100%;
   display: block;
 
@@ -121,7 +121,7 @@ export default {
   }
 }
 
-.search-button {
+.NavbarSearch-button {
   margin-left: 1rem;
   display: none;
   border: none;

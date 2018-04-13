@@ -1,7 +1,7 @@
 <template>
   <LoopGrid
-    class="home-page"
-    page-type="random"
+    class="HomePage"
+    page-type="home"
   />
 </template>
 
@@ -32,10 +32,10 @@ export default {
 
 </script>
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define HomePage */
 
-.home-page {
-  @media (--tablet-screen) {
+.HomePage {
+  @screen tablet {
     margin-left: -1em;
     margin-right: -1em;
   }

@@ -1,15 +1,15 @@
 <template>
-  <section class="cover-wrapper">
+  <section class="SeriesCover">
     <nuxt-link
       :to="{ name: 'series-id', params: { id: seriesid }}"
       :style="coverBackgroundImageStyle"
-      class="cover"
+      class="SeriesCover-link"
     >
-      <div class="cover-text">
-        <div class="cover-title">{{ i18nTitle }}</div>
-        <div class="cover-detail">
-          <span class="cover-type">{{ series.type }}</span>
-          <span class="cover-type">{{ series.season }}</span>
+      <div class="SeriesCover-text">
+        <div class="SeriesCover-title">{{ i18nTitle }}</div>
+        <div class="SeriesCover-detail">
+          <span class="SeriesCover-type">{{ series.type }}</span>
+          <span class="SeriesCover-type">{{ series.season }}</span>
         </div>
       </div>
     </nuxt-link>
@@ -68,7 +68,9 @@ export default {
 </script>
 
 <style scoped>
-.cover-wrapper {
+/** @define SeriesCover */
+
+.SeriesCover {
   width: calc(225px * 0.8);
   height: calc(350px * 0.8);
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
@@ -76,7 +78,7 @@ export default {
   margin: auto;
 }
 
-.cover {
+.SeriesCover-link {
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -88,7 +90,7 @@ export default {
   border-radius: 3px;
 }
 
-.cover-title {
+.SeriesCover-title {
   font-size: 1em;
   font-weight: 500;
   color: white;
@@ -96,7 +98,7 @@ export default {
   text-align: center;
 }
 
-.cover-text {
+.SeriesCover-text {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0));
   border-radius: 0 0 3px 3px;
   z-index: 2;
@@ -106,7 +108,7 @@ export default {
   text-align: left;
 }
 
-.cover-detail {
+.SeriesCover-detail {
   display: flex;
   text-align: center;
   font-size: 1em;
@@ -114,7 +116,7 @@ export default {
   color: lightblue;
 }
 
-.cover-type {
+.SeriesCover-type {
   width: 50%;
 }
 

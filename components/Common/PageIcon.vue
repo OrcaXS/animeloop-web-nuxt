@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="{ 'page-icon': !isEnabled, 'page-icon-disabled': !isEnabled }"
+    :class="{ PageIcon: !isEnabled, 'PageIcon--disabled': !isEnabled }"
   >
     <FontAwesomeIcon
       :icon="faIcon"
@@ -54,7 +54,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.page-icon {
+/** @define PageIcon */
+
+.PageIcon {
   background-color: #f0f0f0;
   padding: .5em 2em;
   border-radius: 5px;
@@ -64,7 +66,7 @@ export default {
   flex: 2 2 auto;
 }
 
-.page-icon-disabled {
+.PageIcon--disabled {
   color: #dddddd;
 }
 </style>

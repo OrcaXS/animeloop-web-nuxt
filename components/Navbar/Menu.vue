@@ -1,10 +1,10 @@
 <template>
   <div
     :style="toggleSearchStyle"
-    class="burger-menu-container"
+    class="NavbarBurgerMenu"
   >
     <button
-      class="menu-button menu-icon"
+      class="NavbarBurgerMenu-button NavbarBurgerMenu-icon"
       aria-label="Menu Icon"
       @click="toggleBurger"
     >
@@ -12,7 +12,7 @@
     </button>
     <button
       v-if="!navStates.searchOpen"
-      class="menu-button"
+      class="NavbarBurgerMenu-button"
       aria-label="Search Icon"
       @click="toggleSearch"
     >
@@ -28,7 +28,7 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
  * Burger Menu of the Navbar. Enabled in Mobile(phone) layout only.
  */
 export default {
-  name: 'BurgerMenu',
+  name: 'NavbarBurgerMenu',
   components: {
     FontAwesomeIcon,
   },
@@ -73,13 +73,12 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/colors.css";
-@import "~/assets/css/mediaqueries.css";
+/** @define NavbarBurgerMenu */
 
-.burger-menu-container {
+.NavbarBurgerMenu {
   display: none;
 
-  @media (--phone-screen) {
+  @screen phone {
     height: 3em;
     display: flex;
     align-items: center;
@@ -90,8 +89,8 @@ export default {
 
 }
 
-.menu-button {
-  color: var(--black1);
+.NavbarBurgerMenu-button {
+  color: config('colors.black1');
 
   display: block;
   margin-right: .5rem;
@@ -104,7 +103,7 @@ export default {
 }
 
 /* fixed menu-icon width */
-.menu-icon {
+.NavbarBurgerMenu-icon {
   width: 1.1rem;
 }
 

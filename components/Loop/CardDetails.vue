@@ -1,24 +1,26 @@
 <template>
   <div
     v-if="type === 'loop'"
-    class="card-detail-grid-container"
+    class="CardDetails-gridContainer"
   >
-    <div class="anime-title">{{ i18nTitle }}</div>
-    <div class="episode-detail">
-      <div class="episode-no">{{ loop.episode.no }}</div>
+    <div class="CardDetails-title">{{ i18nTitle }}</div>
+    <div class="CardDetails-rightHalf">
+      <div class="CardDetails-episodeNo">{{ loop.episode.no }}</div>
       <TypeTag
         :anime-type="loop.series.type"
-        class="anime-type"
+        class="CardDetails-type"
         type="simple"
       />
     </div>
-    <div class="time-stamp">{{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}</div>
+    <div class="CardDetails-timestamp">
+      {{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}
+    </div>
   </div>
   <div
     v-else
-    class="episode-card-detail-container"
+    class="CardDetails--episode"
   >
-    <div class="episode-time-stamp">
+    <div class="CardDetails-timestamp--episode">
       {{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}
     </div>
   </div>
@@ -91,26 +93,26 @@ export default {
 </script>
 
 <style scoped>
-.card-detail-grid-container {
+/** @define CardDetails */
+.CardDetails-gridContainer {
   height: 3em;
   padding: .1em .5em .1em;
   background-color: rgba(255, 255, 255, .95);
   /* box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1); */
   border-radius: 0 0 3px 3px;
 
-  font-size: 1rem;
 
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto;
   grid-template-areas:
-  "card-title card-episode-detail"
-  "card-timestamps card-episode-detail";
+  "card-title card-right-half"
+  "card-timestamp card-right-half";
   grid-column-gap: .25em;
   align-items: center;
 }
 
-.episode-card-detail-container {
+.CardDetails--episode {
   display: block;
   padding: .25em .5em;
   background-color: rgba(255, 255, 255, .95);
@@ -118,7 +120,7 @@ export default {
   /* box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1); */
 }
 
-.anime-title {
+.CardDetails-title {
   grid-area: card-title;
 
   display: inline;
@@ -127,11 +129,10 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   font-size: 1em;
-  /* line-height: 1.15; */
 }
 
-.episode-detail {
-  grid-area: card-episode-detail;
+.CardDetails-rightHalf {
+  grid-area: card-right-half;
   justify-self: end;
   align-self: stretch;
 
@@ -140,7 +141,7 @@ export default {
   justify-content: space-evenly;
 }
 
-.episode-no {
+.CardDetails-episodeNo {
   text-align: center;
   font-weight: 400;
   font-size: 1.2rem;
@@ -148,7 +149,7 @@ export default {
   line-height: 0.9;
 }
 
-.anime-type {
+.CardDetails-type {
   max-width: 8em;
   max-height: 1.5em;
   align-self: flex-end;
@@ -157,15 +158,15 @@ export default {
   line-height: 1.3;
 }
 
-.time-stamp {
-  grid-area: card-timestamps;
+.CardDetails-timestamp {
+  grid-area: card-timestamp;
   /* align-self: start; */
   font-size: .75em;
   font-style: italic;
   color: #95989A;
 }
 
-.episode-time-stamp {
+.CardDetails-timestamp--episode {
   font-size: 1.2em;
   /* font-style: italic; */
   text-align: center;

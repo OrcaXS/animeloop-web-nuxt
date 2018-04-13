@@ -1,5 +1,5 @@
 <template>
-  <div class="series-grid-container">
+  <div class="SeriesGrid">
     <template v-if="type === 'listPage'">
       <SeriesCover
         v-for="series in seriesList"
@@ -63,9 +63,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@import "~/assets/css/mediaqueries.css";
+/** @define SereisGrid */
 
-.series-grid-container {
+.SeriesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, calc(225px * 0.8));
   /* grid-template-columns: repeat(auto-fill, minmax(calc(225px * 0.8), 1fr)); */
@@ -74,7 +74,7 @@ export default {
 
   margin: 1em 0em;
 
-  @media (--phone-screen) {
+  @screen phone {
     grid-gap: .75em;
     margin: 1em auto;
   }
