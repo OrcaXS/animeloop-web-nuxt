@@ -17,9 +17,3 @@ select,
 textarea {
   line-height: 1.2; /* 1 */
 }
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  line-height: 1.2;
-}

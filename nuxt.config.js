@@ -51,7 +51,8 @@ module.exports = {
             path.join(__dirname, './layouts/**/*.vue'),
             path.join(__dirname, './components/**/*.vue'),
           ]),
-          whitelist: ['html', 'body'],
+          whitelist: ['html', 'body', 'nuxt-loading', 'svg', 'svg-inline--fa'],
+          whitelistPatternsChildren: [/^fa/],
         }));
       }
     },

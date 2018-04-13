@@ -21,7 +21,7 @@ import {
   faLongArrowAltLeft,
   faStopwatch,
   faFilter,
-  faTerminal
+  faTerminal,
 } from '@fortawesome/fontawesome-free-solid';
 
 fontawesome.config = {

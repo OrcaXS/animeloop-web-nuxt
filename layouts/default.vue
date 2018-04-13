@@ -80,4 +80,9 @@ export default {
 
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.2;
+}
 </style>
