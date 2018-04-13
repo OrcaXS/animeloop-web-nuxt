@@ -28,14 +28,14 @@ module.exports = () => ({
       },
     },
     'postcss-hexrgba': {},
-    'postcss-bem-linter': {
-      preset: 'suit',
-      // implicitComponents: 'src/components#<{(||)}>#*.vue',
-      // presetOptions: { namesace: 'twt' },
-      ignoreSelectors: [
-        /^\[v-cloak\]$/,
-      ],
-    },
+    // 'postcss-bem-linter': {
+    //   preset: 'suit',
+    //   // implicitComponents: 'src/components#<{(||)}>#*.vue',
+    //   // presetOptions: { namesace: 'twt' },
+    //   ignoreSelectors: [
+    //     /^\[v-cloak\]$/,
+    //   ],
+    // },
     'postcss-reporter': {},
   },
 });
