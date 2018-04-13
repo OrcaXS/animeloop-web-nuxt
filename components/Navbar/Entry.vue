@@ -16,6 +16,17 @@
       />
       <span>{{ $t(entry.name) }}</span>
     </nuxt-link>
+    <a
+      href="https://animeloop.org/api/docs/"
+      class="NavbarEntry-link"
+      @click.native="toggleBurger"
+    >
+      <FontAwesomeIcon
+        icon="terminal"
+        class="NavbarEntry-faIcon"
+      />
+      <span>{{ $t('navbar.api') }}</span>
+    </a>
   </div>
 </template>
 
@@ -49,14 +60,6 @@ export default {
       if (this.navStates.burgerOpen) return { display: 'flex' };
       return {};
     },
-    // centries() {
-    //   return [
-    //     { name: 'navbar.episode', icon: 'th-list' },
-    //     { name: 'navbar.tags', icon: 'tags' },
-    //     { name: 'navbar.random', icon: 'question-circle' },
-    //     { name: 'navbar.about', icon: 'info' },
-    //   ];
-    // },
   },
   methods: {
     // toggle burger menu after navigation

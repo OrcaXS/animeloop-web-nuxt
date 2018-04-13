@@ -11,7 +11,8 @@
     "search": "搜索 Animeloop",
     "about": "關於",
     "tags": "標籤",
-    "random": "隨機"
+    "random": "隨機",
+    "api": "API"
   },
   "home": "主頁",
   "list": "分類",
