@@ -19,8 +19,8 @@ const episode = {
           return Number.isNaN(parseInt(str, 10));
         }
         if (isStringNaN(prev.no) && isStringNaN(next.no)) return 0;
-        else if (isStringNaN(prev.no) && !isStringNaN(next.no)) return 1;
-        else if (!isStringNaN(prev.no) && isStringNaN(next.no)) return -1;
+        if (isStringNaN(prev.no) && !isStringNaN(next.no)) return 1;
+        if (!isStringNaN(prev.no) && isStringNaN(next.no)) return -1;
         return (parseInt(prev.no, 10) - parseInt(next.no, 10));
       });
       Vue.set(state.episodeList, seriesid, data);
