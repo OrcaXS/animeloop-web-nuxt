@@ -1,0 +1,48 @@
+.Series--tv {
+  background-color: config('colors.tag-blue');
+  &.light {
+    background-color: config('colors.tag-blue-light');
+  }
+}
+
+.Series--ova {
+  background-color: config('colors.tag-purple');
+  &.light {
+    background-color: config('colors.tag-purple-light');
+  }
+}
+
+.Series--ona {
+  background-color: config('colors.tag-orange');
+  &.light {
+    background-color: config('colors.tag-orange-light');
+  }
+}
+
+.Series--movie {
+  background-color: config('colors.tag-green');
+  &.light {
+    background-color: config('colors.tag-green-light')
+  }
+}
+
+.Series--tvShort {
+  background-color: config('colors.tag-cyan');
+  &.light {
+    background-color: config('colors.tag-cyan-light');
+  }
+}
+
+.Series--special {
+  background-color: config('colors.tag-red');
+  &.light {
+    background-color: config('colors.tag-red-light');
+  }
+}
+
+.Series--other {
+  background-color: config('colors.black1');
+  &.light {
+    background-color: config('colors.grey6');
+  }
+}

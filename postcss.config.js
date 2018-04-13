@@ -1,6 +1,7 @@
 const { join } = require('path');
 const createResolver = require('postcss-import-resolver');
-
+// const tailwindcss = require('tailwindcss');
+// const bemLinter = require('postcss-bem-linter');
 
 module.exports = () => ({
   sourceMap: true,
@@ -16,8 +17,25 @@ module.exports = () => ({
       }),
     },
     'postcss-url': {},
-    'postcss-cssnext': {},
+    tailwindcss: './tailwind.js',
+    'postcss-cssnext': {
+      browserslist: [
+        '> 1%',
+        'last 2 versions',
+      ],
+      features: {
+        customProperties: false,
+      },
+    },
     'postcss-hexrgba': {},
+    'postcss-bem-linter': {
+      preset: 'suit',
+      // implicitComponents: 'src/components#<{(||)}>#*.vue',
+      // presetOptions: { namesace: 'twt' },
+      ignoreSelectors: [
+        /^\[v-cloak\]$/,
+      ],
+    },
     'postcss-reporter': {},
   },
 });

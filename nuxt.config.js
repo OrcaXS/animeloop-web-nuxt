@@ -43,6 +43,8 @@ module.exports = {
 
   css: [
     '@fortawesome/fontawesome/styles.css',
+    '~/assets/css/tailwind.css',
+    '~/assets/css/bulma-custom.scss',
     // join(__dirname, 'assets/css/mediaquery.css'),
     // { src: 'assets/css/mediaqueryshit.css', lang: 'postcss' },
   ],
@@ -76,7 +78,6 @@ module.exports = {
     // ['@nuxtjs/google-analytics', {
     // id: 'UA-XXXXXX-4',
     // }],
-    // '@nuxtjs/bulma',
   ],
 
   manifest: {

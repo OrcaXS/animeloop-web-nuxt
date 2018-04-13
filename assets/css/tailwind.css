@@ -1,0 +1,25 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/components";
+
+@import "./components/tag";
+@import "./components/series-colors";
+
+@import "tailwindcss/utilities";
+
+html {
+  line-height: 1.2;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: 1.2; /* 1 */
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.2;
+}
