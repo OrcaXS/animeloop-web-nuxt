@@ -115,7 +115,7 @@ export default {
 
   /* margin-top: 1em; */
   & a {
-    color: black;
+    color: config('colors.black1');
   }
 }
 
