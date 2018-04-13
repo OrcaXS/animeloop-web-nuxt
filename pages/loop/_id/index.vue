@@ -23,7 +23,7 @@ export default {
         { hid: 'og:title', name: 'og:title', content: `${this.loop.series.title_japanese} | ${this.formattedTimeStamps.begin} - ${this.formattedTimeStamps.end}` },
         { hid: 'og:image', name: 'og:image', content: this.loop.files.jpg_1080p },
         { hid: 'og:description', property: 'og:description', content: 'View the loop on Animeloop.' },
-        { hid: 'og:site_name', name: 'og:site_name', content: 'Animeloop Beta' },
+        { hid: 'og:site_name', name: 'og:site_name', content: 'Animeloop' },
         { hid: 'og:video:secure_url', property: 'og:video:secure_url', content: this.loop.files.mp4_1080p },
         { hid: 'og:video:type', property: 'og:video:type', content: 'video/mp4' },
         { hid: 'og:video:width', property: 'og:video:width', content: '1920' },

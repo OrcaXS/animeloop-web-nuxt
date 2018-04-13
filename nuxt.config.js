@@ -9,11 +9,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Animeloop-Nuxt',
+    title: 'Animeloop',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-      { hid: 'description', name: 'description', content: 'Animeloop Beta' },
+      { hid: 'description', name: 'description', content: 'Animeloop' },
     ],
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans' },
@@ -98,8 +98,8 @@ module.exports = {
   ],
 
   manifest: {
-    name: 'Animeloop Beta',
-    short_name: 'Animeloop β',
+    name: 'Animeloop',
+    short_name: 'Animeloop',
     description: 'Animeloop Web Frontend',
     ogTitle: false,
     ogDescription: false,
