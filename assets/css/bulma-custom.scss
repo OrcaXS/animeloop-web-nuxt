@@ -16,9 +16,8 @@ $body-line-height: 1.2;
 
 $tablet: 641px;
 $desktop: 821px;
-$widescreen: 821px;
-$fullhd: 821px;
-
+$widescreen-enabled: false;
+$fullhd-enabled: false;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
