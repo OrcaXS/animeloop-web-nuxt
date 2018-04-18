@@ -79,20 +79,21 @@ export default {
   max-height: 100%;
   max-width: 100%;
   border-radius: 3px 3px 0 0;
+  margin: 0 auto;
   /* object-fit: contain; */
 }
 
 .GifPlayer-img {
   transition: all 0.5s;
   object-fit: contain;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .GifPlayer-gif {
   /* gif size hack */
-  width: 360px;
-  height: 100%;
+  width: auto;
+  height: 203px;
+  object-fit: contain;
+  margin-left: auto;
 }
 
 .GifPlayer-blur {
