@@ -14,12 +14,12 @@
           loop-type="gif"
           page-type="home"
         />
-        <CardDetails
-          :loopid="loop"
-          class="z-1"
-          type="loop"
-        />
       </nuxt-link>
+      <CardDetails
+        :loopid="loop"
+        class="z-1"
+        type="loop"
+      />
     </div>
   </div>
   <div

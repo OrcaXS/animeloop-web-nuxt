@@ -3,17 +3,29 @@
     v-if="type === 'loop'"
     class="CardDetails-gridContainer"
   >
-    <div class="CardDetails-title">{{ i18nTitle }}</div>
+    <div class="CardDetails-title">
+      <nuxt-link :to="{ name: 'series-id', params: { id: loop.series.id }}">
+        {{ i18nTitle }}
+      </nuxt-link>
+    </div>
     <div class="CardDetails-rightHalf">
-      <div class="CardDetails-episodeNo">{{ loop.episode.no }}</div>
-      <TypeTag
-        :anime-type="loop.series.type"
-        class="CardDetails-type"
-        type="simple"
-      />
+      <div class="CardDetails-episodeNo">
+        <nuxt-link :to="{ name: 'episode-id', params: { id: loop.episode.id }}">
+          {{ loop.episode.no }}
+        </nuxt-link>
+      </div>
+      <nuxt-link :to="{ name: 'list', query: { type: loop.series.type }}">
+        <TypeTag
+          :anime-type="loop.series.type"
+          class="CardDetails-type"
+          type="simple"
+        />
+      </nuxt-link>
     </div>
     <div class="CardDetails-timestamp">
-      {{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}
+      <nuxt-link :to="{ name: 'loop-id', params: { id: loop.id }}">
+        {{ formattedTimeStamps.begin }} - {{ formattedTimeStamps.end }}
+      </nuxt-link>
     </div>
   </div>
   <div
@@ -38,7 +50,7 @@ export default {
     TypeTag,
   },
   props: {
-    /**
+    /*
     * The type of the `LoopCard` details.
     *
     * `loops` shows full detail while `episode` shows timestamps only.
@@ -129,6 +141,10 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   font-size: 1em;
+
+  &> a {
+    color: config('colors.black1');
+  }
 }
 
 .CardDetails-rightHalf {
@@ -147,6 +163,10 @@ export default {
   font-size: 1.2rem;
   justify-self: center;
   line-height: 0.9;
+
+  &> a {
+    color: config('colors.black1');
+  }
 }
 
 .CardDetails-type {
@@ -163,7 +183,10 @@ export default {
   /* align-self: start; */
   font-size: .75em;
   font-style: italic;
-  color: #95989A;
+
+  &> a {
+    color: #95989A;
+  }
 }
 
 .CardDetails-timestamp--episode {
