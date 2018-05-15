@@ -1,6 +1,5 @@
 const { join } = require('path');
 const createResolver = require('postcss-import-resolver');
-// const tailwindcss = require('tailwindcss');
 // const bemLinter = require('postcss-bem-linter');
 
 module.exports = () => ({
@@ -17,14 +16,13 @@ module.exports = () => ({
       }),
     },
     'postcss-url': {},
-    tailwindcss: './tailwind.js',
+    // tailwindcss: './tailwind.js',
     'postcss-cssnext': {
       browserslist: [
         '> 1%',
-        'last 2 versions',
       ],
       features: {
-        customProperties: false,
+        customProperties: true,
       },
     },
     'postcss-hexrgba': {},
