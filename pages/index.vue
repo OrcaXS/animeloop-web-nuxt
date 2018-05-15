@@ -33,9 +33,10 @@ export default {
 </script>
 <style scoped lang="postcss">
 /** @define HomePage */
+@import "~/assets/css/mediaqueries.css";
 
 .HomePage {
-  @screen tablet {
+  @media (--tablet-screen) {
     margin-left: -1em;
     margin-right: -1em;
   }

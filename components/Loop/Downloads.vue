@@ -8,7 +8,7 @@
     >
       <a
         :href="entry.url"
-        class="text-white"
+        class="Downloads-text"
         download
       >{{ entry.name }}</a>
     </div>
@@ -86,6 +86,10 @@ export default {
 
 .Downloads-gif {
   background-color: #6096EC;
+}
+
+.Downloads-text {
+  color: white;
 }
 
 </style>

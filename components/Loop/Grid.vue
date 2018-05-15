@@ -17,7 +17,7 @@
       </nuxt-link>
       <CardDetails
         :loopid="loop"
-        class="z-1"
+        class="LoopGrid-cardDetails"
         type="loop"
       />
     </div>
@@ -39,7 +39,7 @@
         />
         <CardDetails
           :loopid="loop.id"
-          class="z-1"
+          class="LoopGrid-cardDetails"
           type="episode"
         />
       </nuxt-link>
@@ -103,6 +103,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopGrid */
+@import '~/assets/css/colors.css';
 
 .LoopGrid {
   display: grid;
@@ -115,7 +116,7 @@ export default {
 
   /* margin-top: 1em; */
   & a {
-    color: config('colors.black1');
+    color: var(--black1);
   }
 }
 
@@ -124,6 +125,10 @@ export default {
   flex-flow: column nowrap;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
+}
+
+.LoopGrid-cardDetails {
+  z-index: 1;
 }
 
 </style>

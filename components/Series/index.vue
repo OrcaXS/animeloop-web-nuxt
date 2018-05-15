@@ -238,12 +238,13 @@ export default {
 
 <style scoped>
 /** @define SeriesPage */
+@import "~/assets/css/mediaqueries.css";
 
 .SeriesPage {
   /* layout hack specifically for seriespage */
   /* padding: 0 -1em; */
   margin: 0 -1em;
-  @screen tablet {
+  @media (--tablet-screen) {
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
     @supports(padding: min(0px)) {
       /* margin: 0 -16px; */
@@ -254,7 +255,7 @@ export default {
   }
 
 
-  @screen phone {
+  @media (--phone-screen) {
     margin: 0;
   }
 }
@@ -283,7 +284,7 @@ export default {
     rgba(255, 255, 255, 0.8)
   );
 
-  @screen tablet {
+  @media (--tablet-screen) {
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
     @supports(padding: min(0px)) {
       /* padding: 1em 1em 0em; */
@@ -294,7 +295,7 @@ export default {
     }
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:

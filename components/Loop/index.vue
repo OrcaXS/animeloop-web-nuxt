@@ -97,6 +97,8 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopPage */
+@import '~/assets/css/colors.css';
+@import "~/assets/css/mediaqueries.css";
 
 .LoopPage {
   display: grid;
@@ -114,7 +116,7 @@ export default {
   /* max-height: calc(100vh - 3rem); */
   /* margin: 0 1em; */
 
-  @screen tablet {
+  @media (--tablet-screen) {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
@@ -123,7 +125,7 @@ export default {
     "loop-info";
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
@@ -138,7 +140,7 @@ export default {
 .LoopPage-verticalTitle {
   grid-area: vertical-title;
   writing-mode: vertical-rl;
-  color: config('colors.grey3');
+  color: var(--grey3);
   font-size: 3em;
   font-family: serif;
   max-height: calc(100vh - 5rem);
@@ -146,11 +148,11 @@ export default {
   white-space: normal;
   word-break: normal;
 
-  @screen tablet {
+  @media (--tablet-screen) {
     display: none;
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     display: none;
   }
 }
@@ -162,14 +164,14 @@ export default {
 }
 
 .LoopPage-info {
-  @screen phone {
+  @media (--phone-screen) {
     margin: 0 .5em;
   }
 }
 
 .LoopPage-breadcrumb {
   grid-area: breadcrumb;
-  @screen phone {
+  @media (--phone-screen) {
     margin: 0 .5em;
   }
 }

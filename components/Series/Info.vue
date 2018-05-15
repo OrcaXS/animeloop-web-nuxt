@@ -87,6 +87,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define SeriesInfo */
+@import "~/assets/css/mediaqueries.css";
 
 .SeriesInfo {
   display: grid;
@@ -105,7 +106,7 @@ export default {
   flex-flow: row wrap;
   align-items: center;
 
-  @screen phone {
+  @media (--phone-screen) {
     margin: .4em 0;
   }
 }
@@ -114,7 +115,7 @@ export default {
   flex: 0 1 100%;
   margin: .25em 0 0;
 
-  @screen phone {
+  @media (--phone-screen) {
     flex: 0 1 auto;
     margin: .25em 0 .25em .25em;
     order: 1;
@@ -124,7 +125,7 @@ export default {
 .SeriesInfo-season {
   margin: .4em 0 .4em;
 
-  @screen phone {
+  @media (--phone-screen) {
     flex: 0 1 auto;
     margin: 0 .25em 0 0;
   }

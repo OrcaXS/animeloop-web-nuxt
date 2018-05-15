@@ -73,6 +73,8 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarEntry */
+@import "~/assets/css/colors.css";
+@import "~/assets/css/mediaqueries.css";
 
 .NavbarEntry {
   display: flex;
@@ -81,7 +83,7 @@ export default {
   height: 3em;
   flex-shrink: 0;
 
-  @screen tablet {
+  @media (--tablet-screen) {
     order: 4;
     flex-grow: 1;
     justify-content: space-between;
@@ -89,7 +91,7 @@ export default {
     margin: 0 -0.5em;
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     order: 4;
     flex-grow: 1;
     justify-content: space-between;
@@ -108,10 +110,10 @@ export default {
   margin: 0 .5em;
   padding: .4em 0;
 
-  color: config('colors.black1');
+  color: var(--black1);
 
   &:hover {
-    border-bottom: .15rem solid config('colors.accent-color-light');
+    border-bottom: .15rem solid var(--accent-color-light);
     padding-bottom: .2rem;
   }
 
@@ -121,7 +123,7 @@ export default {
   /* flex-wrap: nowrap; */
   align-items: center;
 
-  @screen phone {
+  @media (--phone-screen) {
     width: 100%;
     height: 3em;
     &:hover {
@@ -134,7 +136,7 @@ export default {
 
 .NavbarEntry-faIcon {
   margin-right: .5em;
-  @screen phone {
+  @media (--phone-screen) {
     /* Vertical alignment */
     width: 1em;
   }

@@ -104,8 +104,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 /** @define CardDetails */
+@import "~/assets/css/colors.css";
+
 .CardDetails-gridContainer {
   height: 3em;
   padding: .1em .5em .1em;
@@ -143,7 +145,7 @@ export default {
   font-size: 1em;
 
   &> a {
-    color: config('colors.black1');
+    color: var(--black1);
   }
 }
 
@@ -165,7 +167,7 @@ export default {
   line-height: 0.9;
 
   &> a {
-    color: config('colors.black1');
+    color: var(--black1);
   }
 }
 

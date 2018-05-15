@@ -82,6 +82,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarSearch */
+@import "~/assets/css/mediaqueries.css";
 
 .NavbarSearch {
   height: 3em;
@@ -91,7 +92,7 @@ export default {
   margin: 0 0 0 auto;
   max-width: 30em;
 
-  @screen phone {
+  @media (--phone-screen) {
     display: none;
     margin: 0 0 0 .5rem;
     flex: 0 1 95%;

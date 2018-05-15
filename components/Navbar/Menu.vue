@@ -74,11 +74,13 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarBurgerMenu */
+@import "~/assets/css/colors.css";
+@import "~/assets/css/mediaqueries.css";
 
 .NavbarBurgerMenu {
   display: none;
 
-  @screen phone {
+  @media (--phone-screen) {
     height: 3em;
     display: flex;
     align-items: center;
@@ -90,7 +92,7 @@ export default {
 }
 
 .NavbarBurgerMenu-button {
-  color: config('colors.black1');
+  color: var(--black1);
 
   display: block;
   margin-right: .5rem;

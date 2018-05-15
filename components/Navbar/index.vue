@@ -50,6 +50,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define Navbar */
+@import "~/assets/css/mediaqueries.css";
 
 .Navbar {
   grid-area: nav;
@@ -70,14 +71,14 @@ export default {
   display: flex;
   align-items: center;
 
-  @screen tablet {
+  @media (--tablet-screen) {
     /* margin: 2em 2em; */
     padding: 0 2em;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     flex-wrap: nowrap;
 
     /* &::after {
@@ -94,7 +95,7 @@ export default {
 
 .Navbar-lineBreak {
   display: none;
-  @screen tablet {
+  @media (--tablet-screen) {
     display: block;
   }
   content: "";

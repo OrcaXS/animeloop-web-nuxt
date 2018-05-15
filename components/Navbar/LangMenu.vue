@@ -87,6 +87,8 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarLangMenu */
+@import "~/assets/css/colors.css";
+@import "~/assets/css/mediaqueries.css";
 
 .NavbarLangMenu {
   display: flex;
@@ -94,7 +96,7 @@ export default {
   /* flex-direction: column; */
   flex-shrink: 0;
 
-  @screen phone {
+  @media (--phone-screen) {
     margin-left: auto;
     flex: 0 1 25%;
     justify-content: flex-end;
@@ -116,7 +118,7 @@ export default {
   }
 
   &:hover {
-    border-bottom: .15rem solid config('colors.accent-color-light');
+    border-bottom: .15rem solid var(--accent-color-light);
     margin-bottom: -.15rem;
   }
 
@@ -154,17 +156,17 @@ export default {
   padding: .6em;
   cursor: pointer;
 
-  color: config('colors.black1');
+  color: var(--black1);
 
   &:hover {
     padding: .6em .6em .6em .3em;
-    border-left: .3em solid rgba(config('colors.accent-color-light'), 0.8);
+    border-left: .3em solid rgba(var(--accent-color-light), 0.8);
   }
 }
 
 .NavbarLangMenu-selected {
   padding: .6em .6em .6em .3em;
-  border-left: .3em solid config('colors.accent-color-light');
+  border-left: .3em solid var(--accent-color-light);
 }
 
 

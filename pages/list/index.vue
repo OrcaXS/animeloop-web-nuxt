@@ -257,9 +257,11 @@ export default {
 
 <style scoped lang="postcss">
 /** @define ListPage */
+@import '~/assets/css/colors.css';
+@import "~/assets/css/mediaqueries.css";
 
 .ListPage-heading {
-  @screen phone {
+  @media (--phone-screen) {
     text-align: center;
   }
 }
@@ -282,7 +284,7 @@ export default {
   /* width: 90%; */
   /* min-width: 320px; */
 
-  @screen phone {
+  @media (--phone-screen) {
     width: 100%;
     justify-content: center;
   }
@@ -370,7 +372,7 @@ export default {
 }
 
 .ListPage-filterBtn {
-  border: 1px solid config('colors.accent-color-light');
+  border: 1px solid var(--accent-color-light);
   border-radius: 5px;
   outline: none;
   padding: 0 1rem;
@@ -379,7 +381,7 @@ export default {
   font-size: 1.1em;
 
   color: white;
-  background-color: config('colors.accent-color');
+  background-color: var(--accent-color);
 }
 
 .ListPage-pagination {
@@ -392,7 +394,7 @@ export default {
   width: 90%;
   min-width: 320px;
 
-  @screen phone {
+  @media (--phone-screen) {
     width: 100%;
   }
 }

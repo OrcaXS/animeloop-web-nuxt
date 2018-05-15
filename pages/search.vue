@@ -88,10 +88,11 @@ export default {
 
 <style scoped lang="postcss">
 /** @define SearchPage */
+@import "~/assets/css/mediaqueries.css";
 
 .SearchPage-heading {
   /* font-size: 4vw; */
-  @screen phone {
+  @media (--phone-screen) {
     margin-left: .5em;
   }
 }

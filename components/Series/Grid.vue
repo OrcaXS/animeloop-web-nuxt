@@ -64,6 +64,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define SereisGrid */
+@import "~/assets/css/mediaqueries.css";
 
 .SeriesGrid {
   display: grid;
@@ -74,7 +75,7 @@ export default {
 
   margin: 1em 0em;
 
-  @screen phone {
+  @media (--phone-screen) {
     grid-gap: .75em;
     margin: 1em auto;
   }

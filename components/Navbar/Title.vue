@@ -55,6 +55,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarTitle */
+@import "~/assets/css/mediaqueries.css";
 
 .NavbarTitle-logo {
   font-size: 1.2em;
@@ -68,7 +69,7 @@ export default {
   cursor: pointer;
 
 
-  @screen phone {
+  @media (--phone-screen) {
     /* display: block; */
     /* position: absolute; */
     /* transform: translate(-50%, -50%); */

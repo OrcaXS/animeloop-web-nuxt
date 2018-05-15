@@ -2,21 +2,21 @@
   <div class="font-opensans">
     <div
       v-if="type === 'withSeason'"
-      class="tag-container"
+      class="TypeTag-container"
     >
       <span
         :class="typeClassObj({ type: animeType })"
-        class="TypeTag TypeTag-large TypeTag-leftHalf text-lg "
+        class="TypeTag TypeTag-large TypeTag-leftHalf"
       >{{ animeType }}</span>
       <span
         :class="typeClassObj({ type: animeType })"
-        class="TypeTag TypeTag-large TypeTag-rightHalf text-lg light"
+        class="TypeTag TypeTag-large TypeTag-rightHalf light"
       >{{ season }}</span>
     </div>
     <template v-else>
       <span
         :class="typeClassObj({ type: animeType })"
-        class="TypeTag text-sm"
+        class="TypeTag TypeTag-small"
       >{{ animeType }}</span>
     </template>
   </div>
@@ -93,6 +93,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define TypeTag */
+@import "~/assets/css/colors.css";
 
 .TypeTag {
   max-width: 8em;
@@ -101,8 +102,14 @@ export default {
   color: white;
   padding: .0em .5em;
   border-radius: 5px;
-  /* font-family: 'Roboto', sans-serif; */
   letter-spacing: .25px;
+  font-size: .9em;
+}
+
+.TypeTag-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 .TypeTag-leftHalf {
@@ -115,6 +122,60 @@ export default {
 
 .TypeTag-large {
   padding: .1em .5em;
+  font-size: 1.125rem;
+}
+
+.TypeTag-small {
+  font-size: .875rem;
+}
+
+.Series--tv {
+  background-color: var(--tag-blue);
+  &.light {
+    background-color: var(--tag-blue-light);
+  }
+}
+
+.Series--ova {
+  background-color: var(--tag-purple);
+  &.light {
+    background-color: var(--tag-purple-light);
+  }
+}
+
+.Series--ona {
+  background-color: var(--tag-orange);
+  &.light {
+    background-color: var(--tag-orange-light);
+  }
+}
+
+.Series--movie {
+  background-color: var(--tag-green);
+  &.light {
+    background-color: var(--tag-green-light);
+  }
+}
+
+.Series--tvShort {
+  background-color: var(--tag-cyan);
+  &.light {
+    background-color: var(--tag-cyan-light);
+  }
+}
+
+.Series--special {
+  background-color: var(--tag-red);
+  &.light {
+    background-color: var(--tag-red-light);
+  }
+}
+
+.Series--other {
+  background-color: var(--black1);
+  &.light {
+    background-color: var(--grey6);
+  }
 }
 
 </style>

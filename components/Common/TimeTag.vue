@@ -2,7 +2,7 @@
   <div class="font-opensans">
     <div
       v-if="type === 'length'"
-      class="tag-container"
+      class="TimeTag-container"
     >
       <span class="TimeTag-info TimeTag-leftHalf">
         <FontAwesomeIcon
@@ -13,7 +13,7 @@
     </div>
     <div
       v-if="type === 'timestamp'"
-      class="tag-container TimeTag-fullLength">
+      class="TimeTag-container TimeTag-fullLength">
       <span class="TimeTag-info TimeTag-leftArrow">
         <FontAwesomeIcon
           icon="long-arrow-alt-left"
@@ -85,6 +85,13 @@ export default {
 
 <style scoped lang="postcss">
 /** @define TimeTag */
+@import "~/assets/css/colors.css";
+
+.TimeTag-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
 
 .TimeTag-info {
   max-width: 8em;
@@ -96,20 +103,20 @@ export default {
 
 .TimeTag-leftHalf {
   border-radius: 5px 0 0 5px;
-  color: config('colors.grey5');
-  background-color: config('colors.grey2');
+  color: var(--grey5);
+  background-color: var(--grey2);
 }
 
 .TimeTag-rightHalf {
   border-radius: 0 5px 5px 0;
-  color: config('colors.grey6');
-  background-color: config('colors.grey2');
+  color: var(--grey6);
+  background-color: var(--grey2);
 }
 
 .TimeTag-fullLength {
   border-radius: 5px;
-  color: config('colors.grey5');
-  background-color: config('colors.grey1');
+  color: var(--grey5);
+  background-color: var(--grey1);
 }
 
 .TimeTag-leftArrow {

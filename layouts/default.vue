@@ -39,6 +39,19 @@ export default {
 </script>
 
 <style lang="postcss">
+@import "~/assets/css/mediaqueries.css";
+
+html {
+  font-family: "Helvetica Neue", system-ui, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
 .Layout-container {
   width: 100%;
 
@@ -59,7 +72,7 @@ export default {
 .Layout-main {
   margin: 4em 1em 1em 1em;
 
-  @screen tablet {
+  @media (--tablet-screen) {
     margin: 7em .5em 1em .5em;
     /* padding: 0 .5em; */
     /* Dirty hack for iPhoneX, with iOS 11.1 fallback */
@@ -74,7 +87,7 @@ export default {
     }
   }
 
-  @screen phone {
+  @media (--phone-screen) {
     margin: 4em 0em;
   }
 
@@ -84,5 +97,9 @@ export default {
   box-sizing: border-box;
   margin: 0;
   line-height: 1.2;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', sans-serif;
 }
 </style>

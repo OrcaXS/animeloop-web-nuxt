@@ -45,7 +45,7 @@
     <div
       v-else
       :class="{ 'LoopCard-fixedImageSize' : pageType === 'home' }"
-      class="flex"
+      class="LoopCard-gifContainer"
     >
       <GifPlayer
         :gifsrc="files.gif_360p"
@@ -158,19 +158,20 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopCard */
+@import "~/assets/css/mediaqueries.css";
 
 .LoopCard-video {
   max-width: 100%;
   max-height: calc(100vh - 15rem);
   object-fit: contain;
 
-  @screen phone {
+  @media (--phone-screen) {
     width: 100%;
     /* height: 100%; */
     /* max-height: unset; */
   }
 
-  @screen tablet {
+  @media (--tablet-screen) {
     width: 100%;
     max-height: calc(100vh - 5em);
   }
@@ -179,6 +180,10 @@ export default {
 .LoopCard-fixedImageSize {
   width: 360px;
   height: 203px;
+}
+
+.LoopCard-gifContainer {
+  display: flex;
 }
 
 .LoopCard-videoCover {
