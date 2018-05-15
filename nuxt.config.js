@@ -103,16 +103,4 @@ module.exports = {
     theme_color: '#FFFFFF',
   },
 
-  // workbox: {
-  //   runtimeCaching: [
-  //     {
-  //       // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-  //       urlPattern: 'http://cdn.animeloop.org/.*',
-  //       // Defaults to `networkFirst` if omitted
-  //       handler: 'cacheFirst',
-  //       // Defaults to `GET` if omitted
-  //       method: 'GET',
-  //     },
-  //   ],
-  // },
 };
