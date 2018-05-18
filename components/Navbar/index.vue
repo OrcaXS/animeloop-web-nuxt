@@ -1,7 +1,7 @@
 <template>
   <nav
     :style="toggleContainerStyle"
-    class="Navbar z-10"
+    class="Navbar"
   >
     <NavbarBurgerMenu />
     <NavbarTitle v-if="!navStates.searchOpen"/>
@@ -53,6 +53,8 @@ export default {
 @import "~/assets/css/mediaqueries.css";
 
 .Navbar {
+  z-index: 10;
+
   grid-area: nav;
   position: fixed;
   top: 0;
