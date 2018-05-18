@@ -22,7 +22,7 @@ module.exports = () => ({
         '> 1%',
       ],
       features: {
-        customProperties: true,
+        customProperties: false,
       },
     },
     'postcss-hexrgba': {},
