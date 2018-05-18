@@ -97,6 +97,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopPage */
+@import '~/assets/css/colors.css';
 @import "~/assets/css/mediaqueries.css";
 
 .LoopPage {

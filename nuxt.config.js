@@ -60,7 +60,6 @@ module.exports = {
 
   css: [
     '@fortawesome/fontawesome/styles.css',
-    '~/assets/css/colors.css',
     '~/assets/css/bulma-custom.scss',
   ],
 

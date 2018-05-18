@@ -74,6 +74,7 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarBurgerMenu */
+@import "~/assets/css/colors.css";
 @import "~/assets/css/mediaqueries.css";
 
 .NavbarBurgerMenu {
