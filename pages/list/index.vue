@@ -257,7 +257,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define ListPage */
-@import '~/assets/css/colors.css';
 @import "~/assets/css/mediaqueries.css";
 
 .ListPage-heading {

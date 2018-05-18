@@ -106,7 +106,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define CardDetails */
-@import "~/assets/css/colors.css";
 
 .CardDetails-gridContainer {
   height: 3em;

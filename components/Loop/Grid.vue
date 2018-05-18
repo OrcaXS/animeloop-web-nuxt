@@ -103,7 +103,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopGrid */
-@import '~/assets/css/colors.css';
 
 .LoopGrid {
   display: grid;
