@@ -34,7 +34,7 @@
     "eslint-plugin-jsdoc": "^3.6.2",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
-    "nuxt": "^1.4.0",
+    "nuxt": "npm:nuxt-edge",
     "v-click-outside": "^1.0.4",
     "vue-i18n": "^7.6.0",
     "vue-i18n-extensions": "^0.1.0"
