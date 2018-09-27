@@ -50,7 +50,8 @@ module.exports = {
     // allow optionalDependencies
     'import/no-extraneous-dependencies': 'off',
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
     // jsdoc
     'jsdoc/check-param-names': 1,
