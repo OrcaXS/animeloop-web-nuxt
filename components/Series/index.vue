@@ -74,8 +74,6 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-
 import LoopGrid from '../Loop/Grid';
 import Genres from './Genres';
 import Info from './Info';
@@ -86,7 +84,6 @@ import Info from './Info';
 export default {
   name: 'SeriesPageView',
   components: {
-    FontAwesomeIcon,
     LoopGrid,
     Genres,
     Info,

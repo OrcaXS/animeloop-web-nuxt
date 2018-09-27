@@ -10,16 +10,11 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-
 /**
  * Icon Component for Pagination Buttons.
  */
 export default {
   name: 'PageIcon',
-  components: {
-    FontAwesomeIcon,
-  },
   props: {
     /**
      * The status of the button.

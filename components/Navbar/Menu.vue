@@ -22,16 +22,11 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-
 /**
  * Burger Menu of the Navbar. Enabled in Mobile(phone) layout only.
  */
 export default {
   name: 'NavbarBurgerMenu',
-  components: {
-    FontAwesomeIcon,
-  },
   computed: {
     navStates() {
       return this.$store.state.navbar;

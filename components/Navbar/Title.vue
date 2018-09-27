@@ -22,16 +22,11 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-
 /**
  * Title on the Navbar.
  */
 export default {
   name: 'NavbarTitle',
-  components: {
-    FontAwesomeIcon,
-  },
   computed: {
     playState() {
       return this.$store.state.loop.play;

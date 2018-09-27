@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import GifPlayer from './GifPlayer';
 
 /**
@@ -67,7 +66,6 @@ export default {
   name: 'LoopCard',
   components: {
     GifPlayer,
-    FontAwesomeIcon,
   },
   props: {
     /**
