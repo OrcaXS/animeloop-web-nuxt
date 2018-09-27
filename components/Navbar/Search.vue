@@ -57,7 +57,7 @@ export default {
     },
     searchbarPlaceholder() {
       if (this.keyword) return this.keyword;
-      else if (this.searchFocused) return '';
+      if (this.searchFocused) return '';
       return this.$t('navbar.search');
     },
   },
