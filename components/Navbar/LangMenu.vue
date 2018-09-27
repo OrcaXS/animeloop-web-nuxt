@@ -155,7 +155,7 @@ export default {
 
   &:hover {
     padding: .6em .6em .6em .3em;
-    border-left: .3em solid rgba(var(--accent-color-light), 0.8);
+    border-left: .3em solid color-mod(var(--accent-color-light) alpha(0.8));
   }
 }
 
