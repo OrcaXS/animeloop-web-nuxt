@@ -34,7 +34,6 @@ module.exports = () => ({
         'nesting-rules': true,
       },
     },
-    'postcss-hexrgba': {},
     // 'postcss-bem-linter': {
     //   preset: 'suit',
     //   // implicitComponents: 'src/components#<{(||)}>#*.vue',
