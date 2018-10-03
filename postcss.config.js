@@ -32,6 +32,7 @@ module.exports = () => ({
           unresolved: 'warn',
         },
         'nesting-rules': true,
+        'custom-media-queries': true,
       },
     },
     // 'postcss-bem-linter': {
