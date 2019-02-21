@@ -321,6 +321,7 @@ export default {
   grid-area: series-cover;
   justify-self: center;
   & > a > img {
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,.1),0 1px 8px -3px rgba(0,0,0,.02),0 2px 14px 0 rgba(0,0,0,.04);
     border-radius: 3px;
   }
 }
