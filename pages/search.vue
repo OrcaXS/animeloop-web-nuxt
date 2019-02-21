@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="!!errMsg">
-      <h2 class="SearchPage-heading">{{ errMsg }}</h2>
+      <h2 class="SearchPage-heading">
+        {{ errMsg }}
+      </h2>
     </div>
     <div v-else-if="isSearching">
       <h2 class="SearchPage-heading">
@@ -9,7 +11,9 @@
       </h2>
     </div>
     <div v-else-if="isEmptyResult">
-      <h2 class="SearchPage-heading">No Results for "{{ this.$route.query.keyword }}"</h2>
+      <h2 class="SearchPage-heading">
+        No Results for "{{ this.$route.query.keyword }}"
+      </h2>
     </div>
     <div v-else>
       <h2 class="SearchPage-heading">
@@ -35,13 +39,6 @@ export default {
     };
   },
 
-  asyncData({ query }) {
-    return {
-      hasKeyword: !!query.keyword,
-      // keyword: this.$route.query.keyword,
-    };
-  },
-
   data() {
     return {
       errMsg: '',
@@ -61,6 +58,13 @@ export default {
     searchResult() {
       return this.$store.state.search.searchResult;
     },
+  },
+
+  asyncData({ query }) {
+    return {
+      hasKeyword: !!query.keyword,
+      // keyword: this.$route.query.keyword,
+    };
   },
 
   created() {

@@ -7,8 +7,8 @@
   >
     <input
       ref="search"
-      :placeholder="searchbarPlaceholder"
       v-model="keyword"
+      :placeholder="searchbarPlaceholder"
       value=""
       name="search"
       type="search"

@@ -15,6 +15,12 @@ export default {
     SeriesPage,
   },
 
+  computed: {
+    episodes() {
+      return this.$store.state.episode.episodes[this.$route.params.id];
+    },
+  },
+
   asyncData({ params }) {
     return {
       // seriesID: this.episode.series.id,
@@ -32,12 +38,6 @@ export default {
 
   validate({ params }) {
     return /^[a-z0-9]{24}$/.test(params.id);
-  },
-
-  computed: {
-    episodes() {
-      return this.$store.state.episode.episodes[this.$route.params.id];
-    },
   },
 
 };

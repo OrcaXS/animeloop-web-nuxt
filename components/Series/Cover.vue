@@ -6,10 +6,16 @@
       class="SeriesCover-link"
     >
       <div class="SeriesCover-text">
-        <div class="SeriesCover-title">{{ i18nTitle }}</div>
+        <div class="SeriesCover-title">
+          {{ i18nTitle }}
+        </div>
         <div class="SeriesCover-detail">
-          <span class="SeriesCover-type">{{ series.type }}</span>
-          <span class="SeriesCover-type">{{ series.season }}</span>
+          <span class="SeriesCover-type">
+            {{ series.type }}
+          </span>
+          <span class="SeriesCover-type">
+            {{ series.season }}
+          </span>
         </div>
       </div>
     </nuxt-link>

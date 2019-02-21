@@ -7,17 +7,23 @@
       <span
         :class="typeClassObj({ type: animeType })"
         class="TypeTag TypeTag-large TypeTag-leftHalf"
-      >{{ animeType }}</span>
+      >
+        {{ animeType }}
+      </span>
       <span
         :class="typeClassObj({ type: animeType })"
         class="TypeTag TypeTag-large TypeTag-rightHalf light"
-      >{{ season }}</span>
+      >
+        {{ season }}
+      </span>
     </div>
     <template v-else>
       <span
         :class="typeClassObj({ type: animeType })"
         class="TypeTag TypeTag-small"
-      >{{ animeType }}</span>
+      >
+        {{ animeType }}
+      </span>
     </template>
   </div>
 </template>

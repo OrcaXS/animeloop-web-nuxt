@@ -5,12 +5,16 @@
         slot="title"
         :to="{ name: 'series-id', params: { id: loop.series.id }}"
         type="title"
-      >{{ i18nTitle }}</nuxt-link>
+      >
+        {{ i18nTitle }}
+      </nuxt-link>
       <nuxt-link
         slot="no"
         :to="{ name: 'episode-id', params: { id: loop.episode.id }}"
         type="no"
-      >{{ loop.episode.no }}</nuxt-link>
+      >
+        {{ loop.episode.no }}
+      </nuxt-link>
     </BreadCrumb>
     <div class="LoopPage-loopCard">
       <LoopCard

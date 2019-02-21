@@ -3,15 +3,15 @@
     <template v-if="type === 'listPage'">
       <SeriesCover
         v-for="series in seriesList"
-        :seriesid="series.id"
         :key="series.id"
+        :seriesid="series.id"
       />
     </template>
     <template v-if="type === 'search'">
       <SeriesCover
         v-for="id in seriesList"
-        :seriesid="id"
         :key="id"
+        :seriesid="id"
       />
     </template>
   </div>

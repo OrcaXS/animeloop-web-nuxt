@@ -10,7 +10,9 @@
         :href="entry.url"
         class="Downloads-text"
         download
-      >{{ entry.name }}</a>
+      >
+        {{ entry.name }}
+      </a>
     </div>
   </div>
 </template>

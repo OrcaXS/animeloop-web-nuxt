@@ -40,7 +40,9 @@
               disabled
               selected
               value=""
-            >Select Episode...</option>
+            >
+              Select Episode...
+            </option>
             <option
               v-for="episode in episodeList"
               :key="episode.no"
@@ -75,7 +77,7 @@
 
 <script>
 import LoopGrid from '../Loop/Grid';
-import Genres from './Genres';
+// import Genres from './Genres';
 import Info from './Info';
 
 /**
@@ -85,7 +87,7 @@ export default {
   name: 'SeriesPageView',
   components: {
     LoopGrid,
-    Genres,
+    // Genres,
     Info,
   },
   props: {

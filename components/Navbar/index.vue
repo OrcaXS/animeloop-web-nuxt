@@ -4,10 +4,10 @@
     class="Navbar"
   >
     <NavbarBurgerMenu />
-    <NavbarTitle v-if="!navStates.searchOpen"/>
+    <NavbarTitle v-if="!navStates.searchOpen" />
     <NavbarEntry />
     <NavbarSearch />
-    <NavbarLangMenu v-if="!navStates.searchOpen"/>
+    <NavbarLangMenu v-if="!navStates.searchOpen" />
     <div class="Navbar-lineBreak" />
   </nav>
 </template>

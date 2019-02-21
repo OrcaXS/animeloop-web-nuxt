@@ -32,18 +32,6 @@ export default {
     };
   },
 
-  async fetch({ store, error, params: { id } }) {
-    try {
-      await store.dispatch('fetchLoopByID', { loopid: id });
-    } catch (err) {
-      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
-    }
-  },
-
-  validate({ params }) {
-    return /^[a-z0-9]{24}$/.test(params.id);
-  },
-
   computed: {
     i18nTitle() {
       switch (this.currentLocale) {
@@ -69,6 +57,18 @@ export default {
     formattedTimeStamps() {
       return this.$store.getters.formatTimeStamps(this.$route.params.id);
     },
+  },
+
+  async fetch({ store, error, params: { id } }) {
+    try {
+      await store.dispatch('fetchLoopByID', { loopid: id });
+    } catch (err) {
+      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
+    }
+  },
+
+  validate({ params }) {
+    return /^[a-z0-9]{24}$/.test(params.id);
   },
 };
 </script>

@@ -1,8 +1,14 @@
 <template>
   <nav class="Breadcrumb-wrapper">
-    <span class="Breadcrumb-link Breadcrumb-title"><slot name="title" /></span>
-    <span class="Breadcrumb-divider">/</span>
-    <span class="Breadcrumb-link"><slot name="no" /></span>
+    <span class="Breadcrumb-link Breadcrumb-title">
+      <slot name="title" />
+    </span>
+    <span class="Breadcrumb-divider">
+      /
+    </span>
+    <span class="Breadcrumb-link">
+      <slot name="no" />
+    </span>
   </nav>
 </template>
 

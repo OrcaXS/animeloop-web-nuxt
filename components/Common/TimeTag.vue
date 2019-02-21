@@ -9,18 +9,25 @@
           icon="stopwatch"
         />
       </span>
-      <span class="TimeTag-info TimeTag-rightHalf">{{ duration }}s</span>
+      <span class="TimeTag-info TimeTag-rightHalf">
+        {{ duration }}s
+      </span>
     </div>
     <div
       v-if="type === 'timestamp'"
-      class="TimeTag-container TimeTag-fullLength">
+      class="TimeTag-container TimeTag-fullLength"
+    >
       <span class="TimeTag-info TimeTag-leftArrow">
         <FontAwesomeIcon
           icon="long-arrow-alt-left"
         />
       </span>
-      <span class="TimeTag-info start-time">{{ start }}</span>
-      <span class="TimeTag-info end-time">{{ end }}</span>
+      <span class="TimeTag-info start-time">
+        {{ start }}
+      </span>
+      <span class="TimeTag-info end-time">
+        {{ end }}
+      </span>
       <span class="TimeTag-info TimeTag-rightArrow">
         <FontAwesomeIcon
           icon="long-arrow-alt-right"

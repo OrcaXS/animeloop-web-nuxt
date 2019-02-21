@@ -20,18 +20,6 @@ export default {
     };
   },
 
-  async fetch({ store, error, params: { id } }) {
-    try {
-      await store.dispatch('fetchSeriesByID', { seriesid: id });
-    } catch (err) {
-      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
-    }
-  },
-
-  validate({ params }) {
-    return /^[a-z0-9]{24}$/.test(params.id);
-  },
-
   // fetch({ store, route: { params: { id } } }) {
   //   return store.dispatch('fetchEpisodesBySeriesID', { seriesid: id });
   // },
@@ -44,6 +32,18 @@ export default {
     // episodes() {
     //   return this.$store.state.episode.episodeList[this.$route.params.id];
     // },
+  },
+
+  async fetch({ store, error, params: { id } }) {
+    try {
+      await store.dispatch('fetchSeriesByID', { seriesid: id });
+    } catch (err) {
+      error({ statusCode: 404, message: 'API returned Error', customMsg: err.message });
+    }
+  },
+
+  validate({ params }) {
+    return /^[a-z0-9]{24}$/.test(params.id);
   },
 
 };

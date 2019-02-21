@@ -1,8 +1,7 @@
 <template>
   <div class="SeriesGenres">
     <template
-      v-for="(genre, index) in genres"
-      v-if="!!genre"
+      v-for="(genre, index) in existingGenres"
     >
       <span
         v-if="index === 0"
@@ -34,6 +33,11 @@ export default {
       type: Array,
       required: true,
       default: () => ['Unknown Genre'],
+    },
+  },
+  computed: {
+    existingGenres() {
+      return this.genres.filter(genre => !!genre);
     },
   },
 };

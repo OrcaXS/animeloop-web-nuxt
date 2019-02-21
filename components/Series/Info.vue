@@ -1,11 +1,15 @@
 <template>
   <div class="SeriesInfo">
     <div class="SeriesInfo-title">
-      <span class="SeriesInfo-title--main">{{ i18nTitle }}&nbsp;</span>
+      <span class="SeriesInfo-title--main">
+        {{ i18nTitle }}&nbsp;
+      </span>
       <span
         v-if="currentLocale !== 'ja'"
         class="SeriesInfo-title--alt"
-      >{{ series.title_japanese }}</span>
+      >
+        {{ series.title_japanese }}
+      </span>
     </div>
     <div class="SeriesInfo-seasonWithGenres">
       <Genres

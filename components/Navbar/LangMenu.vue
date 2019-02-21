@@ -25,7 +25,9 @@
           :class="{ 'NavbarLangMenu-selected': currentLocale === locale.id }"
           class="NavbarLangMenu-dropdownItem"
           @click="setLanguage(locale.id)"
-        >{{ locale.text }}</button>
+        >
+          {{ locale.text }}
+        </button>
       </div>
     </div>
   </div>
