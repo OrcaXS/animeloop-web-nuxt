@@ -73,7 +73,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 /** @define SeriesCover */
 
 .SeriesCover {

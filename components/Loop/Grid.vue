@@ -104,8 +104,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define LoopGrid */
-@import '~/assets/css/colors.css';
-
 .LoopGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 360px));

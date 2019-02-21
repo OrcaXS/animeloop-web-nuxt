@@ -235,7 +235,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 /** @define SeriesPage */
 @import "~/assets/css/mediaqueries.css";
 

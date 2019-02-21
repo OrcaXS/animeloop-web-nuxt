@@ -84,7 +84,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define NavbarLangMenu */
-@import "~/assets/css/colors.css";
 @import "~/assets/css/mediaqueries.css";
 
 .NavbarLangMenu {

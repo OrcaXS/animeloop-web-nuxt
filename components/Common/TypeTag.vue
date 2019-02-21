@@ -99,8 +99,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define TypeTag */
-@import "~/assets/css/colors.css";
-
 .TypeTag {
   max-width: 8em;
   max-height: 1.5em;

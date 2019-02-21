@@ -87,8 +87,6 @@ export default {
 
 <style scoped lang="postcss">
 /** @define TimeTag */
-@import "~/assets/css/colors.css";
-
 .TimeTag-container {
   display: flex;
   flex-flow: row nowrap;
