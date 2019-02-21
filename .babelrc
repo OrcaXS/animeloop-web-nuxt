@@ -1,14 +1,6 @@
 // This .babelrc is currently only used by vue-styleguidist
 {
   "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": ["> 1%", "last 2 versions", "not ie <= 11"]
-        },
-      }
-    ],
     ["vue-app"]
   ],
 }

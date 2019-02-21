@@ -28,6 +28,21 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    postcss: {
+      plugins: {
+        'postcss-preset-env': {
+          stage: 3,
+          features: {
+            'color-mod-function': {
+              unresolved: 'warn',
+            },
+            'nesting-rules': true,
+            'custom-media-queries': true,
+          },
+        },
+        autoprefixer: {},
+      },
+    },
     extractCSS: true,
     /*
     ** Run ESLint on save
@@ -41,16 +56,6 @@ module.exports = {
           exclude: /(node_modules)/,
         });
       }
-      config.module.rules.push({
-        test: /\.(postcss)$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      });
       if (!isDev) {
         // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
         // for more information about purgecss.
@@ -68,7 +73,8 @@ module.exports = {
   },
 
   css: [
-    '~/assets/css/bulma-custom.scss',
+    // '~/assets/css/bulma-custom.scss',
+    '~/assets/css/colors.css',
   ],
 
   render: {
@@ -93,8 +99,6 @@ module.exports = {
   },
 
   modules: [
-    // '@nuxtjs/webpackmonitor',
-    'nuxt-webpackdashboard',
     '@nuxtjs/pwa',
     // Simple usage
     // ['@nuxtjs/google-analytics', {
